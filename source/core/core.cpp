@@ -170,50 +170,50 @@ EngineInterface::~EngineInterface()
     __tegra_safe_delete(m_bootParameter);
 }
 
-std::time_t EngineInterface::getInitTime()
-{
-
-}
+//std::time_t EngineInterface::getInitTime()
+//{
+//
+//}
 
 std::optional<std::string> EngineInterface::getSaveState()
 {
     if (isset(m_bootParameter->saveState)) {
         return m_bootParameter->saveState;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<u32> EngineInterface::getPageSize()
 {
     if (isset(m_bootParameter->pageSize)) {
         return m_bootParameter->pageSize;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
-std::time_t EngineInterface::getPageInitTime()
-{
-
-}
+//std::time_t EngineInterface::getPageInitTime()
+//{
+//
+//}
 
 std::optional<u32> EngineInterface::getPageSpeed()
 {
     if (isset(m_bootParameter->pageSpeed)) {
         return m_bootParameter->pageSpeed;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<s32> EngineInterface::getStateIndex()
 {
     if (isset(m_bootParameter->stateIndex)) {
         return m_bootParameter->stateIndex;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 bool EngineInterface::getFastBoot()
@@ -225,63 +225,63 @@ std::optional<HostType> EngineInterface::getHostType()
 {
     if (isset(m_bootParameter->hostType)) {
         return m_bootParameter->hostType;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<UserMode> EngineInterface::getUserMode()
 {
     if (isset(m_bootParameter->userMode)) {
         return m_bootParameter->userMode;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<SyncDevice> EngineInterface::getSyncMode()
 {
     if (isset(m_bootParameter->syncDevice)) {
         return m_bootParameter->syncDevice;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<SystemType> EngineInterface::getSystemType()
 {
     if (isset(m_bootParameter->systemType)) {
         return m_bootParameter->systemType;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<SystemLicense> EngineInterface::getSystemLicense()
 {
     if (isset(m_bootParameter->systemLicense)) {
         return m_bootParameter->systemLicense;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
 std::optional<SystemStatus> EngineInterface::getSystemStatus()
 {
     if (isset(m_bootParameter->systemStatus)) {
         return m_bootParameter->systemStatus;
-    } else {
-        return std::nullopt;
     }
+
+    return std::nullopt;
 }
 
-SystemStatus EngineInterface::getStatus()
-{
-    if(!isset(m_bootParameter->systemStatus))
-    {
-
-    }
-}
+//SystemStatus EngineInterface::getStatus()
+//{
+//    if(!isset(m_bootParameter->systemStatus))
+//    {
+//
+//    }
+//}
 
 bool Engine::initialize()
 {
