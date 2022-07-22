@@ -155,7 +155,7 @@ EngineInterface::EngineInterface()
 #ifdef PLATFORM_WINDOWS
         m_bootParameter->hostType = HostType::Windows;
 #elif defined(PLATFORM_LINUX)
-        m_bootParameter->hostType = HostType::Lunux;
+        m_bootParameter->hostType = HostType::Linux;
 #elif defined(PLATFORM_MAC)
         m_bootParameter->hostType = HostType::MacOS;
 #else
