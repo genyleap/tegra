@@ -2,6 +2,8 @@
 
 ![tegra-git-header-01](https://user-images.githubusercontent.com/4066299/185661182-7f7885ca-9858-444e-9fb3-8a2066f6fac6.svg)
 
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
+
 Welcome to the Tegra development repository!
 Tegra is an open source super-high end performance, user-friendly, multi-lingual and multi-purpose modern CMS based on **C++20** which enables you to build websites and powerful online applications.
 
@@ -12,15 +14,6 @@ Tegra is an open source super-high end performance, user-friendly, multi-lingual
 ![Language iso: C++](https://img.shields.io/badge/C%2B%2B-20-blue)
 ![Platforms](https://img.shields.io/badge/Platform%20Support-macOS%2C%20Linux%2C%20Windows-lightgrey)
 ![Status](https://img.shields.io/badge/Status-Under%20Development-red)
-
-[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com)
 
 $$\textcolor{red}{\text{***WARNING:*** Tegra's code is not ready for final use at the moment, but you can see development stages in dev repository.}}$$
 
@@ -111,7 +104,7 @@ _Features that will be added in the future_
 
 ```
 cd build
-cmake -DUSE_NONE_STL_JSON=true -DUSE_FMT=true ..
+cmake -DPLATFORM_OS="your_os" -DUSE_NONE_STL_JSON=true -DUSE_FMT=true ..
 make
 ./Tegra
 

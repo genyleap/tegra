@@ -25,7 +25,7 @@
 
 <!-- Begin assets -->
 <%c++ for(auto iter:css){%>
-<link href="templates/{%iter%}" rel="stylesheet">
+<link href="{%iter%}" rel="stylesheet">
 <%c++}%>
 <!-- End assets -->
 
@@ -41,192 +41,90 @@
 <%c++}%>
 </style>
 
-
-    <!-- Page loading styles -->
     <style>
-      .page-loading {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        -webkit-transition: all .4s .2s ease-in-out;
-        transition: all .4s .2s ease-in-out;
-        background-color: #fff;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 9999;
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
       }
-      .dark-mode .page-loading {
-        background-color: #0b0f19;
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
       }
-      .page-loading.active {
-        opacity: 1;
-        visibility: visible;
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
       }
-      .page-loading-inner {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        -webkit-transition: opacity .2s ease-in-out;
-        transition: opacity .2s ease-in-out;
-        opacity: 0;
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
       }
-      .page-loading.active > .page-loading-inner {
-        opacity: 1;
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
       }
-      .page-loading-inner > span {
-        display: block;
-        font-size: 1rem;
-        font-weight: normal;
-        color: #9397ad;
-      }
-      .dark-mode .page-loading-inner > span {
-        color: #fff;
-        opacity: .6;
-      }
-      .page-spinner {
-        display: inline-block;
-        width: 2.75rem;
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
         height: 2.75rem;
-        margin-bottom: .75rem;
-        vertical-align: text-bottom;
-        border: .15em solid #b4b7c9;
-        border-right-color: transparent;
-        border-radius: 50%;
-        -webkit-animation: spinner .75s linear infinite;
-        animation: spinner .75s linear infinite;
+        overflow-y: hidden;
       }
-      .dark-mode .page-spinner {
-        border-color: rgba(255,255,255,.4);
-        border-right-color: transparent;
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
       }
-      @-webkit-keyframes spinner {
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes spinner {
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-      }
+
+    .container {
+      width: auto;
+      max-width: 680px;
+      padding: 0 15px;
+    }
     </style>
 
-    <!-- Theme mode -->
-    <script>
-      let mode = window.localStorage.getItem('mode'),
-          root = document.getElementsByTagName('html')[0];
-      if (mode !== null && mode === 'dark') {
-        root.classList.add('dark-mode');
-      } else {
-        root.classList.remove('dark-mode');
-      }
-    </script>
 
-    <!-- Page loading scripts -->
-    <script>
-      (function () {
-        window.onload = function () {
-          const preloader = document.querySelector('.page-loading');
-          preloader.classList.remove('active');
-          setTimeout(function () {
-            preloader.remove();
-          }, 1000);
-        };
-      })();
-    </script>
-
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer.css" rel="stylesheet">
   </head>
+  <body class="d-flex flex-column h-100">
 
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+  <div class="col-md-5 offset-xl-1 order-md-1">
+    <h1 class="display-1 mb-sm-4 mt-n4 mt-sm-n5">[[subject]]</h1>
+    <p class="mb-md-5 mb-4 mx-md-0 mx-auto pb-2 lead">[[description]]</p>
+    <a href="index.html" class="btn btn-lg btn-primary shadow-primary w-sm-auto w-100">
+      <i class="bx bx-home-alt me-2 ms-n1 lead"></i>
+      [[gohome]]
+    </a>
 
-  <!-- Body -->
-  <body>
+  </div>
+  </div>
+</main>
 
-    <!-- Google Tag Manager (noscript)-->
-    <noscript>
-      <iframe src="//www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    </noscript>
-
-    <!-- Page loading spinner -->
-    <div class="page-loading active">
-      <div class="page-loading-inner">
-        <div class="page-spinner"></div><span>[[loading]]</span>
-      </div>
-    </div>
-
-
-    <!-- Page wrapper for sticky footer -->
-    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
-    <main class="page-wrapper">
-
-
-      <!-- Navbar -->
-      <!-- Remove "fixed-top" class to make navigation bar scrollable with the page -->
-      <header class="header navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <%view templates::user::header%>
-      </header>
-
-
-      <!-- Page content -->
-      <section class="d-flex align-items-center min-vh-100 py-5 bg-light" style="background: radial-gradient(144.3% 173.7% at 71.41% 94.26%, rgba(99, 102, 241, 0.1) 0%, rgba(218, 70, 239, 0.05) 32.49%, rgba(241, 244, 253, 0.07) 82.52%);">
-        <div class="container my-5 text-md-start text-center">
-          <div class="row align-items-center">
-
-            <!-- Animation -->
-            <div class="col-xl-6 col-md-7 order-md-2 ms-n5">
-              <lottie-player src="https://silicon.createx.studio/assets/json/animation-404-v1.json" background="transparent" speed="1" loop autoplay></lottie-player>
-            </div>
-
-            <!-- Text -->
-            <div class="col-md-5 offset-xl-1 order-md-1">
-              <h1 class="display-1 mb-sm-4 mt-n4 mt-sm-n5">[[subject]]</h1>
-              <p class="mb-md-5 mb-4 mx-md-0 mx-auto pb-2 lead">[[description]]</p>
-              <a href="index.html" class="btn btn-lg btn-primary shadow-primary w-sm-auto w-100">
-                <i class="bx bx-home-alt me-2 ms-n1 lead"></i>
-                [[gohome]]
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-
-    <!-- Footer -->
-    <footer class="container text-md-start text-center py-lg-5 py-4" style="transform: translateY(-100%);">
-      <div class="row">
-        <div class="col-xl-11 offset-xl-1">
-          <p class="nav d-block fs-sm text-center text-md-start mb-0">
-            [[copyright]]
-          </p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Vendor Scripts -->
-    <script src="templates/user/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="templates/user/assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="templates/user/assets/vendor/@lottiefiles/lottie-player/dist/lottie-player.js"></script>
-
-    <!-- Main Theme Script -->
-    <script src="templates/user/assets/js/theme.min.js"></script>
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">[[copyright]]</span>
+  </div>
+</footer>
   </body>
 </html>

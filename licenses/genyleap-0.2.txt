@@ -1,0 +1,8 @@
+G E N Y L E A P ™   Tegra CMS
+  Version 1, 29 Aug 2022
+
+Copyright (C) 2021-2022 The Genyleap™.
+Copyright (C) 2021-2022 Kambiz Asadzadeh.
+
+Source: https://github.com/genyleap/cms
+Official website: https://genyleap.com
