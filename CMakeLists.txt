@@ -1,7 +1,7 @@
 # -------------------- PROJECT INFO --------------------
-#   Title   :                       Tegra CMS
-#   Version :                       0.2.43.0
-#   Author  :                       Kambiz Asadzadeh
+#   Title      :                       Tegra CMS
+#   Author     :                       Kambiz Asadzadeh
+#   Copyright  :                       The Genyleap
 # ------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.20)
@@ -22,7 +22,7 @@ set(PROJECT_TARGET ${PROJECT_NAME} CACHE STRING "Project Target Name.")
 
 set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_VERSION_MINOR 2)
-set(PROJECT_VERSION_PATCH 43)
+set(PROJECT_VERSION_PATCH 300)
 set(PROJECT_VERSION_TWEAK 0)
 
 # ---- Project settings ----
@@ -40,7 +40,7 @@ endif()
 
 set(PROJECT_CREATOR "Kambiz Asadzadeh" CACHE STRING "Creator of your project.") #Your project creator.
 
-set(PROJECT_LICENSE_TYPE "MIT" CACHE STRING "Project License Type.") #Your project license type.
+set(PROJECT_LICENSE_TYPE "LGPL-v3.0" CACHE STRING "Project License Type.") #Your project license type.
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
   execute_process(
@@ -73,7 +73,7 @@ set(PLATFORM_OS "macOS" CACHE STRING "OS Type.")
 set(PROJECT_DESCRIPTION "Tegra CMS is free open source multi-language Content Management System." CACHE STRING "Project Description")
 
 #Your project website address.
-set(PROJECT_HOMEPAGE_URL "https://kambizasadzadeh.com" CACHE STRING "Project URL.")
+set(PROJECT_HOMEPAGE_URL "https://github.com/genyleap/cms" CACHE STRING "Project URL.")
 
 
 #Project pre-configuration system.
