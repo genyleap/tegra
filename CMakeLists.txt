@@ -36,8 +36,6 @@ if(NOT DEFINED CMAKE_CXX_STANDARD)
     set(CMAKE_CXX_EXTENSIONS ON)
 endif()
 
-#set(CMAKE_CXX_FLAGS "-std=c++20 -lstdc++fs")
-
 set(PROJECT_CREATOR "Kambiz Asadzadeh" CACHE STRING "Creator of your project.") #Your project creator.
 
 set(PROJECT_LICENSE_TYPE "LGPL-v3.0" CACHE STRING "Project License Type.") #Your project license type.
@@ -68,6 +66,12 @@ set(PROJECT_MAIN_TYPE "web" CACHE STRING "Library System.")
 
 #Use these keys [macOS, Windows, Linux, iOS, Android]
 set(PLATFORM_OS "macOS" CACHE STRING "OS Type.")
+
+set(USE_FMT TRUE)
+
+set(USE_NONE_STL_JSON TRUE)
+
+set(CMAKE_BUILD_TYPE "Debug")
 
 #You can replace your project description with this string.
 set(PROJECT_DESCRIPTION "Tegra CMS is free open source multi-language Content Management System." CACHE STRING "Project Description")
@@ -336,6 +340,24 @@ message(STATUS "${Bold}LIBRARY_OUTPUT_PATH${ColourReset}		: ${LIBRARY_OUTPUT_PAT
 message(STATUS "${Bold}CMAKE_CURRENT_SOURCE_DIR${ColourReset}	: ${CMAKE_CURRENT_SOURCE_DIR}")
 message(STATUS "${BoldBlue}------ ${PROJECT_TARGET} End Configuration ------${ColourReset}")
 
+include(CheckIncludeFileCXX)
+
+check_include_file_cxx(any HAS_ANY)
+check_include_file_cxx(string_view HAS_STRING_VIEW)
+check_include_file_cxx(coroutine HAS_COROUTINE)
+if (NOT "${CMAKE_CXX_STANDARD}" STREQUAL "")
+    # Do nothing
+elseif (HAS_ANY AND HAS_STRING_VIEW AND HAS_COROUTINE)
+    set(CMAKE_CXX_STANDARD 20)
+elseif (HAS_ANY AND HAS_STRING_VIEW)
+    set(CMAKE_CXX_STANDARD 17)
+else ()
+    set(CMAKE_CXX_STANDARD 14)
+endif ()
+
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 if(ANDROID)
     set(DANDROID_NATIVE_API_LEVEL 23)
     if(NOT PROJECT_MAIN_TYPE STREQUAL "qtquick")
@@ -441,6 +463,17 @@ if(ENABLE_DROGON_MODULE)
     target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIB_TARGET_COMPILER_DEFINATION})
 endif()
 
+if (CMAKE_CXX_STANDARD LESS 17)
+    # With C++14, use boost to support any, string_view and filesystem
+    message(STATUS "use c++14")
+    find_package(Boost 1.61.0 REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PUBLIC Boost::boost)
+elseif (CMAKE_CXX_STANDARD LESS 20)
+    message(STATUS "use c++17")
+else ()
+    message(STATUS "use c++20")
+endif ()
+
 file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/templates/user/*.csp)
 file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/templates/admin/*.csp)
 
@@ -456,8 +489,11 @@ foreach(cspFile ${SCP_LIST})
     set(VIEWSRC ${VIEWSRC} ${classname}.cc)
 endforeach()
 
+#drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/templates
+#                    ${CMAKE_CURRENT_BINARY_DIR}/templates)
+
 drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/templates
-                     ${CMAKE_CURRENT_BINARY_DIR}/templates/ TRUE)
+                     ${CMAKE_CURRENT_BINARY_DIR}/templates TRUE)
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${LIB_TARGET_PROPERTIES})
 #This command generates installation rules for a project.

@@ -23,10 +23,11 @@
 //#include <ApplicationServices/ApplicationServices.h>
 #include <ImageIO/ImageIO.h>
 #elif defined(PLATFORM_LINUX)
-#include <sys/socket.h>
-#include <sys/sysctl.h>
-#include <net/if.h>
-#include <net/if_dl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <libgen.h>         // dirname
+#include <unistd.h>         // readlink
+#include <linux/limits.h>   // PATH_MAX
 #elif defined(PLATFORM_FREEBSD)
 #include <sys/socket.h>
 #include <sys/sysctl.h>
@@ -67,13 +68,9 @@ std::string Path::getExecutablePath() {
         res = v.substr(0, v.find_last_of("\\/")) + "/";
     }
 #elif defined(PLATFORM_LINUX)
-    std::string res = {"/"};
-    char path[1024];
-    uint32_t size = sizeof(path);
-    if (readlink(path, &size) == 0) {
-        std::string v = path;
-        res = v.substr(0, v.find_last_of("\\/")) + "/";
-    }
+    char res[ PATH_MAX ];
+    ssize_t count = readlink("/", res, PATH_MAX);
+    return std::string(res, (count > 0) ? count : 0);
 #elif defined(PLATFORM_WINDOWS)
     std::string res = {"/"};
     char buffer[MAX_PATH];
