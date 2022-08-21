@@ -9,6 +9,7 @@
  * @license     https://github.com/genyleap/cms/blob/main/LICENSE.md
  *
  */
+
 #ifndef COMMON_HPP
 #define COMMON_HPP
 

@@ -1,30 +1,17 @@
+/*!
+ * @file        preprocessor.hpp
+ * @brief       This file is part of the Tegra CMS.
+ * @details     Common macro and defines.
+ * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
+ * @package     The Genyleap
+ * @since       29 Aug 2022
+ * @copyright   Copyright (c) 2022 The Genyleap. All rights reserved.
+ * @license     https://github.com/genyleap/cms/blob/main/LICENSE.md
+ *
+ */
+
 #ifndef PREPROCESSOR_HPP
 #define PREPROCESSOR_HPP
-
-/*!
- * MIT License
- *
- * Copyright (c) 2022 The Genyleap. All rights reserved.
- * Copyright (c) 2022 Kambiz Asadzadeh.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
 
 /*!
  * namespace Preprocessor
@@ -345,6 +332,14 @@ required. For example, an array dimension.
 #define PROCESSOR "Intel"
 #undef ARCHITECTURE
 #define ARCHITECTURE "x86_64 (64-Bit)"
+#elif defined(__aarch64__)
+//! arm64 based systems (64-bit)
+#undef ARM64_BIT
+#define ARM64_BIT
+#undef PROCESSOR
+#define PROCESSOR "Arm"
+#undef ARCHITECTURE
+#define ARCHITECTURE "Arm64 (64-Bit)"
 #endif
 
 /*
@@ -742,22 +737,27 @@ required. For example, an array dimension.
  * Linux
  * Developer:	Open source
  * Distributions:	Centos, Debian, Fedora, OpenSUSE, RedHat, Ubuntu
- * Processors:	x86, x86-64, POWER, etc.
+ * Processors:	x86, x86-64, arm64, POWER, etc.
  */
 
-#if defined(__linux__) && defined(linux) && !defined(__ANDROID__) &&           \
-    !defined(ANDROID)
+#if defined(__linux__) && defined(linux) && !defined(ARM64_BIT) && !defined(X64_64bit) && !defined(__ANDROID__)
 /* Linux. --------------------------------------------------- */
 #define PLATFORM_OS "Linux"
 #define PLATFORM_ARCH "x86 (32-Bit)"
 #define PLATFORM_LINUX "Linux"
 #define PLATFORM_DEVICE "Desktop"
 #define PLATFORM_TYPE "Unix (Linux)"
-#elif defined(X64_64bit) && defined(__linux) && defined(__linux__) &&          \
-    defined(linux) && !defined(__ANDROID__) && !defined(ANDROID)
+#elif defined(X64_64bit) && defined(__linux) && defined(__linux__) && defined(linux) && !defined(__ANDROID__)
 /* Linux. --------------------------------------------------- */
 #define PLATFORM_OS "Linux"
 #define PLATFORM_ARCH "x64 (64-Bit)"
+#define PLATFORM_LINUX "Linux"
+#define PLATFORM_DEVICE "Desktop"
+#define PLATFORM_TYPE "Unix (Linux)"
+/* Linux. --------------------------------------------------- */
+#elif defined(ARM64_BIT) && defined(__linux) && defined(__linux__)
+#define PLATFORM_OS "Linux"
+#define PLATFORM_ARCH "arm64 (aarch64)"
 #define PLATFORM_LINUX "Linux"
 #define PLATFORM_DEVICE "Desktop"
 #define PLATFORM_TYPE "Unix (Linux)"
