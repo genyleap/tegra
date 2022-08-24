@@ -1,12 +1,12 @@
 /*!
  * @file        common.hpp
- * @brief       This file is part of the Tegra CMS.
+ * @brief       This file is part of the Tegra System.
  * @details     Common interface.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022
  * @copyright   Copyright (c) 2022 The Genyleap. All rights reserved.
- * @license     https://github.com/genyleap/cms/blob/main/LICENSE.md
+ * @license     https://github.com/genyleap/tegra/blob/main/LICENSE.md
  *
  */
 
@@ -71,7 +71,7 @@ struct AppFramework : public Framework::HttpAppFramework
 #define TEGRA_LANGS "langs"
 #define TEGRA_DEFAULT_LANG "default_lang"
 
-namespace CMS {
+namespace System {
 
 struct LANGUAGE_SHEET final {
   static constexpr auto GLOBAL      = "global";
@@ -79,20 +79,20 @@ struct LANGUAGE_SHEET final {
 };
 
 struct CONFIG final {
-  static constexpr std::string_view FULL_NAME = "Tegra CMS";
+  static constexpr std::string_view FULL_NAME = "Tegra System";
   static constexpr std::string_view FULL_VERSION = "0.5";
   static constexpr std::string_view RELEASE_MODE = "alpha";
   static constexpr std::string_view RELEASE_NUMBER = "2.0";
   static constexpr std::string_view DEVELOPER = "Kambiz Asadzadeh";
   static constexpr std::string_view FRAMEWORK_CONFIG_FILE = "config.json";
-  static constexpr std::string_view CMS_CONFIG_FILE = "config/system-config.json";
-  static constexpr std::string_view CMS_CUSTOM_FILE = "config/custom-setting.json";
-  static constexpr std::string_view CMS_DATABASE_FILE = "config/system-database.json";
-  static constexpr std::string_view CMS_INTERFACE_FILE = "config/system-interface.json";
-  static constexpr std::string_view CMS_TABLES_PREFIX = "teg_";
-  static constexpr std::string_view CMS_TABLES_VALUE_STRUCT = "_l";
-  static constexpr std::string_view CMS_TABLES_TABLE_UNICODE = "utf-8";
-  static constexpr std::string_view CMS_TABLES_COOKIE_PREFIX = "tegra_";
+  static constexpr std::string_view SYSTEM_CONFIG_FILE = "config/system-config.json";
+  static constexpr std::string_view SYSTEM_CUSTOM_FILE = "config/custom-setting.json";
+  static constexpr std::string_view SYSTEM_DATABASE_FILE = "config/system-database.json";
+  static constexpr std::string_view SYSTEM_INTERFACE_FILE = "config/system-interface.json";
+  static constexpr std::string_view SYSTEM_TABLES_PREFIX = "teg_";
+  static constexpr std::string_view SYSTEM_TABLES_VALUE_STRUCT = "_l";
+  static constexpr std::string_view SYSTEM_TABLES_TABLE_UNICODE = "utf-8";
+  static constexpr std::string_view SYSTEM_TABLES_COOKIE_PREFIX = "tegra_";
   static constexpr std::string_view TRANSLATION_FILE = "translations/contents.json";
 
   static constexpr std::string_view OFFICIAL_WEB = "http://genyleap.com";
@@ -126,7 +126,7 @@ struct STATICS final {
 
 
 #undef TEGRA_COPYRIGHT
-#define TEGRA_COPYRIGHT "<!-- ]]></script> -->Copyright © 2022 <a class=\"nav-link d-inline-block p-0\" href=\"https://genyleap.com\" rel=\"noopener\" target=\"_blank\">Tegra CMS</a> <!-- Tegra CMS Team -->"
+#define TEGRA_COPYRIGHT "<!-- ]]></script> -->Copyright © 2022 <a class=\"nav-link d-inline-block p-0\" href=\"https://genyleap.com\" rel=\"noopener\" target=\"_blank\">Tegra System</a> <!-- Tegra System Team -->"
 
 #define STLLIB_STANDARD             0x0
 #define STLLIB_TECHNICAL_REPORT     0x1

@@ -2,7 +2,7 @@
 #include <ostream>
 #include <iomanip>
 
-TEGRA_USING_NAMESPACE Tegra::CMS;
+TEGRA_USING_NAMESPACE Tegra::System;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Terminal)
 

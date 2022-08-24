@@ -8,7 +8,7 @@
 
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::CMS)
+TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
 Exception::Exception(const Reason& reason, const std::string& message)
 {
@@ -313,11 +313,11 @@ bool Engine::initialize()
     ///< Parsing
     if(Application::get(appData)->translator->parse()) {
         res = true;
-        if(CMS::DeveloperMode::IsEnable)
+        if(System::DeveloperMode::IsEnable)
             Log("Language data has been parsed!", LoggerType::Done); ///< Parsing Done!
     } else {
         res = false;
-        if(CMS::DeveloperMode::IsEnable)
+        if(System::DeveloperMode::IsEnable)
             Log("No parsing...!", LoggerType::Failed);  ///< Parsing Failed!
     }
 
@@ -497,7 +497,7 @@ std::string Engine::tablePrefix()
     //Table prefix
     std::string prefix = Configuration::GET["table_prefix"].asString();
     if(!isset(prefix)) {
-        if(CMS::DeveloperMode::IsEnable)
+        if(System::DeveloperMode::IsEnable)
             Log("Table prefix not found!", LoggerType::Warning);
     }
     return prefix;
@@ -508,7 +508,7 @@ std::string Engine::tableUnicode()
     //Table unicode
     std::string unicode = Configuration::GET["table_unicode"].asString();
     if(!isset(unicode)) {
-        if(CMS::DeveloperMode::IsEnable)
+        if(System::DeveloperMode::IsEnable)
             Log("Table unicode not found!", LoggerType::Warning);
     }
     return unicode;
@@ -519,7 +519,7 @@ std::string Engine::mixedTablePrefix(const std::string& p, const std::string& t)
     std::string res;
     res = FROM_TEGRA_STRING(p) + FROM_TEGRA_STRING(t);
     if(!isset(res)) {
-        if(CMS::DeveloperMode::IsEnable)
+        if(System::DeveloperMode::IsEnable)
             Log("Table prefix not found!", LoggerType::Warning);
     }
     return res;
@@ -530,7 +530,7 @@ std::string Engine::table(std::string_view tableName, TableType tableType)
     std::string res{};
     res = FROM_TEGRA_STRING(mixedTablePrefix(tablePrefix(), tableName.data()));
     if(!isset(res)) {
-        if(CMS::DeveloperMode::IsEnable)
+        if(System::DeveloperMode::IsEnable)
             Log("Table not found!", LoggerType::Warning);
     }
     return res;
@@ -900,11 +900,11 @@ Application* Application::get(const ApplicationData& appData)
 
 void Application::start()
 {
-    if(CMS::DeveloperMode::IsEnable)
+    if(System::DeveloperMode::IsEnable)
         Log("Engine started!", LoggerType::Info); ///< Engine Start...
     {
         Console::print << "Starting..." << newline;
-        Console::print << "=================[Tegra CMS Info]=================\n";
+        Console::print << "=================[Tegra System Info]=================\n";
         Console::print << newline;
         Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << __tegra_space << systemInfo->name.value() << ""

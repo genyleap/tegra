@@ -1,7 +1,6 @@
 ﻿#include "logger.hpp"
 #include "terminal.hpp"
 
-TEGRA_USING_NAMESPACE Tegra::CMS;
 TEGRA_USING_NAMESPACE Tegra::Terminal;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::eLogger)

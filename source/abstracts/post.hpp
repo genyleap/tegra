@@ -1,12 +1,12 @@
 /*!
  * @file        post.hpp
- * @brief       This file is part of the Tegra CMS.
+ * @brief       This file is part of the Tegra System.
  * @details     Post interface for pages.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022
  * @copyright   Copyright (c) 2022 The Genyleap. All rights reserved.
- * @license     https://github.com/genyleap/cms/blob/main/LICENSE.md
+ * @license     https://github.com/genyleap/tegra/blob/main/LICENSE.md
  *
  */
 
@@ -54,8 +54,8 @@ struct PostData final
     OptionalString  documentTitle   {};    ///< Document title (title of post).
     OptionalString  metaDescr       {};    ///< Meta description (more details) for post.
     ///!MEDIA
-    CMS::MediaType  cover           {};    ///< Image or video for post.
-    CMS::IconType   icon            {};    ///< Icon for post.
+    System::MediaType  cover           {};    ///< Image or video for post.
+    System::IconType   icon            {};    ///< Icon for post.
     ///!DATETIME
     OptionalString  createdDate     {};    ///< Created date time.
     OptionalString  publishTime     {};    ///< Publishing time.

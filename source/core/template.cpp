@@ -8,7 +8,7 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::SEO;
-TEGRA_NAMESPACE_BEGIN(Tegra::CMS)
+TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
 Template::Template(const UserType& usertype, const ApplicationData& appData) : utype(usertype)
 {
@@ -68,7 +68,7 @@ Template::Template(const UserType& usertype, const ApplicationData& appData) : u
     / A content delivery network (CDN) refers to a geographically distributed group of servers which work together to provide fast delivery of Internet content.
     / A CDN allows for the quick transfer of assets needed for loading Internet content including HTML pages, javascript files, stylesheets, images, and videos.
     / The popularity of CDN services continues to grow, and today the majority of web traffic is served through CDNs, including traffic from major sites like Facebook, Netflix, and Amazon.
-    / Here we can get the cdn mode from the cms core to config and auto generation files inside site pages.
+    / Here we can get the cdn mode from the system core to config and auto generation files inside site pages.
     / ==============================================System has two option CDN and Local model==============================================
     / 1) If the configuration variable in the setting file is [system->cdn] == true, then cdn delivery will be enabled.
     / 2) Local-Self Hosted: If the CDN mode is not enabled, then all content delivery files will be loaded from the self-hosting mode.
@@ -164,18 +164,18 @@ Template::Template(const UserType& usertype, const ApplicationData& appData) : u
         }
     }
     //!Static Data
-    viewData.insert("cms-title", TEGRA_TRANSLATOR("global", "name"));
-    viewData.insert("cms-slogen", TEGRA_TRANSLATOR("global", "slogan"));
-    viewData.insert("cms-slogen-desc", TEGRA_TRANSLATOR("global", "slogan_desc"));
+    viewData.insert("site-title", TEGRA_TRANSLATOR("global", "name"));
+    viewData.insert("site-slogen", TEGRA_TRANSLATOR("global", "slogan"));
+    viewData.insert("site-slogen-desc", TEGRA_TRANSLATOR("global", "slogan_desc"));
     //!Static Files
     viewData.insert("logo-user", baseUrl + "/templates/assets/images/logo/logo-user.svg");
     viewData.insert("logo-admin", baseUrl + "/templates/assets/images/logo/logo-admin.svg");
     //!Dynamic Generation
-    viewData.insert(CMS_THIRD_PARTY_CSS, styleSheet); //!CSS Files
-    viewData.insert(CMS_THIRD_PARTY_JAVASCRIPT, javaScript); //!JavaScript
-    viewData.insert(CMS_SYSTEM_SHEET, systemSheet); //!System Sheets
-    viewData.insert(CMS_LINK_SHEET, linkSheet); //!Links
-    viewData.insert(CMS_META_SHEET, staticMeta->metaData()); //!Metadata [SEO]
+    viewData.insert(SYSTEM_THIRD_PARTY_CSS, styleSheet); //!CSS Files
+    viewData.insert(SYSTEM_THIRD_PARTY_JAVASCRIPT, javaScript); //!JavaScript
+    viewData.insert(SYSTEM_SYSTEM_SHEET, systemSheet); //!System Sheets
+    viewData.insert(SYSTEM_LINK_SHEET, linkSheet); //!Links
+    viewData.insert(SYSTEM_META_SHEET, staticMeta->metaData()); //!Metadata [SEO]
 }
 
 

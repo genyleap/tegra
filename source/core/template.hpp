@@ -1,12 +1,12 @@
 /*!
  * @file        template.hpp
- * @brief       This file is part of the Tegra CMS.
+ * @brief       This file is part of the Tegra System.
  * @details     Template interface for website theme.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022
  * @copyright   Copyright (c) 2022 The Genyleap. All rights reserved.
- * @license     https://github.com/genyleap/cms/blob/main/LICENSE.md
+ * @license     https://github.com/genyleap/tegra/blob/main/LICENSE.md
  *
  */
 
@@ -17,13 +17,13 @@
 #include "core/core.hpp"
 #include "seo.hpp"
 
-TEGRA_NAMESPACE_BEGIN(Tegra::CMS)
+TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
-#define CMS_THIRD_PARTY_JAVASCRIPT  "thirdPartyJs"
-#define CMS_THIRD_PARTY_CSS         "thirdPartyCss"
-#define CMS_SYSTEM_SHEET            "systemStyle"
-#define CMS_LINK_SHEET              "linkSheet"
-#define CMS_META_SHEET              "meta"
+#define SYSTEM_THIRD_PARTY_JAVASCRIPT  "thirdPartyJs"
+#define SYSTEM_THIRD_PARTY_CSS         "thirdPartyCss"
+#define SYSTEM_SYSTEM_SHEET            "systemStyle"
+#define SYSTEM_LINK_SHEET              "linkSheet"
+#define SYSTEM_META_SHEET              "meta"
 
 using StaticMap = std::map<std::string, std::string>;
 

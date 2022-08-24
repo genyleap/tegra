@@ -3,7 +3,7 @@
 #include "logger.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::CMS;
+TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
@@ -16,7 +16,7 @@ Configuration::Configuration(const ConfigType& configType)
     case ConfigType::File:
         try {
             std::string cfile { __tegra_null_str };
-            cfile = CONFIG::CMS_CONFIG_FILE.data();
+            cfile = CONFIG::SYSTEM_CONFIG_FILE.data();
             m_dataConfig->configFile = cfile;
             if(!isset(jsonFile().empty())){
                 std::ifstream in(cfile);
@@ -94,10 +94,10 @@ Configuration::Configuration(const ConfigType& configType, const SectionType& se
             std::string cfile { __tegra_null_str };
             switch (sectionType) {
             case SectionType::SystemCore:
-                cfile = CMS::CONFIG::CMS_CONFIG_FILE;
+                cfile = System::CONFIG::SYSTEM_CONFIG_FILE;
                 break;
             case SectionType::Database:
-                cfile = CMS::CONFIG::CMS_DATABASE_FILE;
+                cfile = System::CONFIG::SYSTEM_DATABASE_FILE;
                 break;
             default:
                 break;
@@ -147,22 +147,22 @@ void Configuration::init(const SectionType sectionType)
     std::ifstream file{};
     switch (sectionType) {
     case SectionType::SystemCore:
-        file.open(CONFIG::CMS_CONFIG_FILE.data(), std::ifstream::binary);
+        file.open(CONFIG::SYSTEM_CONFIG_FILE.data(), std::ifstream::binary);
         break;
     case SectionType::Database:
-        file.open(CONFIG::CMS_DATABASE_FILE.data(), std::ifstream::binary);
+        file.open(CONFIG::SYSTEM_DATABASE_FILE.data(), std::ifstream::binary);
         break;
     case SectionType::Interface:
-        file.open(CONFIG::CMS_INTERFACE_FILE.data(), std::ifstream::binary);
+        file.open(CONFIG::SYSTEM_INTERFACE_FILE.data(), std::ifstream::binary);
         break;
     case SectionType::Framework:
         file.open(CONFIG::FRAMEWORK_CONFIG_FILE.data(), std::ifstream::binary);
         break;
     case SectionType::Custom:
-        file.open(CONFIG::CMS_CUSTOM_FILE.data(), std::ifstream::binary);
+        file.open(CONFIG::SYSTEM_CUSTOM_FILE.data(), std::ifstream::binary);
         break;
     default:
-        file.open(CONFIG::CMS_CONFIG_FILE.data(), std::ifstream::binary);
+        file.open(CONFIG::SYSTEM_CONFIG_FILE.data(), std::ifstream::binary);
         break;
     }
     if (reader.good())
@@ -182,7 +182,7 @@ bool Configuration::status()
 {
     std::ifstream file{};
     bool res {false};
-    file.open(CONFIG::CMS_CONFIG_FILE.data(), std::ifstream::binary);
+    file.open(CONFIG::SYSTEM_CONFIG_FILE.data(), std::ifstream::binary);
     Json::Reader reader;
     file.is_open() ? res = true : res = false;
     return res;

@@ -29,7 +29,7 @@
 #include "core/version.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::CMS;
+TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::Database;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 

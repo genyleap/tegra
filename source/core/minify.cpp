@@ -1,8 +1,5 @@
 #include "minify.hpp"
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::CMS;
-
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 Minify::Minify()

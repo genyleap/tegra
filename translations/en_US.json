@@ -423,7 +423,7 @@
 	 {
 	    "word_key":"copyright",
 	    "module":"system",
-            "default_value":"Copyright © 2022 Tegra CMS. All rights reserved. <br>Powered by <a class=\"nav-link d-inline-block p-0\" href=\"https://genyleap.com\" rel=\"noopener\" target=\"_blank\">Genyleap ™</a>",
+            "default_value":"Copyright © 2022 Tegra System. All rights reserved. <br>Powered by <a class=\"nav-link d-inline-block p-0\" href=\"https://genyleap.com\" rel=\"noopener\" target=\"_blank\">Genyleap ™</a>",
 	    "custom_value":"",
 	    "status":true
 	 }
@@ -651,7 +651,7 @@
          {
 	    "word_key":"name",
 	    "module":"system",
-            "default_value":"Tegra CMS",
+            "default_value":"Tegra System",
 	    "custom_value":"",
 	    "status":true
 	 },
@@ -672,7 +672,7 @@
          {
             "word_key":"slogan_desc",
             "module":"system",
-            "default_value":"Tegra is an open source super-high end performance, user-friendly, multi-lingual and multi-purpose modern CMS based on C++20 which enables you to build websites and powerful online applications.",
+            "default_value":"Tegra is an open source super-high end performance, user-friendly, multi-lingual and multi-purpose modern application system based on C++20 which enables you to build websites and powerful online applications.",
             "custom_value":"",
             "status":true
          },
@@ -2340,7 +2340,7 @@
          {
             "word_key":"engine",
             "module":"system",
-            "default_value":"CMS Engine",
+            "default_value":"System Engine",
             "custom_value":"",
             "status":true
          },
