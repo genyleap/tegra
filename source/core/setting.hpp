@@ -1,12 +1,12 @@
 /*!
  * @file        setting.hpp
- * @brief       This file is part of the Tegra CMS.
+ * @brief       This file is part of the Tegra System.
  * @details     System setting structure.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022
  * @copyright   Copyright (c) 2022 The Genyleap. All rights reserved.
- * @license     https://github.com/genyleap/cms/blob/main/LICENSE.md
+ * @license     https://github.com/genyleap/tegra/blob/main/LICENSE.md
  *
  */
 
@@ -16,7 +16,7 @@
 #include "common.hpp"
 #include "core/core.hpp"
 
-TEGRA_USING_NAMESPACE Tegra::CMS;
+TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Interface)

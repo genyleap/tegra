@@ -1,16 +1,16 @@
-# Tegra CMS
+# Tegra System
 
 ![tegra-git-header-01](https://user-images.githubusercontent.com/4066299/185661182-7f7885ca-9858-444e-9fb3-8a2066f6fac6.svg)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
 
 Welcome to the Tegra development repository!
-Tegra is an open source super-high end performance, user-friendly, multi-lingual and multi-purpose modern CMS based on **C++20** which enables you to build websites and powerful online applications.
+Tegra is an open source super-high end performance, user-friendly, multi-lingual and multi-purpose modern system based on **C++20** which enables you to build websites and powerful online applications.
 
-[![GitHub issues](https://img.shields.io/github/issues/genyleap/cms)](https://github.com/genyleap/cms/issues)
-[![GitHub forks](https://img.shields.io/github/forks/genyleap/cms)](https://github.com/genyleap/cms/network)
-[![GitHub stars](https://img.shields.io/github/stars/genyleap/cms)](https://github.com/genyleap/cms/stargazers)
-[![GitHub license](https://img.shields.io/github/license/genyleap/cms)](https://github.com/genyleap/cms/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/genyleap/tegra)](https://github.com/genyleap/tegra/issues)
+[![GitHub forks](https://img.shields.io/github/forks/genyleap/tegra)](https://github.com/genyleap/tegra/network)
+[![GitHub stars](https://img.shields.io/github/stars/genyleap/tegra)](https://github.com/genyleap/tegra/stargazers)
+[![GitHub license](https://img.shields.io/github/license/genyleap/tegra)](https://github.com/genyleap/tegra/blob/main/LICENSE)
 ![Language iso: C++](https://img.shields.io/badge/C%2B%2B-20-blue)
 ![Platforms](https://img.shields.io/badge/Platform%20Support-macOS%2C%20Linux%2C%20Windows-lightgrey)
 ![Status](https://img.shields.io/badge/Status-Under%20Development-red)
@@ -72,6 +72,9 @@ _Features that will be added in the future_
 - [ ] Send Feed Back
 - [ ] Conversation
 - [ ] Ticket
+- [ ] Commerce
+- [ ] Clubs
+- [ ] Forums
 
 ## Default Features
 - [ ] Template Editor

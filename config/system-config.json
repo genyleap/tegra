@@ -75,7 +75,7 @@
                 "cross_platform": false,
                 "centeral_server": "127.0.0.1",
                 "sms_token": "",
-                "cms": {
+                "system": {
                         "license": "",
                         "api": "",
                         "status": false

@@ -1,5 +1,5 @@
 # -------------------- PROJECT INFO --------------------
-#   Title      :                       Tegra CMS
+#   Title      :                       Tegra System
 #   Author     :                       Kambiz Asadzadeh
 #   Copyright  :                       The Genyleap
 # ------------------------------------------------------
@@ -74,10 +74,10 @@ set(USE_NONE_STL_JSON TRUE)
 set(CMAKE_BUILD_TYPE "Debug")
 
 #You can replace your project description with this string.
-set(PROJECT_DESCRIPTION "Tegra CMS is free open source multi-language Content Management System." CACHE STRING "Project Description")
+set(PROJECT_DESCRIPTION "Tegra System is free open source multi-language Content Management System." CACHE STRING "Project Description")
 
 #Your project website address.
-set(PROJECT_HOMEPAGE_URL "https://github.com/genyleap/cms" CACHE STRING "Project URL.")
+set(PROJECT_HOMEPAGE_URL "https://github.com/genyleap/tegra" CACHE STRING "Project URL.")
 
 
 #Project pre-configuration system.

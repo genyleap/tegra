@@ -1,7 +1,7 @@
 #include "html.hpp"
 #include "core.hpp"
 
-TEGRA_NAMESPACE_BEGIN(Tegra::CMS)
+TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
 std::string Html::ParamValue(const std::string& s, ss8 mode,
                              const std::string& ch) __tegra_noexcept_expr(true)

@@ -61,7 +61,7 @@
     <h1>[[title]]</h1>
     <p class="lead">[[description]]</p>
     <p class="lead">
-      <a href="https://github.com/genyleap/cms" target="_blank" class="btn btn-lg btn-primary">[[source]]</a>
+      <a href="https://github.com/genyleap/tegra" target="_blank" class="btn btn-lg btn-primary">[[source]]</a>
     </p>
   </main>
 

@@ -20,7 +20,7 @@ if(USE_NONE_STL_JSON)
 
     FetchContent_Declare(
         json
-        GIT_REPOSITORY      https://github.com/nlohmann/json.git
+        GIT_REPOSITORY https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent
         GIT_TAG master
         GIT_PROGRESS   TRUE
         )
