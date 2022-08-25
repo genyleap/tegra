@@ -108,6 +108,7 @@
         "syncstream": "cpp",
         "__memory": "cpp",
         "*.ipp": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "*.in": "cpp"
     }
 }
