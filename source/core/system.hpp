@@ -15,7 +15,7 @@
 
 #include "common.hpp"
 
-TEGRA_NAMESPACE_BEGIN(Tegra::System)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 class SystemInfo;
 /*!
@@ -25,6 +25,12 @@ class SystemInfo {
 public:
     SystemInfo();
     ~SystemInfo();
+
+    /*!
+     * \brief getHostUserName function gets local host username.
+     * \returns string of host username.
+     */
+    static std::string getHostUserName();
 
     /*!
      * \brief getHostName function gets local host name.

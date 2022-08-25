@@ -161,6 +161,7 @@ file(GLOB PRECOMPILED precompiled/pch.hpp)
 file(
     GLOB HEADERS
     source/${SUFFIX_HPPHEADER}
+    source/installer/${SUFFIX_HPPHEADER}
     source/framework/${SUFFIX_HPPHEADER}
     source/core/${SUFFIX_HPPHEADER}
     source/abstracts/${SUFFIX_HPPHEADER}
@@ -170,11 +171,13 @@ file(
     source/interface/${SUFFIX_HPPHEADER}
     source/translator/${SUFFIX_HPPHEADER}
     source/install/${SUFFIX_HPPHEADER}
+    source/view/setup/${SUFFIX_HPPHEADER}
     source/statics/${SUFFIX_HPPHEADER}
 )
 file(
     GLOB SOURCES
     source/${SUFFIX_SOURCE}
+    source/installer/${SUFFIX_SOURCE}
     source/framework/${SUFFIX_SOURCE}
     source/core/${SUFFIX_SOURCE}
     source/abstracts/${SUFFIX_SOURCE}
@@ -184,6 +187,7 @@ file(
     source/database/${SUFFIX_SOURCE}
     source/translator/${SUFFIX_SOURCE}
     source/install/${SUFFIX_SOURCE}
+    source/view/setup/${SUFFIX_SOURCE}
     source/statics/${SUFFIX_SOURCE}
 )
 

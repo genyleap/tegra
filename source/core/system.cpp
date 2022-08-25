@@ -11,8 +11,12 @@
 #include <IOKit/IOKitLib.h>
 #include <ApplicationServices/ApplicationServices.h>
 #include <ImageIO/ImageIO.h>
+#elif defined(PLATFORM_LINUX)
+#include <sys/socket.h>
+#include <sys/sysctl.h>
 #elif defined(PLATFORM_WINDOWS)
 #include <Windows.h>
+#include <Lmcons.h>
 #include <Iphlpapi.h>
 #include <cassert>
 #pragma comment(lib, "iphlpapi.lib")
@@ -22,7 +26,7 @@ TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::Types;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::System)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 SystemInfo::SystemInfo()
 {
@@ -32,6 +36,20 @@ SystemInfo::SystemInfo()
 SystemInfo::~SystemInfo()
 {
 
+}
+
+std::string SystemInfo::getHostUserName()
+{
+#if defined(PLATFORM_MAC) || defined(PLATFORM_APPLE)
+    return getenv("USER");
+#elif defined(PLATFORM_LINUX)
+    return getenv("USERNAME");
+#elif defined(PLATFORM_WINDOWS)
+    char username[UNLEN+1];
+    DWORD username_len = UNLEN+1;
+    GetUserName(username, &username_len);
+    return username;
+#endif
 }
 
 std::string SystemInfo::getHostName()
