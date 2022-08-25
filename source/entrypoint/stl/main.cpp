@@ -10,7 +10,9 @@
  *
  */
 
+#include "config.hpp" // CMake config.
 #include "core/config.hpp"
+#include "installer/setup.hpp"
 #include "core/core.hpp"
 #include "core/database.hpp"
 #include "core/version.hpp"
@@ -29,14 +31,14 @@ inline void preInit()
     auto config = Configuration(ConfigType::File); ///< Configuration
     // Configuration before use
     config.init(SectionType::SystemCore);
-    {
-        semanticVersion.Major = 0;
-        semanticVersion.Minor = 2;
-        semanticVersion.Patch = 300;
-        semanticVersion.PreRelease = "alpha";
+    {   // Set from cmake config.hpp.in
+        semanticVersion.Major = PROJECT_VERSION_MAJOR;
+        semanticVersion.Minor = PROJECT_VERSION_MINOR;
+        semanticVersion.Patch = PROJECT_VERSION_PATCH;
+        semanticVersion.PreRelease = PROJECT_VERSION_TYPE;
         version.setVersion(semanticVersion, Tegra::Version::ReleaseType::Alpha);
     }
-
+    // App Data
     {
         appData.path = __tegra_null_str;
         appData.module = "main";
@@ -44,7 +46,7 @@ inline void preInit()
         appData.releaseType = Tegra::Version::ReleaseType::Alpha;
         appData.systemInfo.version = appData.semanticVersion;
         appData.systemInfo.codeName = "concept";
-        appData.systemInfo.name = "Tegra";
+        appData.systemInfo.name = PROJECT_NAME;
         appData.systemInfo.compiledDate = __tegra_compiled_date;
         appData.systemInfo.license = SystemLicense::Free;
         appData.systemInfo.type = SystemType::General;
