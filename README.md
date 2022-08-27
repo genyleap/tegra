@@ -1,6 +1,6 @@
 # Tegra System
 
-![tegra-git-header-01](https://user-images.githubusercontent.com/4066299/185661182-7f7885ca-9858-444e-9fb3-8a2066f6fac6.svg)
+![tegra-git-header-01](https://user-images.githubusercontent.com/4066299/186493497-248baa36-e488-4573-b373-c4f8b3da5979.svg)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
 
