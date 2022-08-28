@@ -221,7 +221,7 @@ struct ExceptionData
     std::string info    {};
 };
 
-class Exception : public std::exception
+class __tegra_export Exception : public std::exception
 {
 public:
     enum Reason : u8
@@ -241,7 +241,7 @@ private:
     ExceptionData* m_exceptionData;
 };
 
-struct BootParameter final
+struct __tegra_export BootParameter final
 {
     bool                            fastBoot       {};      ///<This property is set to true when the system is booted with the highest possible state.
     std::time_t                     initTime       {};      ///<The time spent on execution.
@@ -259,7 +259,7 @@ struct BootParameter final
     std::optional<SystemStatus>     systemStatus   {};      ///<This attribute specifies the state the system is in.
 };
 
-class EngineInterface
+class __tegra_export EngineInterface
 {
 public:
     EngineInterface();
@@ -359,7 +359,7 @@ private:
 /*!
  * @brief The Engine class
  */
-class Engine : public EngineInterface
+class __tegra_export Engine : public EngineInterface
 {
 public:
     Engine();
@@ -643,7 +643,7 @@ struct ApplicationData final
 /*!
  * \brief The Application class
  */
-class Application
+class __tegra_export Application
 {
 public:
     Application() = default;

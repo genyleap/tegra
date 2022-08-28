@@ -20,6 +20,19 @@ TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
+//struct PluginDetail
+//{
+//  OptionalString            codeName      {}; ///< Code Name.
+//  OptionalString            name          {}; ///< Name.
+//  OptionalString            description   {}; ///< Description.
+//  OptionalString            compiledDate  {}; ///< Compiled Date.
+//  Optional<SystemLicense>   license       {}; ///< License.
+//  Optional<PluginType>      type          {}; ///< Type.
+//  Optional<SemanticVersion> version       {}; ///< Version.
+//  OptionalString            author        {}; ///< Author.
+//  OptionalString            url           {}; ///< Url.
+//};
+
 using NameList      =   std::vector<std::string>;
 using PluginList    =   std::vector<PluginInfo>;
 using ErrorString   =   std::vector<std::string>;
@@ -38,6 +51,7 @@ public:
 class __tegra_export AbstractPluginInterface
 {
 public:
+    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractPluginInterface)
     //Return a static instance of this class
     static AbstractPluginInterface& instance();
 
@@ -78,7 +92,6 @@ public:
     __tegra_no_discard_virtual const ErrorString& getErrors() __tegra_const_noexcept = __tegra_zero;
 
 private:
-    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractPluginInterface)
     PluginInterfaceData*  m_pluginInterfaceData;
 };
 

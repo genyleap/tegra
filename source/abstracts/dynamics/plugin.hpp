@@ -52,7 +52,7 @@ __tegra_enum_class PermissionType
  */
 struct PluginInfo __tegra_final
 {
-    Optional<u32>               codeName        {}; ///< A unique code for plugin.
+    OptionalString              codeName        {}; ///< A unique code for plugin.
     OptionalString              name            {}; ///< A name for plugin.
     OptionalString              description     {}; ///< A description for explanation plugin.
     OptionalString              compiledDate    {}; ///< Compiled date for plugin.
@@ -139,6 +139,12 @@ public:
     {
         return val;
     }
+
+    /*!
+     * \brief type function returns type of plugin.
+     * \returns as PluginType.
+     */
+    __tegra_virtual PluginType type() __tegra_const_noexcept = __tegra_zero;
 
 protected:
     PluginInfo* m_pluginInfo;
