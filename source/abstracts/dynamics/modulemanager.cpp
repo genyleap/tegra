@@ -20,5 +20,4 @@ AbstractModuleManager::~AbstractModuleManager()
     __tegra_safe_delete(m_moduleManagerData);
 }
 
-
 TEGRA_NAMESPACE_END

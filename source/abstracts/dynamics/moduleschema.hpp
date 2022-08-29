@@ -1,7 +1,7 @@
 /*!
  * @file        moduleschema.hpp
  * @brief       This file is part of the Tegra System.
- * @details     Schema structs for module.
+ * @details     Schema structs for module system.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022

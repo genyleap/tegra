@@ -50,7 +50,6 @@ class __tegra_export AbstractModuleManager
 {
 public:
     TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractModuleManager)
-
     /*!
      * \brief load function loads the module and returns true if the module was loaded successfully; otherwise returns false.
      * \param module is module name.

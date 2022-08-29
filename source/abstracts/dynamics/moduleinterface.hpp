@@ -82,7 +82,6 @@ private:
     ModuleInterfaceData*  m_moduleInterfaceData;
 };
 
-
 TEGRA_NAMESPACE_END
 
 #endif  // MODULE_INTERFACE_ABSTRACT_HPP
