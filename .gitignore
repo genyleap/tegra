@@ -36,3 +36,5 @@
 
 build/
 third-party/
+
+CMakeLists.txt.user
