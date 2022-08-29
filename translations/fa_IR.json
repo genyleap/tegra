@@ -42,6 +42,50 @@
             "default_value": "در ماژول {name} وابستگی حلقه‌ای وجود دارد.",
             "custom_value": "",
             "status": true
+         },
+         {
+            "word_key": "not_found",
+            "module": "system",
+            "default_value": "ماژول {} یافت نشد!",
+            "custom_value": "",
+            "status": true
+         }
+      ],
+      "plugins": [
+         {
+            "word_key": "no_initialized",
+            "module": "system",
+            "default_value": "افزونهٔ {name} هنوز مقدار‌دهی اولیه نشده است!",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "initialized",
+            "module": "system",
+            "default_value": "افزونهٔ {name} مقدار‌دهی اولیه شده است!",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "initializing",
+            "module": "system",
+            "default_value": "افزونهٔ {name} در حال مقدار‌دهی شدن است...",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "circular_dependency",
+            "module": "system",
+            "default_value": "در افزونهٔ {name} وابستگی حلقه‌ای وجود دارد.",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_found",
+            "module": "system",
+            "default_value": "افزونهٔ {} یافت نشد!",
+            "custom_value": "",
+            "status": true
          }
       ],
       "customization": [

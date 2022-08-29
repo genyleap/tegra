@@ -42,6 +42,50 @@
             "default_value": "There is a circular dependency within {name} module.",
             "custom_value": "",
             "status": true
+         },
+         {
+            "word_key": "not_found",
+            "module": "system",
+            "default_value": "Module {name} not found!",
+            "custom_value": "",
+            "status": true
+         }
+      ],
+      "plugins": [
+         {
+            "word_key": "no_initialized",
+            "module": "system",
+            "default_value": "Plugin {name} is not initialized yet!",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "initialized",
+            "module": "system",
+            "default_value": "Plugin {name} is initialized!",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "initializing",
+            "module": "system",
+            "default_value": "Plugin {name} is initializing...",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "circular_dependency",
+            "module": "system",
+            "default_value": "There is a circular dependency within {name} plugin.",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_found",
+            "module": "system",
+            "default_value": "Plugin {name} not found!",
+            "custom_value": "",
+            "status": true
          }
       ],
       "customization": [
