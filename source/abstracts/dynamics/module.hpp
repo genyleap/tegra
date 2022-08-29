@@ -14,11 +14,52 @@
 #define MODULE_ABSTRACT_HPP
 
 #include "common.hpp"
-#include "moduleschema.hpp"
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
+
+/*!
+ * \brief The ModuleType enum
+ */
+__tegra_enum_class ModuleType : u8
+{
+    Index,      //!For global user service.
+    Admin,      //!For administrator service.
+    System,     //!For system service only.
+    Service,    //!For external or internal service.
+    Default,    //!For default global service.
+    Custom      //!For custom global service.
+};
+
+/*!
+ * \brief The PermissionType enum
+ */
+__tegra_enum_class PermissionType
+{
+    ReadOnly,
+    EditableOnly,
+    Restricted,
+    FullAccess,
+    ByService
+};
+
+
+/*!
+ * \brief The ModuleInfo class
+ */
+struct ModuleInfo __tegra_final
+{
+    OptionalString              codeName        {}; ///< A unique code for module.
+    OptionalString              name            {}; ///< A name for module.
+    OptionalString              description     {}; ///< A description for explanation module.
+    OptionalString              compiledDate    {}; ///< Compiled date for module.
+    Optional<SystemLicense>     license         {}; ///< License type for module.
+    ModuleType                  moduleType      {}; ///< The type of module.
+    Optional<SemanticVersion>   version         {}; ///< Version of module.
+    OptionalString              author          {}; ///< Author of module.
+    OptionalString              url             {}; ///< Url of module.
+};
 
 /*!
  * \brief The AbstractBaseClass class
@@ -97,10 +138,16 @@ public:
         return val;
     }
 
+    /*!
+     * \brief type function returns type of module.
+     * \returns as ModuleType.
+     */
+    __tegra_virtual ModuleType type() __tegra_const_noexcept = __tegra_zero;
+
 protected:
     ModuleInfo* m_moduleInfo;
     friend class AbstractModuleManager;
-    void setCodeName(const Optional<u32>& codename);
+    void setCodeName(const OptionalString& codename);
     void setName(const OptionalString& name);
     void setDescription(const OptionalString& desc);
     void setCompiledDate(const OptionalString& compiledDate);

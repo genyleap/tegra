@@ -24,7 +24,7 @@
 !*/
 
 #include "utilities/preprocessor.hpp"
-#include "utilities/featuretest.hpp"
+//#include "utilities/featuretest.hpp"
 #include "utilities/types.hpp"
 
 #ifdef USE_LATEST_STANDARD
@@ -204,6 +204,8 @@ object = nullptr;                   \
 
 #define __tegra_abort abort();
 
+#define __tegra_assert(x) assert(x);
+
 #define TEGRA_BRACE_BEGIN {
 #define TEGRA_BRACE_END }
 #define TEGRA_USING_NAMESPACE using namespace
@@ -227,6 +229,7 @@ object = nullptr;                   \
 
 # define __tegra_const const
 # define __tegra_const_noexcept const noexcept
+# define __tegra_const_noexcept_override const noexcept override
 # define __tegra_noexcept noexcept
 # define __tegra_noexcept_expr(x) noexcept(x)
 # define __tegra_constexpr_virtual virtual constexpr
@@ -288,6 +291,10 @@ defined(_WIN32) || defined(__WIN32) || defined(__WIN32__) ||    \
 #pragma warning Unknown dynamic link import / export semantics.
 #endif
 
+#define PointerToFunction void(*)()
+#define PointerToObject(object, name)\
+typedef object* (*name)();
+
 #define TEGRA_HAS_INCLUDE __has_include
 #define TEGRA_ENABLE_SHARED_FROM(x) std::enable_shared_from_this<x>
 
@@ -299,6 +306,11 @@ defined(_WIN32) || defined(__WIN32) || defined(__WIN32__) ||    \
 #define SCOPE_LEFT (
 #define SCOPE_RIGHT )
 #define SCOPE_ENDS {}
+
+#define __tegra_extern_c extern "C"
+
+#define __tegra_export_pointer(Class, object)\
+__tegra_extern_c __tegra_export Class* object = __tegra_nullptr;
 
 #define TEGRA_QUERY(...) #__VA_ARGS__
 

@@ -35,11 +35,11 @@ enum struct SystemStatus : u8
  */
 enum struct SystemType: u8
 {
-    Private      = 0x1,
-    General      = 0x2,
-    Professional = 0x3,
-    Premium      = 0x4,
-    Default      = 0x5
+    Private      = 0x1, ///< Private.
+    General      = 0x2, ///< General.
+    Professional = 0x3, ///< Professional.
+    Premium      = 0x4, ///< Premium.
+    Default      = 0x5  ///< Default.
 };
 
 /*!

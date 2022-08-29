@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef PLUGIN_MANAGER_ABSTRACT_HPP
-#define PLUGIN_MANAGER_ABSTRACT_HPP
+#ifndef MODULE_MANAGER_ABSTRACT_HPP
+#define MODULE_MANAGER_ABSTRACT_HPP
 
 #include "common.hpp"
 #include "module.hpp"
@@ -49,33 +49,32 @@ public:
 class __tegra_export AbstractModuleManager
 {
 public:
-    static AbstractModuleManager& instance();
+    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractModuleManager)
 
     /*!
      * \brief load function loads the module and returns true if the module was loaded successfully; otherwise returns false.
      * \param module is module name.
      * \returns module.
      */
-    __tegra_no_discard_virtual AbstractModule* load(const std::string& module) __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual AbstractModule* load(const std::string& module) = __tegra_zero;
 
     /*!
      * \brief unload function unloads the module and returns true if the module could be unloaded; otherwise returns false.
      * \param module
      */
-    __tegra_virtual void unload(AbstractModule*& module) __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual void unload(AbstractModule*& module) = __tegra_zero;
 
     /*!
      * \brief isLoaded function returns true if the module is loaded; otherwise returns false.
      * \return bolean of status.
      */
-    __tegra_no_discard_virtual bool isLoaded() __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual bool isLoaded() = __tegra_zero;
 
 private:
-    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractModuleManager)
     ModuleManagerData* m_moduleManagerData;
     bool m_status = {false};
 };
 
 TEGRA_NAMESPACE_END
 
-#endif  // PLUGIN_MANAGER_ABSTRACT_HPP
+#endif  // MODULE_MANAGER_ABSTRACT_HPP
