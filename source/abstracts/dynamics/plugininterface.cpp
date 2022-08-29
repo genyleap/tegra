@@ -20,5 +20,4 @@ AbstractPluginInterface::~AbstractPluginInterface()
     __tegra_safe_delete(m_pluginInterfaceData);
 }
 
-
 TEGRA_NAMESPACE_END

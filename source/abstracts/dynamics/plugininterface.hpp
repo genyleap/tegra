@@ -20,19 +20,6 @@ TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
-//struct PluginDetail
-//{
-//  OptionalString            codeName      {}; ///< Code Name.
-//  OptionalString            name          {}; ///< Name.
-//  OptionalString            description   {}; ///< Description.
-//  OptionalString            compiledDate  {}; ///< Compiled Date.
-//  Optional<SystemLicense>   license       {}; ///< License.
-//  Optional<PluginType>      type          {}; ///< Type.
-//  Optional<SemanticVersion> version       {}; ///< Version.
-//  OptionalString            author        {}; ///< Author.
-//  OptionalString            url           {}; ///< Url.
-//};
-
 using NameList      =   std::vector<std::string>;
 using PluginList    =   std::vector<PluginInfo>;
 using ErrorString   =   std::vector<std::string>;
@@ -94,7 +81,6 @@ public:
 private:
     PluginInterfaceData*  m_pluginInterfaceData;
 };
-
 
 TEGRA_NAMESPACE_END
 

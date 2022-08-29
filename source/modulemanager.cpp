@@ -77,7 +77,7 @@ __tegra_no_discard AbstractModule* ModuleManager::load(const std::string& name)
                     }
                     else
                     {
-                        Log("ERROR: Could not load module from " + name.c_str(), LoggerType::Critical);
+                        Log("ERROR: Could not load module from " + FROM_TEGRA_STRING(name.c_str()), LoggerType::Critical);
                         // Unload the library.
 #if defined(PLATFORM_WINDOWS)
                         FreeLibrary(hModule);
@@ -90,7 +90,7 @@ __tegra_no_discard AbstractModule* ModuleManager::load(const std::string& name)
                 }
                 else
                 {
-                    Log("ERROR: Could not find symbol \"CreateModule\" in " + name.c_str(), LoggerType::Critical);
+                    Log("ERROR: Could not find symbol \"CreateModule\" in " + FROM_TEGRA_STRING(name.c_str()), LoggerType::Critical);
 #if defined(PLATFORM_WINDOWS)
                     FreeLibrary(hModule);
 #elif defined(PLATFORM_MAC)
@@ -102,13 +102,13 @@ __tegra_no_discard AbstractModule* ModuleManager::load(const std::string& name)
             }
             else
             {
-                Log("ERROR: Could not load module library: " + name.c_str(), LoggerType::Critical);
+                Log("ERROR: Could not load module library: " + FROM_TEGRA_STRING(name.c_str()), LoggerType::Critical);
                 m_status = {false};
             }
         }
         else
         {
-            Log("INFO: Module: " + name.c_str() + " already loaded.", LoggerType::Info);
+            Log("INFO: Module: " + FROM_TEGRA_STRING(name.c_str()) + " already loaded.", LoggerType::Info);
             module = iter->second;
             m_status = {true};
         }
@@ -141,7 +141,7 @@ void ModuleManager::unload(AbstractModule *&module)
             }
             else
             {
-                Log("ERROR: Unable to find symbol \"DestroyModule\" in library " + module->getName().value().c_str(, LoggerType::Critical);
+                Log("ERROR: Unable to find symbol [DestroyModule] in library " + FROM_TEGRA_STRING(module->getName().value().c_str()), LoggerType::Critical);
             }
             // Unload the library and remove the library from the map.
 #if defined(PLATFORM_WINDOWS)

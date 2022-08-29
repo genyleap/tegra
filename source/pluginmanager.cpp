@@ -83,7 +83,7 @@ __tegra_no_discard AbstractPlugin* PluginManager::load(const std::string& name)
                     }
                     else
                     {
-                        Log("ERROR: Could not load plugin from " + name.c_str(), LoggerType::Critical);
+                        Log("ERROR: Could not load plugin from " + FROM_TEGRA_STRING(name.c_str()), LoggerType::Critical);
                         // Unload the library.
 #if defined(PLATFORM_WINDOWS)
                         FreeLibrary(hModule);
@@ -96,7 +96,7 @@ __tegra_no_discard AbstractPlugin* PluginManager::load(const std::string& name)
                 }
                 else
                 {
-                    Log("ERROR: Could not find symbol \"CreatePlugin\" in " + name.c_str(), LoggerType::Critical);
+                    Log("ERROR: Could not find symbol \"CreatePlugin\" in " + FROM_TEGRA_STRING(name.c_str()), LoggerType::Critical);
 #if defined(PLATFORM_WINDOWS)
                     FreeLibrary(hModule);
 #elif defined(PLATFORM_MAC)
@@ -108,13 +108,13 @@ __tegra_no_discard AbstractPlugin* PluginManager::load(const std::string& name)
             }
             else
             {
-                Log("ERROR: Could not load library: " + name.c_str(), LoggerType::Critical);
+                Log("ERROR: Could not load library: " + FROM_TEGRA_STRING(name.c_str()), LoggerType::Critical);
                 m_status = {false};
             }
         }
         else
         {
-            Log("INFO: Library \"" + name.c_str() + "\" already loaded.", LoggerType::Info);
+            Log("INFO: Library \"" + FROM_TEGRA_STRING(name.c_str()) + "\" already loaded.", LoggerType::Info);
             plugin = iter->second;
             m_status = {true};
         }
@@ -147,7 +147,7 @@ void PluginManager::unload(AbstractPlugin *&plugin)
             }
             else
             {
-                Log("ERROR: Unable to find symbol \"DestroyPlugin\" in library \"" + plugin->getName().value().c_str(), LoggerType::Info);
+                Log("ERROR: Unable to find symbol [DestroyPlugin] in library " + FROM_TEGRA_STRING(plugin->getName().value().c_str()), LoggerType::Critical);
             }
             // Unload the library and remove the library from the map.
 #if defined(PLATFORM_WINDOWS)
