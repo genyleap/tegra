@@ -89,6 +89,8 @@ struct CONFIG final {
   static constexpr std::string_view SYSTEM_CUSTOM_FILE = "config/custom-setting.json";
   static constexpr std::string_view SYSTEM_DATABASE_FILE = "config/system-database.json";
   static constexpr std::string_view SYSTEM_INTERFACE_FILE = "config/system-interface.json";
+  static constexpr std::string_view SYSTEM_MODULES_FOLDER = "modules";
+  static constexpr std::string_view SYSTEM_PLUGINS_FOLDER = "plugins";
   static constexpr std::string_view SYSTEM_TABLES_PREFIX = "teg_";
   static constexpr std::string_view SYSTEM_TABLES_VALUE_STRUCT = "_l";
   static constexpr std::string_view SYSTEM_TABLES_TABLE_UNICODE = "utf-8";
@@ -258,6 +260,8 @@ object = nullptr;                   \
 #define TEGRA_TRANSLATOR(key, value) Application::get(*appDataPtr)->translator->translate(languagePtr->getLanguageCode(), key, value).defaultValue()
 
 #define TEGRA_RUNTIME_FORMAT(content, ...) fmt::format(fmt::runtime(content), __VA_ARGS__)
+
+#define TEGRA_FORMAT_ARG fmt::arg
 
 #define TEGRA_COMPILETIME_FORMAT(content, ...) fmt::format(content, __VA_ARGS__)
 
