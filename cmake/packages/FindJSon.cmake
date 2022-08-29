@@ -3,7 +3,7 @@ set(NONE_STL_JSON_NAME "JSon")
 set(NONE_STL_JSON_DESCRIPTION "JSON for Modern C++.")
 
 #Pakcage option.
-option(USE_NONE_STL_JSON ${NONE_STL_JSON_DESCRIPTION} FALSE)
+option(USE_NONE_STL_JSON ${NONE_STL_JSON_DESCRIPTION} TRUE)
 if (USE_NONE_STL_JSON)
     add_definitions(-DUSE_NONE_STL_JSON)
 endif()
@@ -14,7 +14,7 @@ pkg_search_module(${NONE_STL_JSON_NAME} json)
 if(USE_NONE_STL_JSON)
     set(FETCHCONTENT_QUIET off)
 
-    get_filename_component(json_base "${CMAKE_CURRENT_SOURCE_DIR}/${THIRD_PARTY}/${NONE_STL_JSON_NAME}"
+    get_filename_component(json_base "${CMAKE_CURRENT_SOURCE_DIR}/${THIRD_PARTY}/${PLATFORM_FOLDER_NAME}/${NONE_STL_JSON_NAME}"
         REALPATH BASE_DIR "${CMAKE_BINARY_DIR}")
     set(FETCHCONTENT_BASE_DIR ${json_base})
 
