@@ -54,7 +54,7 @@ public:
      * \param pluginName as plugin string name.
      * \returns true if the plugin exists.
      */
-    bool isExist(const std::string& pluginName);
+    __tegra_no_discard bool isExist(const std::string& pluginName) __tegra_noexcept;
     __tegra_no_discard OptionalString result() __tegra_noexcept;
 
 private:

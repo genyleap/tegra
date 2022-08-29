@@ -66,7 +66,7 @@ PluginAnalyzer::~PluginAnalyzer()
     __tegra_safe_delete(appDataPtr);
 }
 
-bool PluginAnalyzer::isExist(const std::string& pluginName)
+__tegra_no_discard bool PluginAnalyzer::isExist(const std::string& pluginName) __tegra_noexcept
 {
     const std::string currentPath(fileSystem::current_path());
     std::string lastMessage{__tegra_null_str};
