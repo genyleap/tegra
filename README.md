@@ -16,6 +16,7 @@ Tegra is an open source super-high end performance, user-friendly, multi-lingual
 ![Status](https://img.shields.io/badge/Status-Under%20Development-red)
 
 $$\textcolor{red}{\text{***WARNING:*** Tegra's code is not ready for final use at the moment, but you can see development stages in dev repository.}}$$
+$$\textcolor{red}{\text{***WARNING:*** Errors may occur frequently during the build process.}}$$
 
 ## Technical Features
 - Written by C++
@@ -26,6 +27,15 @@ $$\textcolor{red}{\text{***WARNING:*** Tegra's code is not ready for final use a
 - Smart page optimization
 - Smart api generator for external purposes
 - Integrated core structure for desktop, mobile, IoT and wasm technology.
+
+## Basic Default Applications
+- Core Service
+- CMS
+- Blogger
+- Gallery
+- Commerce
+- Web Service
+- Web Master
 
 ## Basic Features
 - Multi-Language support
@@ -91,7 +101,6 @@ _Features that will be added in the future_
 - [x] Web
 - [ ] Desktop
 - [ ] Mobile
-- [ ] Wasm
 
 ## Requirements
 - C++20 or above (2a recommended).
@@ -105,10 +114,27 @@ _Features that will be added in the future_
 - You need CMake tool for building source code
 - CMake 3.18 or higher is required.
 
+- The first step is to build the core system.
+- After step one, build the modules and plugins.
+- Finally, build the Tegra application.
+
 ```
-cd build
+cd tegra/build
 cmake -DPLATFORM_OS="your_os" -DUSE_NONE_STL_JSON=true -DUSE_FMT=true ..
 make
+
+cd tegra/source/modules/xxx
+cmake -DPLATFORM_OS="your_os" -DUSE_NONE_STL_JSON=true -DUSE_FMT=true ..
+make
+
+cd tegra/source/plugins/xxx
+cmake -DPLATFORM_OS="your_os" -DUSE_NONE_STL_JSON=true -DUSE_FMT=true ..
+make
+
+cd tegra/application
+cmake -DPLATFORM_OS="your_os" -DUSE_NONE_STL_JSON=true -DUSE_FMT=true ..
+make
+
 ./Tegra
 
 ```

@@ -31,10 +31,16 @@
 *.out
 *.app
 
+#Some locked files.
+*.lock
+
 #Extra
 .DS_Store
 
 build/
+application/
+source/plugins/
+source/modules/
 third-party/
 
 CMakeLists.txt.user
