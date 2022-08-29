@@ -16,6 +16,7 @@ Tegra is an open source super-high end performance, user-friendly, multi-lingual
 ![Status](https://img.shields.io/badge/Status-Under%20Development-red)
 
 ***WARNING:*** Tegra's code is not ready for final use at the moment, but you can see development stages in dev repository.
+
 ***WARNING:*** Errors may occur frequently during the build process.
 
 ## Technical Features
