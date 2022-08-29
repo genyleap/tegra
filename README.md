@@ -15,8 +15,8 @@ Tegra is an open source super-high end performance, user-friendly, multi-lingual
 ![Platforms](https://img.shields.io/badge/Platform%20Support-macOS%2C%20Linux%2C%20Windows-lightgrey)
 ![Status](https://img.shields.io/badge/Status-Under%20Development-red)
 
-$$\textcolor{red}{\text{***WARNING:*** Tegra's code is not ready for final use at the moment, but you can see development stages in dev repository.}}$$
-$$\textcolor{red}{\text{***WARNING:*** Errors may occur frequently during the build process.}}$$
+***WARNING:*** Tegra's code is not ready for final use at the moment, but you can see development stages in dev repository.
+***WARNING:*** Errors may occur frequently during the build process.
 
 ## Technical Features
 - Written by C++
