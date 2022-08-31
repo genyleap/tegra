@@ -26,11 +26,8 @@ __tegra_enum_class ModuleType : u8
 {
     Index,      //!For global user service.
     Admin,      //!For administrator service.
-    Root,       //!For root service.
     System,     //!For system service.
-    Cron,       //!For cron job service.
-    Core,       //!For system core service.
-    Theme,      //!For system template.
+    Service,    //!!For external or internal service.
     Default,    //!For default global service.
     Custom      //!For custom global service.
 };
