@@ -39,7 +39,7 @@ public:
      * \brief function add will inserts avatar image by memberId and image address or link.
      * \param memberId is unique id for user.
      * \param url is a link for image.
-     * \returns as boolean.
+     * \returns as string.
      */
     __tegra_no_discard_virtual bool add(const OptionalNumeric memberId, const std::string& url) __tegra_const_noexcept = __tegra_zero;
 
@@ -89,7 +89,7 @@ public:
      * \brief get function will inserts profile picture by memberId and image address or link.
      * \param memberId is unique id for user.
      * \param url is a link for image.
-     * \returns as boolean.
+     * \returns as string.
      */
     __tegra_no_discard_virtual bool add(const OptionalNumeric memberId, const std::string& url) __tegra_const_noexcept = __tegra_zero;
 
