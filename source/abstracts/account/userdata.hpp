@@ -24,8 +24,14 @@ TEGRA_USING_NAMESPACE Tegra::Account;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Account)
 
+struct ExtraKey
+{
+    unsigned int    keyAsInt    {};
+    std::string     keyAsString {};
+};
+
 //! Extra option by key and value.
-using ExtraField = std::map<std::string, std::string>;
+using ExtraField = std::map<ExtraKey, std::string>;
 
 /*!
  * \brief The UserTypes enum
