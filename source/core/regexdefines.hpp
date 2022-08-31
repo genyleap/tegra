@@ -1,5 +1,5 @@
 ﻿/*!
- * @file        regex.hpp
+ * @file        regexdefines.hpp
  * @brief       This file is part of the Tegra System.
  * @details     Regular expression system.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>

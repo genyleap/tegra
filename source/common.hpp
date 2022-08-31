@@ -26,6 +26,7 @@
 #include "utilities/preprocessor.hpp"
 //#include "utilities/featuretest.hpp"
 #include "utilities/types.hpp"
+#include "defines.hpp"
 
 #ifdef USE_LATEST_STANDARD
 ////TODO use module...
@@ -129,7 +130,6 @@ struct STATICS final {
 };
 
 }
-
 
 #undef TEGRA_COPYRIGHT
 #define TEGRA_COPYRIGHT "<!-- ]]></script> -->Copyright © 2022 <a class=\"nav-link d-inline-block p-0\" href=\"https://genyleap.com\" rel=\"noopener\" target=\"_blank\">Tegra System</a> <!-- Tegra System Team -->"
