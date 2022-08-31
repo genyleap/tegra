@@ -21,22 +21,22 @@ Groups::~Groups()
 }
 
 
-bool Groups::add(const GroupData& groupData) __tegra_noexcept
+bool Groups::add(const GroupData& groupData) __tegra_const_noexcept
 {
   ///ToDo...
 }
 
-bool Groups::edit(const u32 id, const GroupData& groupData) __tegra_noexcept
+bool Groups::edit(const u32 id, const GroupData& groupData) __tegra_const_noexcept
 {
   ///ToDo...
 }
 
-bool Groups::remove(const u32 id) __tegra_noexcept
+bool Groups::remove(const u32 id) __tegra_const_noexcept
 {
   ///ToDo...
 }
 
-GroupData Groups::get(const u32 id) noexcept
+GroupData Groups::get(const u32 id) __tegra_const_noexcept
 {
     //m_groupData->....;
     ///ToDo...
