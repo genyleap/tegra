@@ -26,7 +26,7 @@ public:
     TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractUser)
 
 private:
-
+    UserData *userDataPtr{};
 };
 
 TEGRA_NAMESPACE_END

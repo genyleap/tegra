@@ -37,7 +37,7 @@ public:
     __tegra_no_discard bool add(const GroupData& groupData) __tegra_const_noexcept_override;
 
     /*!
-     * \brief edit function will update group.
+     * \brief edit function will updates group.
      * \param id is unique id for group.
      * \param groupData is all data for group.
      * \returns boolean.
@@ -45,7 +45,7 @@ public:
     __tegra_no_discard bool edit(const u32 id, const GroupData& groupData) __tegra_const_noexcept_override;
 
     /*!
-     * \brief remove function will remove group by own id.
+     * \brief remove function will removes group by own id.
      * \param id is unique id for group.
      * \returns boolean.
      */

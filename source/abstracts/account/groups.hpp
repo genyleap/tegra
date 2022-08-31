@@ -91,14 +91,14 @@ public:
     TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractGroups)
 
     /*!
-     * \brief add function will add new group.
+     * \brief add function will inserts new group.
      * \param groupData is contains all data of permissions.
      * \returns boolean.
      */
     __tegra_no_discard_virtual bool add(const GroupData& groupData) __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief edit function will update group.
+     * \brief edit function will updates group.
      * \param id is unique id for group.
      * \param groupData is all data for group.
      * \returns boolean.
@@ -106,7 +106,7 @@ public:
     __tegra_no_discard_virtual bool edit(const u32 id, const GroupData& groupData) __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief remove function will remove group by own id.
+     * \brief remove function will removes group by own id.
      * \param id is unique id for group.
      * \returns boolean.
      */

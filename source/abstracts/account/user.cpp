@@ -9,6 +9,7 @@ TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Account)
  */
 AbstractUser::AbstractUser()
 {
+    __tegra_safe_instance(userDataPtr, UserData);
 }
 
 /*!
@@ -16,6 +17,7 @@ AbstractUser::AbstractUser()
  */
 AbstractUser::~AbstractUser()
 {
+    __tegra_safe_delete(userDataPtr);
 }
 
 TEGRA_NAMESPACE_END
