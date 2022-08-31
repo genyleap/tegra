@@ -17,9 +17,13 @@
 #include "logger.hpp"
 #include "version.hpp"
 #include "prestructure.hpp"
+#include "abstracts/dynamics/moduleschema.hpp"
+#include "abstracts/dynamics/pluginschema.hpp"
 #include "translator/language.hpp"
 #include "translator/translator.hpp"
 
+TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
 TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
@@ -622,85 +626,6 @@ public:
     void setPath(const std::string& p);
 
     mutable std::string currentPath{};
-};
-
-/*!
- * \brief The ApplicationData class
- */
-struct ApplicationData final
-{
-    SystemInfo systemInfo{};
-    Multilangual::LanguageStruct languageStruct{};
-    OptionalString path    {__tegra_unknown};
-    OptionalString templateId  {__tegra_unknown};
-    OptionalString templateErrorId  {__tegra_unknown};
-    OptionalString module  {__tegra_unknown};
-    SemanticVersion semanticVersion{};
-    Version::ReleaseType releaseType{};
-    ///ToDo... We need to add user info and extra data...
-};
-
-/*!
- * \brief The Application class
- */
-class __tegra_export Application
-{
-public:
-    Application() = default;
-    Application(const ApplicationData& appData);
-    ~Application();
-
-    static Application* get(const ApplicationData& appData);
-
-    /*!
-     * \brief start
-     */
-    void start();
-
-    OptionalString name() __tegra_const_noexcept;
-
-    OptionalString codeName() __tegra_const_noexcept;
-
-    OptionalString type() __tegra_const_noexcept;
-
-    OptionalString license() __tegra_const_noexcept;
-
-    OptionalString model() __tegra_const_noexcept;
-
-    /*!
-     * \brief path as string.
-     * \returns string.
-     */
-    OptionalString path() __tegra_const_noexcept;
-
-    /*!
-     * \brief module as module name.
-     * \returns string.
-     */
-    OptionalString module() __tegra_const_noexcept;
-
-    /*!
-     * \brief templateId will gets error template id.
-     * \returns string.
-     */
-    OptionalString templateErrorId() __tegra_const_noexcept;
-
-    /*!
-     * \brief templateId will gets template id.
-     * \returns string.
-     */
-    OptionalString templateId() __tegra_const_noexcept;
-
-    Scope<Engine>   engine  {};
-    Scope<Version>  version {};
-    Scope<SystemInfo>  systemInfo {};
-
-    Translation::Translator* translator{__tegra_nullptr}; //alternative translator for engine.
-    Multilangual::Language* language{__tegra_nullptr};
-
-private:
-    static Application* appPtr;
-    static ApplicationData* appDataPtr;
 };
 
 TEGRA_NAMESPACE_END

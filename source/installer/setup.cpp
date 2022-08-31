@@ -1,5 +1,6 @@
 #include "setup.hpp"
 #include "core/core.hpp"
+#include "core/application.hpp"
 #include "core/system.hpp"
 #include <filesystem>
 

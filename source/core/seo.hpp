@@ -15,6 +15,7 @@
 
 #include "common.hpp"
 #include "core/core.hpp"
+#include "core/application.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

@@ -1,5 +1,6 @@
 #include "common.hpp"
 #include "core/core.hpp"
+#include "core/application.hpp"
 #include "core/database.hpp"
 #include "core/config.hpp"
 #include "core/seo.hpp"

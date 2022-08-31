@@ -16,6 +16,7 @@
 #include "setupdata.hpp"
 #include "common.hpp"
 #include "core/core.hpp"
+#include "core/application.hpp"
 #include "translator/language.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;

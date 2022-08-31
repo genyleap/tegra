@@ -15,6 +15,7 @@
 
 #include "common.hpp"
 #include "core.hpp"
+#include "application.hpp"
 #include "translator/language.hpp"
 #include "translator/translator.hpp"
 

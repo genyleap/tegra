@@ -17,7 +17,7 @@
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
+TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Plugin)
 
 /*!
  * \brief The PluginType enum

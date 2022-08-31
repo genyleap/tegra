@@ -14,7 +14,8 @@
 #define DATABASE_HPP
 
 #include "common.hpp"
-#include "core.hpp"
+#include "core/core.hpp"
+#include "core/application.hpp"
 #include "core/config.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
