@@ -161,14 +161,24 @@ OptionalString Application::model() __tegra_const_noexcept
     return appDataPtr->systemInfo.codeName.value_or(__tegra_unknown);
 }
 
-Module::ModuleInfo Application::modules() __tegra_const_noexcept
+__tegra_no_discard std::vector<ModuleInfo> Application::modules() __tegra_noexcept
 {
-
+  return m_moduleInfoList;
 }
 
-Plugin::PluginInfo Application::plugins() __tegra_const_noexcept
+void Application::registerModules(const std::vector<ModuleInfo>& modulesList) __tegra_noexcept
 {
+    m_moduleInfoList = modulesList;
+}
 
+std::vector<PluginInfo> Application::plugins() __tegra_noexcept
+{
+   return m_pluginInfoList;
+}
+
+void Application::registerPlugins(const std::vector<PluginInfo>& pluginsList) __tegra_noexcept
+{
+    m_pluginInfoList = pluginsList;
 }
 
 OptionalString Application::module() __tegra_const_noexcept

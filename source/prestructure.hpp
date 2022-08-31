@@ -20,20 +20,20 @@ TEGRA_USING_NAMESPACE Tegra::Types;
 /*!
  * \brief The SystemStatus enum
  */
-enum struct SystemStatus : u8
+__tegra_enum_class SystemStatus : u8
 {
-    Off             = 0x1, /*!< The system is off. */
-    On              = 0x2, /*!< The system is on.  */
-    Suspened        = 0x3, /*!< The system is on suspended mode. */
-    Ready           = 0x4, /*!< The system is ready. */
-    Maintainance    = 0x5, /*!< The system is under maintainance. */
-    Unknown         = 0x6  /*!< It is not clear what state the system is in. */
+    Off             = 0x1, ///!< The system is off.
+    On              = 0x2, ///< The system is on.
+    Suspened        = 0x3, ///< The system is on suspended mode.
+    Ready           = 0x4, ///< The system is ready.
+    Maintainance    = 0x5, ///< The system is under maintainance.
+    Unknown         = 0x6  ///< It is not clear what state the system is in.
 };
 
 /*!
  * \brief The SystemType enum
  */
-enum struct SystemType: u8
+__tegra_enum_class SystemType: u8
 {
     Private      = 0x1, ///< Private.
     General      = 0x2, ///< General.
@@ -45,7 +45,7 @@ enum struct SystemType: u8
 /*!
  * \brief The SystemLicense enum
  */
-enum struct SystemLicense: u8
+__tegra_enum_class SystemLicense: u8
 {
     Free            = 0x1,  ///< This flag marks the system as the free version.
     Commercial      = 0x2   ///< This flag marks the system as the commercial version.
@@ -91,7 +91,6 @@ struct SystemInfo final
     Optional<SemanticVersion>   version         {};
     OptionalString              model           {};
     OptionalString              compiledDate    {};
-
     //!Extra
     Optional<SystemType>        type            {};
     Optional<SystemLicense>     license         {};

@@ -19,36 +19,20 @@
 #include "console.hpp"
 #include "terminal.hpp"
 #include "version.hpp"
-#include "prestructure.hpp"
-
+#include "applicationdata.hpp"
 #include "translator/language.hpp"
 #include "translator/translator.hpp"
-
 #include "abstracts/dynamics/moduleschema.hpp"
 #include "abstracts/dynamics/pluginschema.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::Types;
+TEGRA_USING_NAMESPACE Tegra::System;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Module;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Plugin;
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
-
-/*!
- * \brief The ApplicationData class
- */
-struct ApplicationData final
-{
-    SystemInfo systemInfo{};
-    Multilangual::LanguageStruct languageStruct{};
-    OptionalString path    {__tegra_unknown};
-    OptionalString templateId  {__tegra_unknown};
-    OptionalString templateErrorId  {__tegra_unknown};
-    OptionalString module  {__tegra_unknown};
-    SemanticVersion semanticVersion{};
-    Version::ReleaseType releaseType{};
-    ///ToDo... We need to add user info and extra data...
-};
 
 /*!
  * \brief The Application class
@@ -67,27 +51,59 @@ public:
      */
     void start();
 
+    /*!
+     * \brief name of application.
+     * \returns as string.
+     */
     OptionalString name() __tegra_const_noexcept;
 
+    /*!
+     * \brief code name of application.
+     * \returns as string.
+     */
     OptionalString codeName() __tegra_const_noexcept;
 
+    /*!
+     * \brief type of application.
+     * \returns as string.
+     */
     OptionalString type() __tegra_const_noexcept;
 
+    /*!
+     * \brief license of application.
+     * \returns as string.
+     */
     OptionalString license() __tegra_const_noexcept;
 
+    /*!
+     * \brief model of application.
+     * \returns as string.
+     */
     OptionalString model() __tegra_const_noexcept;
 
     /*!
      * \brief modules function will gets all modules on Tegra.
      * \returns a list of modules with their information.
      */
-    __tegra_no_discard Module::ModuleInfo modules() __tegra_const_noexcept;
+    __tegra_no_discard std::vector<ModuleInfo> modules() __tegra_noexcept;
+
+    /*!
+     * \brief registerModules
+     * \param moduleList
+     */
+    void registerModules(const std::vector<ModuleInfo>& moduleList) __tegra_noexcept;
+
+    /*!
+     * \brief registerPlugins
+     * \param moduleList
+     */
+    void registerPlugins(const std::vector<PluginInfo>& pluginsList) __tegra_noexcept;
 
     /*!
      * \brief plugins function will gets all plugins on Tegra.
      * \returns a list of plugins with their information.
      */
-    __tegra_no_discard Plugin::PluginInfo plugins() __tegra_const_noexcept;
+    __tegra_no_discard std::vector<PluginInfo> plugins() __tegra_noexcept;
 
     /*!
      * \brief path as string.
@@ -121,6 +137,10 @@ public:
     Multilangual::Language* language{__tegra_nullptr};
 
 private:
+
+    std::vector<ModuleInfo> m_moduleInfoList;
+    std::vector<PluginInfo> m_pluginInfoList;
+
     static Application* appPtr;
     static ApplicationData* appDataPtr;
 };
