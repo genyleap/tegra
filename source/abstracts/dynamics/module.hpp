@@ -1,7 +1,7 @@
 /*!
- * @file        plugin.hpp
+ * @file        module.hpp
  * @brief       This file is part of the Tegra System.
- * @details     Plugin interface for system.
+ * @details     Module interface for system.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022
@@ -10,11 +10,11 @@
  *
  */
 
-#ifndef PLUGIN_ABSTRACT_HPP
-#define PLUGIN_ABSTRACT_HPP
+#ifndef MODULE_ABSTRACT_HPP
+#define MODULE_ABSTRACT_HPP
 
 #include "common.hpp"
-#include "pluginschema.hpp"
+#include "moduleschema.hpp"
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -23,72 +23,72 @@ TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 /*!
  * \brief The AbstractBaseClass class
  */
-class __tegra_export AbstractPlugin
+class __tegra_export AbstractModule
 {
 public:
-    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractPlugin)
+    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractModule)
 
     /*!
-     * \brief getCodeName function returns a unique code of plugin.
+     * \brief getCodeName function returns a unique code of module.
      * \returns a code as unique type.
      */
     __tegra_no_discard_virtual OptionalString getCodeName()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getName function returns name of plugin.
+     * \brief getName function returns name of module.
      * \returns a name as string.
      */
     __tegra_no_discard_virtual OptionalString getName()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getDescription function returns description of plugin.
-     * \returns a description about plugin as string.
+     * \brief getDescription function returns description of module.
+     * \returns a description about module as string.
      */
     __tegra_no_discard_virtual OptionalString getDescription()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getCompiledDate function returns date of plugin's compile date.
+     * \brief getCompiledDate function returns date of module's compile date.
      * \returns a name as string.
      */
     __tegra_no_discard_virtual OptionalString getCompiledDate()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getLicense function returns license of plugin.
+     * \brief getLicense function returns license of module.
      * \returns a license as SystemLicense.
      */
     __tegra_no_discard_virtual Optional<SystemLicense> getLicense()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getPluginType function returns type of plugin.
-     * \returns a type as PluginType.
+     * \brief getModuleType function returns type of module.
+     * \returns a type as ModuleType.
      */
-    __tegra_no_discard_virtual Optional<PluginType> getPluginType()  __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual Optional<ModuleType> getModuleType()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getVersion function returns version of plugin.
+     * \brief getVersion function returns version of module.
      * \returns a version as SemanticVersion.
      */
     __tegra_no_discard_virtual Optional<SemanticVersion> getVersion()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getAuthor function returns author of plugin.
+     * \brief getAuthor function returns author of module.
      * \returns a name as string.
      */
     __tegra_no_discard_virtual OptionalString getAuthor()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getUrl function returns url of plugin.
+     * \brief getUrl function returns url of module.
      * \returns a url as string.
      */
     __tegra_no_discard_virtual OptionalString getUrl()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief run is action function for plugins.
+     * \brief run is action function for modules.
      */
     __tegra_virtual void run()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief runAsTemplate is action function for plugins based on template.
+     * \brief runAsTemplate is action function for modules based on template.
      * \param val is a parameter as multi type support.
      */
     template <typename... Args>
@@ -98,28 +98,28 @@ public:
     }
 
     /*!
-     * \brief type function returns type of plugin.
-     * \returns as PluginType.
+     * \brief type function returns type of module.
+     * \returns as ModuleType.
      */
-    __tegra_virtual PluginType type() __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual ModuleType type() __tegra_const_noexcept = __tegra_zero;
 
 protected:
-    PluginInfo* m_pluginInfo;
-    friend class AbstractPluginManager;
+    ModuleInfo* m_moduleInfo;
+    friend class AbstractModuleManager;
     void setCodeName(const OptionalString& codename);
     void setName(const OptionalString& name);
     void setDescription(const OptionalString& desc);
     void setCompiledDate(const OptionalString& compiledDate);
     void setLicense(const Optional<SystemLicense>& licese);
-    void setPluginType(const PluginType pluginType);
+    void setModuleType(const ModuleType moduleType);
     void setVersion(const Optional<SemanticVersion>& version);
     void setAuthor(const OptionalString& author);
     void setUrl(const OptionalString& url);
 
 private:
-    TEGRA_DISABLE_COPY(AbstractPlugin)
+    TEGRA_DISABLE_COPY(AbstractModule)
 };
 
 TEGRA_NAMESPACE_END
 
-#endif  // PLUGIN_ABSTRACT_HPP
+#endif  // MODULE_ABSTRACT_HPP

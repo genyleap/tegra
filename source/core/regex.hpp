@@ -13,90 +13,10 @@
 #ifndef TEGRA_REGEX_HPP
 #define TEGRA_REGEX_HPP
 
-#include <locale.h>
-#include <iostream>
-#include <sstream>
-#include <string>
-
 #include "common.hpp"
+#include "regexdefines.hpp"
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Regexation)
-
-// Defines for IPv4 and v6
-#define VALID_IPV4 0x1  // 1 is valid ip : 127.0.0.1
-#define VALID_IPV6 0x1 // 1 is valid ipv6 = // 92001:cdba:0000:0000:0000:0000:3257:9652)-(2001:cdba:0:0:0:0:3257:9652) // - (2001:cdba::3257:9652)
-#define INVALID_IPV6 0x0  // 0 is invalid ip v4
-#define INVALID_IPV4 0x0  // 0 is invalid ip v6
-
-// Modes for password types
-#define PASSWORD_MODE_0 0x0  // 1 is simple mode
-#define PASSWORD_MODE_1 0x1  // 0 is complex mode
-#define VALID_PASSWORD \
-    0x1  // 1 is valid Simple : (Kambiz1234@#$@) Complex : Kambiz1234!@#$%
-#define INVALID_PASSWORD 0x0  // 0 is invalid
-
-// Defines for mac address
-#define VALID_MAC 0x1    // 1 is valid Example: (76:54:2E:D5:D8:45)
-#define INVALID_MAC 0x0  // 0 is invalid
-
-// Defines for domain
-
-#define VALID_DOMAIN 0x1    // 1 is valid
-#define INVALID_DOMAIN 0x0  // 0 is invalid
-
-// Defines for http and https
-#define VALID_HTTP 0x1     // 1 is valid
-#define VALID_HTTPS 0x1    // 1 is valid
-#define INVALID_HTTP 0x0   // 0 is invalid
-#define INVALID_HTTPS 0x0  // 0 is invalid
-
-// Defines for ftp
-#define VALID_FTP 0x1    // 1 is valid
-#define INVALID_FTP 0x0  // 0 is invalid
-
-// Defines for alphanumeric
-#define VALID_ALPHANUMERIC 0x1    // 1 is valid
-#define INVALID_ALPHANUMERIC 0x0  // 0 is invalid
-
-// Defines for variable
-#define VALID_VARIABLE 0x1    // 1 is valid
-#define INVALID_VARIABLE 0x0  // 0 is invalid
-
-// Defines for variable
-#define VALID_NUMERIC 0x1    // 1 is valid
-#define INVALID_NUMERIC 0x0  // 0 is invalid
-
-// Defines for URL
-#define VALID_URL 0x1    // 1 is valid
-#define INVALID_URL 0x0  // 0 is invalid
-
-// Defines for Username
-#define VALID_USERNAME 0x1    // 1 is valid
-#define INVALID_USERNAME 0x0  // 0 is invalid
-
-// Defines for Mobile
-#define VALID_MOBILE 0x1    // 1 is valid
-#define INVALID_MOBILE 0x0  // 0 is invalid
-
-// Defines for Hex
-#define VALID_HEX 0x1    // 1 is valid
-#define INVALID_HEX 0x0  // 0 is invalid
-
-// Defines for Html
-#define VALID_HTML 0x1    // 1 is valid
-#define INVALID_HTML 0x0  // 0 is invalid
-
-// Defines for base64
-#define VALID_BASE64 0x1    // 1 is valid
-#define INVALID_BASE64 0x0  // 0 is invalid
-
-// Defines for ISBN code
-#define VALID_ISBN 0x1    // 1 is valid
-#define INVALID_ISBN 0x0  // 0 is invalid
-
-// Defines for Persian language
-#define VALID_PERSIAN 0x1    // 1 is valid
-#define INVALID_PERSIAN 0x0  // 0 is invalid
 
 /*!
  * \brief The Regex class
@@ -104,8 +24,7 @@ TEGRA_NAMESPACE_BEGIN(Tegra::Regexation)
 class Regex
 {
 public:
-    Regex() = default;
-    ~Regex() = delete;
+    TEGRA_DEFAULT_OCTORS(Regex)
 
     /*!
      * @brief reverse
@@ -126,6 +45,13 @@ public:
      * @return
      */
     std::string vowelReplace(const std::string& input);
+
+    /*!
+     * \brief findString
+     * \param input
+     * \return
+     */
+    bool findString(const std::string& input, const std::string &key);
 
     /*!
      * @brief strReplace
@@ -361,6 +287,8 @@ public:
      */
     bool isPersianValid(const std::wstring &input);
 
+private:
+    TEGRA_DISABLE_COPY(Regex)
 };
 
 TEGRA_NAMESPACE_END

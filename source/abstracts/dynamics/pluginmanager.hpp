@@ -49,29 +49,28 @@ public:
 class __tegra_export AbstractPluginManager
 {
 public:
-    static AbstractPluginManager& instance();
+    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractPluginManager)
 
     /*!
      * \brief load function loads the plugin and returns true if the plugin was loaded successfully; otherwise returns false.
      * \param plugin is plugin name.
      * \returns plugin.
      */
-    __tegra_no_discard_virtual AbstractPlugin* load(const std::string& plugin) __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual AbstractPlugin* load(const std::string& plugin) = __tegra_zero;
 
     /*!
      * \brief unload function unloads the plugin and returns true if the plugin could be unloaded; otherwise returns false.
      * \param plugin
      */
-    __tegra_virtual void unload(AbstractPlugin*& plugin) __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual void unload(AbstractPlugin*& plugin) = __tegra_zero;
 
     /*!
      * \brief isLoaded function returns true if the plugin is loaded; otherwise returns false.
      * \return bolean of status.
      */
-    __tegra_no_discard_virtual bool isLoaded() __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual bool isLoaded() = __tegra_zero;
 
 private:
-    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractPluginManager)
     PluginManagerData* m_pluginManagerData;
     bool m_status = {false};
 };

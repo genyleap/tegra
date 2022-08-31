@@ -17,12 +17,12 @@ include(FetchContent)
 
 # ------ PROJECT INFO ------
 # Options
-set(PROJECT_NAME "Tegra" CACHE STRING "Project Name.") #You can change "ProjectTemplate" with your project name.
+set(PROJECT_NAME "CoreInterface" CACHE STRING "Project Name.") #You can change "ProjectTemplate" with your project name.
 set(PROJECT_TARGET ${PROJECT_NAME} CACHE STRING "Project Target Name.")
 
 set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_VERSION_MINOR 2)
-set(PROJECT_VERSION_PATCH 300)
+set(PROJECT_VERSION_PATCH 373)
 set(PROJECT_VERSION_TWEAK 0)
 
 # ---- Project settings ----
@@ -161,30 +161,30 @@ file(GLOB PRECOMPILED precompiled/pch.hpp)
 file(
     GLOB HEADERS
     source/${SUFFIX_HPPHEADER}
+    source/installer/${SUFFIX_HPPHEADER}
     source/framework/${SUFFIX_HPPHEADER}
     source/core/${SUFFIX_HPPHEADER}
     source/abstracts/${SUFFIX_HPPHEADER}
     source/abstracts/apis/${SUFFIX_HPPHEADER}
     source/abstracts/dynamics/${SUFFIX_HPPHEADER}
     source/database/${SUFFIX_HPPHEADER}
-    source/interface/${SUFFIX_HPPHEADER}
     source/translator/${SUFFIX_HPPHEADER}
     source/install/${SUFFIX_HPPHEADER}
-    source/statics/${SUFFIX_HPPHEADER}
+    source/view/installer/${SUFFIX_HPPHEADER}
 )
 file(
     GLOB SOURCES
     source/${SUFFIX_SOURCE}
+    source/installer/${SUFFIX_SOURCE}
     source/framework/${SUFFIX_SOURCE}
     source/core/${SUFFIX_SOURCE}
     source/abstracts/${SUFFIX_SOURCE}
     source/abstracts/apis/${SUFFIX_SOURCE}
     source/abstracts/dynamics/${SUFFIX_SOURCE}
-    source/interface/${SUFFIX_SOURCE}
     source/database/${SUFFIX_SOURCE}
     source/translator/${SUFFIX_SOURCE}
     source/install/${SUFFIX_SOURCE}
-    source/statics/${SUFFIX_SOURCE}
+    source/view/installer/${SUFFIX_SOURCE}
 )
 
 
@@ -284,14 +284,14 @@ source_group("Examples"  FILES ${EXAMPLES})
 # ------ PROJECT DIRECTORIES ------
 
 set(dir ${CMAKE_CURRENT_SOURCE_DIR}/build/)
-set(EXECUTABLE_OUTPUT_PATH ${dir} CACHE PATH "Build directory" FORCE)
-set(LIBRARY_OUTPUT_PATH ${dir} CACHE PATH "Build directory" FORCE)
+set(EXECUTABLE_OUTPUT_PATH ${dir}/final CACHE PATH "Build directory" FORCE)
+set(LIBRARY_OUTPUT_PATH ${dir}/final CACHE PATH "Build directory" FORCE)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${dir})
 set(CMAKE_BUILD_FILES_DIRECTORY ${dir})
 set(CMAKE_BUILD_DIRECTORY ${dir})
 set(CMAKE_BINARY_DIR  ${dir})
-SET(EXECUTABLE_OUTPUT_PATH ${dir})
-SET(LIBRARY_OUTPUT_PATH ${dir}lib)
+SET(EXECUTABLE_OUTPUT_PATH ${dir}/final)
+SET(LIBRARY_OUTPUT_PATH ${dir}/final)
 SET(CMAKE_CACHEFILE_DIR ${dir})
 
 message("CMAKE_BUILD_FILES_DIRECTORY: " ${CMAKE_BUILD_FILES_DIRECTORY})
@@ -358,6 +358,8 @@ endif ()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+option(ENABLE_STATIC "Enable building static for ${PROJECT_NAME}" FALSE)
+
 if(ANDROID)
     set(DANDROID_NATIVE_API_LEVEL 23)
     if(NOT PROJECT_MAIN_TYPE STREQUAL "qtquick")
@@ -371,7 +373,11 @@ else()
     add_executable(${PROJECT_NAME} ${SOURCESFILE} ${UI_SOURCE})
   else()
     #Add an executable to the project using the specified source files.
-    add_executable(${PROJECT_NAME} ${SOURCESFILE})
+    if(ENABLE_STATIC)
+        add_library(${PROJECT_NAME} STATIC ${SOURCESFILE})
+        else()
+        add_library(${PROJECT_NAME} SHARED ${SOURCESFILE})
+    endif()
   endif()
 endif()
 
@@ -457,6 +463,8 @@ target_link_directories(${PROJECT_NAME}
     ${LIB_TARGET_LINK_DIRECTORIES}
     )
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE COREINTERFACE_LIBRARY)
+
 if(ENABLE_DROGON_MODULE)
     find_package(Drogon CONFIG REQUIRED)
     target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt)
@@ -500,13 +508,15 @@ drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/templates
 #Install rules specified by calls to the install() command within a source directory. are executed in order during installation.
 install(TARGETS ${PROJECT_NAME} DESTINATION build/bin)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/translations DESTINATION ${CMAKE_BINARY_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/templates DESTINATION ${CMAKE_BINARY_DIR})
-file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/server-log)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
-install(DIRECTORY DESTINATION ${CMAKE_BINARY_DIR}/server-log)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config.json DESTINATION ${CMAKE_BINARY_DIR}/final)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/config DESTINATION ${CMAKE_BINARY_DIR}/final)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/translations DESTINATION ${CMAKE_BINARY_DIR}/final)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/templates DESTINATION ${CMAKE_BINARY_DIR}/final)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/final/server-log)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR}/final)
+install(DIRECTORY DESTINATION ${CMAKE_BINARY_DIR}/final/server-log)
 
 #Ignore unused files.
 list(APPEND CPACK_SOURCE_IGNORE_FILES /.git/ /build/ .gitignore .DS_Store)
+
+set(PARENT_DIR ${CMAKE_CURRENT_SOURCE_DIR})

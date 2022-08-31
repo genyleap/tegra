@@ -1,7 +1,7 @@
 /*!
- * @file        plugininterface.hpp
+ * @file        moduleinterface.hpp
  * @brief       This file is part of the Tegra System.
- * @details     Plugin interface for system.
+ * @details     Module interface for system.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
  * @package     The Genyleap
  * @since       29 Aug 2022
@@ -10,65 +10,65 @@
  *
  */
 
-#ifndef PLUGIN_INTERFACE_ABSTRACT_HPP
-#define PLUGIN_INTERFACE_ABSTRACT_HPP
+#ifndef MODULE_INTERFACE_ABSTRACT_HPP
+#define MODULE_INTERFACE_ABSTRACT_HPP
 
 #include "common.hpp"
-#include "plugin.hpp"
+#include "module.hpp"
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 using NameList      =   std::vector<std::string>;
-using PluginList    =   std::vector<PluginInfo>;
+using ModuleList    =   std::vector<ModuleInfo>;
 using ErrorString   =   std::vector<std::string>;
 
 /*!
- * \brief The PluginInterfaceData class
+ * \brief The ModuleInterfaceData class
  */
-struct PluginInterfaceData final
+struct ModuleInterfaceData final
 {
 public:
-    NameList    nameList    {};     ///< List of plugins name.
-    PluginList  pluginList  {};     ///< List of plugins by info.
+    NameList    nameList    {};     ///< List of modules name.
+    ModuleList  moduleList  {};     ///< List of modules by info.
     ErrorString errors      {};     ///< List of errors.
 };
 
-class __tegra_export AbstractPluginInterface
+class __tegra_export AbstractModuleInterface
 {
 public:
-    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractPluginInterface)
+    TEGRA_DEFAULT_INTERFACE_OCTORS(AbstractModuleInterface)
     //Return a static instance of this class
-    static AbstractPluginInterface& instance();
+    static AbstractModuleInterface& instance();
 
     /*!
-     * \brief addDetail function sets all information of plugins.
-     * \param plist is type of PluginList [std::vector<PluginDetail>]
+     * \brief addDetail function sets all information of modules.
+     * \param plist is type of ModuleList [std::vector<ModuleDetail>]
      */
-    __tegra_virtual void addDetail(const PluginList& plist) __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual void addDetail(const ModuleList& plist) __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief addName function sets name of plugins.
-     * \param name of plugin.
+     * \brief addName function sets name of modules.
+     * \param name of module.
      */
     __tegra_virtual void addName(const std::string& name) __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief setError function sets message of error inside plugins.
+     * \brief setError function sets message of error inside modules.
      * \param var is message of error.
      */
     __tegra_virtual void setError(const std::string& var) __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getDetail function gets detail from plugins.
+     * \brief getDetail function gets detail from modules.
      * \returns list of detail such as name, version and etc.
      */
-    __tegra_no_discard_virtual const PluginList& getDetail() __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual const ModuleList& getDetail() __tegra_const_noexcept = __tegra_zero;
 
     /*!
-     * \brief getNames function gets name of plugins.
-     * \returns list of plugin.
+     * \brief getNames function gets name of modules.
+     * \returns list of module.
      */
     __tegra_no_discard_virtual const NameList& getNames() __tegra_const_noexcept = __tegra_zero;
 
@@ -79,9 +79,9 @@ public:
     __tegra_no_discard_virtual const ErrorString& getErrors() __tegra_const_noexcept = __tegra_zero;
 
 private:
-    PluginInterfaceData*  m_pluginInterfaceData;
+    ModuleInterfaceData*  m_moduleInterfaceData;
 };
 
 TEGRA_NAMESPACE_END
 
-#endif  // PLUGIN_INTERFACE_ABSTRACT_HPP
+#endif  // MODULE_INTERFACE_ABSTRACT_HPP

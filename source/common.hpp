@@ -24,8 +24,9 @@
 !*/
 
 #include "utilities/preprocessor.hpp"
-#include "utilities/featuretest.hpp"
+//#include "utilities/featuretest.hpp"
 #include "utilities/types.hpp"
+#include "defines.hpp"
 
 #ifdef USE_LATEST_STANDARD
 ////TODO use module...
@@ -89,12 +90,18 @@ struct CONFIG final {
   static constexpr std::string_view SYSTEM_CUSTOM_FILE = "config/custom-setting.json";
   static constexpr std::string_view SYSTEM_DATABASE_FILE = "config/system-database.json";
   static constexpr std::string_view SYSTEM_INTERFACE_FILE = "config/system-interface.json";
+  static constexpr std::string_view SYSTEM_MODULES_FOLDER = "modules";
+  static constexpr std::string_view SYSTEM_PLUGINS_FOLDER = "plugins";
   static constexpr std::string_view SYSTEM_TABLES_PREFIX = "teg_";
   static constexpr std::string_view SYSTEM_TABLES_VALUE_STRUCT = "_l";
   static constexpr std::string_view SYSTEM_TABLES_TABLE_UNICODE = "utf-8";
   static constexpr std::string_view SYSTEM_TABLES_COOKIE_PREFIX = "tegra_";
   static constexpr std::string_view TRANSLATION_FILE = "translations/contents.json";
 
+  static constexpr std::string_view MODULE_FILE_SUFFIX = ".tegx";
+  static constexpr std::string_view PLUGIN_FILE_SUFFIX = ".plugin";
+
+  static constexpr std::string_view OFFICIAL_WEB_API_URL = "https://tegra.genyleap.com";
   static constexpr std::string_view OFFICIAL_WEB = "http://genyleap.com";
   static constexpr std::string_view OFFICIAL_EMAIL = "info@genyleap.com";
 };
@@ -123,7 +130,6 @@ struct STATICS final {
 };
 
 }
-
 
 #undef TEGRA_COPYRIGHT
 #define TEGRA_COPYRIGHT "<!-- ]]></script> -->Copyright © 2022 <a class=\"nav-link d-inline-block p-0\" href=\"https://genyleap.com\" rel=\"noopener\" target=\"_blank\">Tegra System</a> <!-- Tegra System Team -->"
@@ -204,6 +210,8 @@ object = nullptr;                   \
 
 #define __tegra_abort abort();
 
+#define __tegra_assert(x) assert(x);
+
 #define TEGRA_BRACE_BEGIN {
 #define TEGRA_BRACE_END }
 #define TEGRA_USING_NAMESPACE using namespace
@@ -227,6 +235,7 @@ object = nullptr;                   \
 
 # define __tegra_const const
 # define __tegra_const_noexcept const noexcept
+# define __tegra_const_noexcept_override const noexcept override
 # define __tegra_noexcept noexcept
 # define __tegra_noexcept_expr(x) noexcept(x)
 # define __tegra_constexpr_virtual virtual constexpr
@@ -255,6 +264,8 @@ object = nullptr;                   \
 #define TEGRA_TRANSLATOR(key, value) Application::get(*appDataPtr)->translator->translate(languagePtr->getLanguageCode(), key, value).defaultValue()
 
 #define TEGRA_RUNTIME_FORMAT(content, ...) fmt::format(fmt::runtime(content), __VA_ARGS__)
+
+#define TEGRA_FORMAT_ARG fmt::arg
 
 #define TEGRA_COMPILETIME_FORMAT(content, ...) fmt::format(content, __VA_ARGS__)
 
@@ -288,6 +299,10 @@ defined(_WIN32) || defined(__WIN32) || defined(__WIN32__) ||    \
 #pragma warning Unknown dynamic link import / export semantics.
 #endif
 
+#define PointerToFunction void(*)()
+#define PointerToObject(object, name)\
+typedef object* (*name)();
+
 #define TEGRA_HAS_INCLUDE __has_include
 #define TEGRA_ENABLE_SHARED_FROM(x) std::enable_shared_from_this<x>
 
@@ -299,6 +314,11 @@ defined(_WIN32) || defined(__WIN32) || defined(__WIN32__) ||    \
 #define SCOPE_LEFT (
 #define SCOPE_RIGHT )
 #define SCOPE_ENDS {}
+
+#define __tegra_extern_c extern "C"
+
+#define __tegra_export_pointer(Class, object)\
+__tegra_extern_c __tegra_export Class* object = __tegra_nullptr;
 
 #define TEGRA_QUERY(...) #__VA_ARGS__
 
