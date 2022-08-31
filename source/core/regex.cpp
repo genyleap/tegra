@@ -1,10 +1,5 @@
 ﻿#include "regex.hpp"
 
-#include <cstdio>
-#include <string>
-#include <cstring>
-#include <sstream>
-
 #if defined(_MSC_VER) && _MSC_VER >= 1900
 #include <unordered_map>
 #include <regex>
@@ -21,9 +16,9 @@
 #include <regex>
 #endif
 
-TEGRA_USING_NAMESPACE std;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Regexation)
+
+TEGRA_DEFAULT_OCTORS_IMPL(Regex)
 
 //Reverse function for Currency
 void Regex::reverse(char s[]) {
@@ -35,11 +30,11 @@ void Regex::reverse(char s[]) {
     }
 }
 
-//The is_email_valid function returns true if an email address has a valid format (not necessary the most complete format).
+//The isEmailValid function returns true if an email address has a valid format (not necessary the most complete format).
 bool Regex::isEmailValid(const std::string& email)
 {
     // define a regular expression
-    const regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    const std::regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
 
          // try to match the string with the regular expression
     return regex_match(email, pattern);
@@ -54,7 +49,7 @@ std::string Regex::vowelReplace(const std::string& input)
     //std::string text = "This is a element and this a unique ID.";
     std::string text = input;
     // regular expression with two capture groups
-    const regex pattern("(\\ba (a|e|i|u|o))+");
+    const std::regex pattern("(\\ba (a|e|i|u|o))+");
     // the pattern for the transformation, using the second
     // capture group
     std::string replace = "an $2";
@@ -76,13 +71,12 @@ std::string Regex::strReplace(const std::string& input ,const std::string& find,
 std::string Regex::changeRoot(const std::string& item, const std::string& newroot)
 {
     // regular expression
-    const regex pattern("\\\\?((\\w|:)*)");
+    const std::regex pattern("\\\\?((\\w|:)*)");
     // transformation pattern
     std::string replacer = newroot;
     // flag that indicates to transform only the first match
-    regex_constants::match_flag_type fonly =
-    regex_constants::format_first_only;
-
+    std::regex_constants::match_flag_type fonly =
+        std::regex_constants::format_first_only;
     // apply the transformation
     return regex_replace(item, pattern, replacer, fonly);
     /*Example usage...
@@ -105,6 +99,20 @@ std::string Regex::repeatedWord(const std::string& input)
     return result;
 }
 
+bool Regex::findString(const std::string &input, const std::string &key)
+{
+    std::string content{input};
+    std::smatch match{};
+    std::regex reg ("\\b" + key + "\\b");
+    while (std::regex_search (content, match, reg))
+    {
+        for (auto x: match)
+            content = match.suffix().str();
+        return true;
+    }
+    return false;
+}
+
 bool Regex::isUrlValid (const std::string& url)
 {
     std::regex url_s(".*\\..*");
@@ -124,18 +132,18 @@ bool Regex::isUrlValid (const std::string& url)
 bool Regex::isIpv4Valid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern
+    const std::regex pattern
         ("^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
          "\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
          "\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
          "\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
     if(regex_match(input,pattern))
     {
-        return VALID_IPV4; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_IPV4; //return valid flag (0x1) = 1
     }
     else
     {
-        return VALID_IPV4;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_VALID_IPV4;//return invalid flag (0x0) = 0
     }
 }
 
@@ -143,7 +151,7 @@ bool Regex::isIpv4Valid(const std::string& input)
 bool Regex::isIpv6Valid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern
+    const std::regex pattern
         ("(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}"
          "|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}"
          "|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}"
@@ -156,12 +164,12 @@ bool Regex::isIpv6Valid(const std::string& input)
          "|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]"
          "|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))");
 
-    if(regex_match(input,pattern)) {
-        return VALID_IPV6; //return valid flag (0x1) = 1
+    if(std::regex_match(input,pattern)) {
+        return TEGRA_REGEX_VALID_IPV6; //return valid flag (0x1) = 1
     }
     else
     {
-        return VALID_IPV6;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_VALID_IPV6;//return invalid flag (0x0) = 0
     }
 }
 
@@ -169,14 +177,14 @@ bool Regex::isIpv6Valid(const std::string& input)
 bool Regex::isMacValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$");
-    if(regex_match(input,pattern))
+    const std::regex pattern("^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_MAC; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_MAC; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_MAC;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_MAC;//return invalid flag (0x0) = 0
     }
 }
 
@@ -184,14 +192,14 @@ bool Regex::isMacValid(const std::string& input)
 bool Regex::isDomainValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,6}$");
-    if(regex_match(input,pattern))
+    const std::regex pattern("^([a-zA-Z0-9]([a-zA-Z0-9\\-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,6}$");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_DOMAIN; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_DOMAIN; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_DOMAIN;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_DOMAIN;//return invalid flag (0x0) = 0
     }
 }
 
@@ -199,14 +207,14 @@ bool Regex::isDomainValid(const std::string& input)
 bool Regex::isHttpValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("(http:\\/\\/).*");
-    if(regex_match(input,pattern))
+    const std::regex pattern("(http:\\/\\/).*");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_HTTP; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_HTTP; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_HTTP;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_HTTP;//return invalid flag (0x0) = 0
     }
 }
 
@@ -214,14 +222,14 @@ bool Regex::isHttpValid(const std::string& input)
 bool Regex::isHttpsValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("(https:\\/\\/).*");
-    if(regex_match(input,pattern))
+    const std::regex pattern("(https:\\/\\/).*");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_HTTPS; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_HTTPS; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_HTTPS;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_HTTPS;//return invalid flag (0x0) = 0
     }
 }
 
@@ -229,14 +237,14 @@ bool Regex::isHttpsValid(const std::string& input)
 bool Regex::isFtpValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("(ftp:\\/\\/).*");
-    if(regex_match(input,pattern))
+    const std::regex pattern("(ftp:\\/\\/).*");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_FTP; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_FTP; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_FTP;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_FTP;//return invalid flag (0x0) = 0
     }
 }
 
@@ -260,19 +268,19 @@ bool Regex::isPasswordValid(const std::string& input, const int &mode, const int
 
     std::string regPattern;
     std::string lh = patch::to_string(length);
-    if(mode == PASSWORD_MODE_1) {
+    if(mode == TEGRA_REGEX_PASSWORD_MODE_1) {
         regPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{" + lh + ",}$";
-    } else if(mode == PASSWORD_MODE_0) {
+    } else if(mode == TEGRA_REGEX_PASSWORD_MODE_0) {
         regPattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{" + lh + ",}$";
     }
 
-    const regex pattern (regPattern);
-    if(regex_match(input,pattern)) {
-        return VALID_PASSWORD; //return valid flag (0x1) = 1
+    const std::regex pattern (regPattern);
+    if(std::regex_match(input,pattern)) {
+        return TEGRA_REGEX_VALID_PASSWORD; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_PASSWORD;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_PASSWORD;//return invalid flag (0x0) = 0
     }
 }
 
@@ -280,15 +288,15 @@ bool Regex::isPasswordValid(const std::string& input, const int &mode, const int
 bool Regex::isAlphanumericValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern
+    const std::regex pattern
         ("^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$");
 
-    if(regex_match(input,pattern)) {
-        return VALID_ALPHANUMERIC; //return valid flag (0x1) = 1
+    if(std::regex_match(input,pattern)) {
+        return TEGRA_REGEX_VALID_ALPHANUMERIC; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_ALPHANUMERIC;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_ALPHANUMERIC;//return invalid flag (0x0) = 0
     }
 }
 
@@ -296,14 +304,14 @@ bool Regex::isAlphanumericValid(const std::string& input)
 bool Regex::isVariableValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern
+    const std::regex pattern
         ("[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*");
-    if(regex_match(input,pattern)) {
-        return VALID_VARIABLE; //return valid flag (0x1) = 1
+    if(std::regex_match(input,pattern)) {
+        return TEGRA_REGEX_VALID_VARIABLE; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_VARIABLE;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_VARIABLE;//return invalid flag (0x0) = 0
     }
 }
 
@@ -312,13 +320,13 @@ bool Regex::isNumberValid(const std::string& input)
 {
     //Valid variable name
     // define a regular expression
-    const regex pattern("^[0-9]+$");
-    if(regex_match(input,pattern)) {
-        return VALID_NUMERIC; //return valid flag (0x1) = 1
+    const std::regex pattern("^[0-9]+$");
+    if(std::regex_match(input,pattern)) {
+        return TEGRA_REGEX_VALID_NUMERIC; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_NUMERIC;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_NUMERIC;//return invalid flag (0x0) = 0
     }
 }
 
@@ -326,13 +334,13 @@ bool Regex::isNumberValid(const std::string& input)
 bool Regex::isHttpImageurlValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("(?:(?:https?)+\\:\\/\\/+[a-zA-Z0-9\\/\\._-]{1,})+(?:(?:jpe?g|png|gif))");
-    if(regex_match(input,pattern)) {
-        return VALID_URL; //return valid flag (0x1) = 1
+    const std::regex pattern("(?:(?:https?)+\\:\\/\\/+[a-zA-Z0-9\\/\\._-]{1,})+(?:(?:jpe?g|png|gif))");
+    if(std::regex_match(input,pattern)) {
+        return TEGRA_REGEX_VALID_URL; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_URL;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_URL;//return invalid flag (0x0) = 0
     }
 }
 
@@ -340,14 +348,14 @@ bool Regex::isUsernameValid(const std::string& input)
 {
     // define a regular expression
     //field username 3-20 chars
-    const regex pattern ("(?=^.{3,20}$)^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$");
-    if(regex_match(input,pattern))
+    const std::regex pattern ("(?=^.{3,20}$)^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_USERNAME; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_USERNAME; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_USERNAME;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_USERNAME;//return invalid flag (0x0) = 0
     }
 }
 
@@ -357,14 +365,14 @@ bool Regex::isIrMobileValid(const std::string& input)
     //This regular expression chack matching Persian mobile numbers it is checking MCI,MTN Irancell and Talya operators
     //Format support: 989140000000 | 9140000000 | 989350000000
     //("[\\+98|0]?([0-9]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}");
-    const regex pattern ("([9]|-|[(1)]){0,9}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}");
-    if(regex_match(input,pattern))
+    const std::regex pattern ("([9]|-|[(1)]){0,9}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_MOBILE; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_MOBILE; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_MOBILE;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_MOBILE;//return invalid flag (0x0) = 0
     }
 }
 
@@ -372,14 +380,14 @@ bool Regex::isIrMobileValid(const std::string& input)
 bool Regex::isHexValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("^(0[xX])?[A-Fa-f0-9]+$");
-    if(regex_match(input,pattern))
+    const std::regex pattern("^(0[xX])?[A-Fa-f0-9]+$");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_HEX; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_HEX; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_HEX;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_HEX;//return invalid flag (0x0) = 0
     }
 }
 
@@ -387,7 +395,7 @@ bool Regex::isHexValid(const std::string& input)
 bool Regex::isHtmlValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern(
+    const std::regex pattern(
         "(<\\s*html[^>]*>(.*?)<\\s*/\\s*html>)"           //html
         "|(<\\s*h1[^>]*>(.*?)<\\s*/\\s*h1>)"              //h1
         "|(<\\s*h2[^>]*>(.*?)<\\s*/\\s*h2>)"              //h2
@@ -442,11 +450,11 @@ bool Regex::isHtmlValid(const std::string& input)
         );
     if(regex_match(input,pattern))
     {
-        return VALID_HTML; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_HTML; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_HTML;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_HTML;//return invalid flag (0x0) = 0
     }
 }
 
@@ -454,14 +462,14 @@ bool Regex::isHtmlValid(const std::string& input)
 bool Regex::isBase64Valid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$");
-    if(regex_match(input,pattern))
+    const std::regex pattern("^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_BASE64; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_BASE64; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_BASE64;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_BASE64;//return invalid flag (0x0) = 0
     }
 }
 
@@ -469,28 +477,27 @@ bool Regex::isBase64Valid(const std::string& input)
 bool Regex::isIsbnValid(const std::string& input)
 {
     // define a regular expression
-    const regex pattern("^ISBN\\s(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$");
-    if(regex_match(input,pattern))
+    const std::regex pattern("^ISBN\\s(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$");
+    if(std::regex_match(input,pattern))
     {
-        return VALID_ISBN; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_ISBN; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_ISBN;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_ISBN;//return invalid flag (0x0) = 0
     }
 }
 
-bool Regex::isPersianValid(const wstring &input)
+bool Regex::isPersianValid(const std::wstring &input)
 {
-    wregex pattern(L"[ چجحخهعغفقثصضکمنتالبیسشوپدذرزطظًًٌٍَُِّْ؛«»ةآأإيئؤ؟ءٔ‌ٰژطك‌]+");
+    std::wregex pattern(L"[ چجحخهعغفقثصضکمنتالبیسشوپدذرزطظًًٌٍَُِّْ؛«»ةآأإيئؤ؟ءٔ‌ٰژطك‌]+");
     if(regex_match(input,pattern)) {
-        return VALID_PERSIAN; //return valid flag (0x1) = 1
+        return TEGRA_REGEX_VALID_PERSIAN; //return valid flag (0x1) = 1
     }
     else
     {
-        return INVALID_PERSIAN;//return invalid flag (0x0) = 0
+        return TEGRA_REGEX_INVALID_PERSIAN;//return invalid flag (0x0) = 0
     }
 }
 
 TEGRA_NAMESPACE_END
-

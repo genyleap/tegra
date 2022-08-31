@@ -97,6 +97,10 @@ struct CONFIG final {
   static constexpr std::string_view SYSTEM_TABLES_COOKIE_PREFIX = "tegra_";
   static constexpr std::string_view TRANSLATION_FILE = "translations/contents.json";
 
+  static constexpr std::string_view MODULE_FILE_SUFFIX = ".tegx";
+  static constexpr std::string_view PLUGIN_FILE_SUFFIX = ".plugin";
+
+  static constexpr std::string_view OFFICIAL_WEB_API_URL = "https://tegra.genyleap.com";
   static constexpr std::string_view OFFICIAL_WEB = "http://genyleap.com";
   static constexpr std::string_view OFFICIAL_EMAIL = "info@genyleap.com";
 };

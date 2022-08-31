@@ -49,6 +49,20 @@
             "default_value": "Module {name} not found!",
             "custom_value": "",
             "status": true
+         },
+         {
+            "word_key": "not_supported",
+            "module": "system",
+            "default_value": "The {name} module is not supported by the system.",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_official",
+            "module": "system",
+            "default_value": "The {name} module is not the official version, it may cause problems.",
+            "custom_value": "",
+            "status": true
          }
       ],
       "plugins": [
@@ -84,6 +98,20 @@
             "word_key": "not_found",
             "module": "system",
             "default_value": "Plugin {name} not found!",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_supported",
+            "module": "system",
+            "default_value": "The {name} plugin is not supported by the system.",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_official",
+            "module": "system",
+            "default_value": "The {name} plugin is not the official version, it may cause problems.",
             "custom_value": "",
             "status": true
          }

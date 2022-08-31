@@ -49,6 +49,20 @@
             "default_value": "ماژول {} یافت نشد!",
             "custom_value": "",
             "status": true
+         },
+         {
+            "word_key": "not_supported",
+            "module": "system",
+            "default_value": "ماژول {name} توسط سیستم پشتیبانی نمی‌شود.",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_official",
+            "module": "system",
+            "default_value": "ماژول {name} نسخهٔ رسمی نمی‌باشد، ممکن است موجب بروز مشکلاتی شود.",
+            "custom_value": "",
+            "status": true
          }
       ],
       "plugins": [
@@ -84,6 +98,20 @@
             "word_key": "not_found",
             "module": "system",
             "default_value": "افزونهٔ {} یافت نشد!",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_supported",
+            "module": "system",
+            "default_value": "افزونهٔ {name} توسط سیستم پشتیبانی نمی‌شود.",
+            "custom_value": "",
+            "status": true
+         },
+         {
+            "word_key": "not_official",
+            "module": "system",
+            "default_value": "افزونهٔ {name} نسخهٔ رسمی نمی‌باشد، ممکن است موجب بروز مشکلاتی شود.",
             "custom_value": "",
             "status": true
          }
