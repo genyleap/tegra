@@ -115,6 +115,15 @@ __tegra_no_discard std::string_view regenUrl(T1 const& url, T2 const len) __tegr
         return url.substr(len);
 }
 
+enum class DataGetway : u8
+{
+    Default         =   0x1,    ///< Data transfer on the default platform.
+    FileStorage     =   0x2,    ///< Data transfer on the file storage.
+    Database        =   0x3,    ///< Data transfer on the standard databases.
+    BlockChain      =   0x4     ///< Data transfer on the blockchain platform.
+};
+
+
 /*!
  * @brief The StorageType enum
  */
@@ -136,6 +145,16 @@ enum class UserMode : u8
     User            =   0x1,
     Master          =   0x2,
     Customized      =   0x3
+};
+
+enum class DeviceType : u8
+{
+    Unknown         =   0x0,
+    Desktop         =   0x1,
+    Mobile          =   0x2,
+    Tablet          =   0x2,
+    Console         =   0x3,
+    Embedded        =   0x4
 };
 
 enum class SyncDevice : u8
