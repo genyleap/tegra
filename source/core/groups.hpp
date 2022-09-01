@@ -13,10 +13,28 @@
 #ifndef GROUPS_HPP
 #define GROUPS_HPP
 
-#include "common.hpp"
-#include "abstracts/account/groups.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
 
+//! Tegra's Abstraction (Interfaces).
+#ifdef __has_include
+# if __has_include(<interface>)
+#   include <interface>
+#else
+#   error "The abstractions of Tegra are not found!"
+# endif
+#endif
+
+TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;
+TEGRA_USING_NAMESPACE Tegra::System;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
 TEGRA_USING_NAMESPACE Tegra::Abstracts::Account;
 
 TEGRA_NAMESPACE_BEGIN(Tegra)

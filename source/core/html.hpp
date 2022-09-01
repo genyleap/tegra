@@ -13,7 +13,23 @@
 #ifndef HTML_HPP
 #define HTML_HPP
 
-#include "common.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+//! Tegra's Abstraction (Interfaces).
+#ifdef __has_include
+# if __has_include(<interface>)
+#   include <interface>
+#else
+#   error "The abstractions of Tegra are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 

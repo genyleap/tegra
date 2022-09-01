@@ -13,9 +13,32 @@
 #ifndef DEVICE_HPP
 #define DEVICE_HPP
 
-#include "common.hpp"
-#include "core/core.hpp"
-#include "abstracts/device.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+//! Tegra's Abstraction (Interfaces).
+#ifdef __has_include
+# if __has_include(<interface>)
+#   include <interface>
+#else
+#   error "The abstractions of Tegra are not found!"
+# endif
+#endif
+
+//! Tegra's Application.
+#ifdef __has_include
+# if __has_include(<application>)
+#   include <application>
+#else
+#   error "The application of Tegra are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;

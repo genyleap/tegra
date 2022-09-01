@@ -2,7 +2,7 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::Account)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief Constructs an activities.
@@ -18,12 +18,12 @@ Activities::~Activities()
 {
 }
 
-Activity Activities::get(const OptionalNumeric memberId) __tegra_const_noexcept
+ActivityData Activities::get(const OptionalNumeric memberId) __tegra_const_noexcept
 {
   //! ToDo...
 }
 
-void Activities::set(const Activity& activity) __tegra_const_noexcept
+void Activities::set(const ActivityData& activity) __tegra_const_noexcept
 {
   //! ToDo...
 }

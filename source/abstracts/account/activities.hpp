@@ -14,7 +14,6 @@
 #define USER_ACTIVITIES_ABSTRACT_HPP
 
 #include "common.hpp"
-#include "profiledata.hpp"
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -40,7 +39,7 @@ enum class ActivityAction : u8
     Move
 };
 
-struct Activity final
+struct ActivityData final
 {
     OptionalString datetime         {};
     OptionalString ipAddress        {};
@@ -60,17 +59,16 @@ public:
      * \param memberId is unique id for user.
      * \returns as Activity data.
      */
-    __tegra_no_discard_virtual Activity get(const OptionalNumeric memberId) __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual ActivityData get(const OptionalNumeric memberId) __tegra_const_noexcept = __tegra_zero;
 
     /*!
      * \brief set function will sets user activities.
      * \param activity is data based on Activity struct members.
      */
-    __tegra_virtual void set(const Activity& activity) __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual void set(const ActivityData& activity) __tegra_const_noexcept = __tegra_zero;
 
 private:
-    TEGRA_DISABLE_COPY(AbstractActivities)
-    Activity m_activity;
+    ActivityData m_activity;
 };
 
 TEGRA_NAMESPACE_END

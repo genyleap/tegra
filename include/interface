@@ -1,0 +1,11 @@
+#include "common.hpp"
+
+TEGRA_USING_NAMESPACE Tegra;
+
+#ifdef TEGRA_ABSTRACTS
+#include "abstracts/configuration.hpp"
+#include "abstracts/device.hpp"
+#include "abstracts/account/activities.hpp"
+#include "abstracts/account/usermanager.hpp"
+#include "abstracts/account/usermedia.hpp"
+#endif

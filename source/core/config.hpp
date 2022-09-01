@@ -13,10 +13,23 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
-#include "common.hpp"
-#include "core/core.hpp"
-#include "core/setting.hpp"
-#include "abstracts/configuration.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+//! Tegra's Abstraction (Interfaces).
+#ifdef __has_include
+# if __has_include(<interface>)
+#   include <interface>
+#else
+#   error "The abstractions of Tegra are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
@@ -45,7 +58,7 @@ struct DataConfig final
     ConfigType                configType  {};   ///< Config type.
     SectionType               sectionType {};   ///< Section type.
     Scope<Engine>             engine      {};   ///< Tegra Engine
-    Scope<Interface::Setting> setting     {};   ///< Tegra Setting
+    Scope<Setting> setting     {};   ///< Tegra Setting
     std::string               configFile  {};   ///< Config file.
     JSon                      json        {};   ///< Json type.
 };

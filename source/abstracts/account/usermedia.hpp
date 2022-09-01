@@ -14,11 +14,30 @@
 #define USER_MEDIA_ABSTRACT_HPP
 
 #include "common.hpp"
-#include "profiledata.hpp"
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Account)
+
+enum class AvatarViewStatus : u8
+{
+    NoAvatar, ForEveryone, SpecificGroups, SelectedUsers
+};
+
+enum class ImageViewStatus : u8
+{
+    NoAvatar, ForEveryone, SpecificGroups, SelectedUsers
+};
+
+enum class CoverViewStatus : u8
+{
+    NoAvatar, ForEveryone, SpecificGroups, SelectedUsers
+};
+
+enum class StoryViewStatus : u8
+{
+    NoAvatar, ForEveryone, SpecificGroups, SelectedUsers
+};
 
 /*!
  * \brief The AbstractAvatar class

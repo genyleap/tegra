@@ -2,7 +2,7 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::Account)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief Constructs a user manager.

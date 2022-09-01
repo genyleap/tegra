@@ -1,16 +1,14 @@
 ﻿#ifndef TEGRA_CONSOLE_HPP
 #define TEGRA_CONSOLE_HPP
 
-#include "common.hpp"
-
-// STL Input/Output
-
-#include <ios>
-#include <iostream>
-#include <istream>
-#include <ostream>
-#include <streambuf>
-#include <string>
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Console)
 

@@ -24,7 +24,7 @@
 !*/
 
 #include "utilities/preprocessor.hpp"
-//#include "utilities/featuretest.hpp"
+#include "utilities/featuretest.hpp"
 #include "utilities/types.hpp"
 #include "defines.hpp"
 

@@ -16,14 +16,14 @@
 #include "common.hpp"
 #include "groups.hpp"
 #include "usermedia.hpp"
-#include "core/device.hpp"
-#include "core/extra/timezone.hpp"
-#include "account/usermedia.hpp"
-#include "account/activities.hpp"
 
-TEGRA_USING_NAMESPACE Tegra::Account;
+TEGRA_USING_NAMESPACE Tegra;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Account)
+
+class Device;
+class Activities;
+class Timezone;
 
 struct ExtraKey __tegra_final
 {
@@ -48,15 +48,9 @@ __tegra_enum_class UserTypes
     ByCustomGroup   =   0x7     ///< As a customized group.
 };
 
-__tegra_enum_class Gender : u8
-{
-    Unknown, Male, Female
-};
+__tegra_enum_class Gender : u8 { Unknown, Male, Female };
 
-__tegra_enum_class Editors : u8
-{
-    Default, CKEditor, TinyMCE, Other
-};
+__tegra_enum_class Editors : u8 { Default, CKEditor, TinyMCE, Other };
 
 struct PhysicalAddress __tegra_final
 {
@@ -109,10 +103,10 @@ struct BanData
 
 struct UserMedia __tegra_final
 {
-    Optional<Avatar>  avatar  {}; ///< Avatar.
-    Optional<Image>   image   {}; ///< Image.
-    Optional<Cover>   cover   {}; ///< Cover.
-    Optional<Story>   story   {}; ///< Story.
+//    Optional<Avatar>  avatar  {}; ///< Avatar.
+//    Optional<Image>   image   {}; ///< Image.
+//    Optional<Cover>   cover   {}; ///< Cover.
+//    Optional<Story>   story   {}; ///< Story.
 };
 
 struct PhoneNumbers __tegra_final
@@ -165,7 +159,7 @@ struct UserBasicData __tegra_final
     Optional<NetworkAddress>    networkAddr  {}; ///< Network Address.
     Optional<Timezone*>         timezone     {}; ///< Timezone.
     Optional<Device*>           devices      {}; ///< Devices.
-    Optional<Activity>          activity     {}; ///< User Activities.
+    Optional<Activities*>        activities   {}; ///< User Activities.
     Optional<DateTimesData>     datetime     {}; ///< User Datetimes data.
     Optional<BanData>           ban          {}; ///< Ban Data.
     Optional<Referrals>         referrals    {}; ///< Referrals.
@@ -178,7 +172,6 @@ struct UserBasicData __tegra_final
     //! Raw ExtraField
     Optional<ExtraField>        extra        {}; ///< Extra Options.
 };
-
 
 TEGRA_NAMESPACE_END
 

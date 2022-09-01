@@ -13,9 +13,32 @@
 #ifndef TEMPLATES_HPP
 #define TEMPLATES_HPP
 
-#include "common.hpp"
-#include "core/core.hpp"
-#include "seo.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+//! Tegra's Abstraction (Interfaces).
+#ifdef __has_include
+# if __has_include(<interface>)
+#   include <interface>
+#else
+#   error "The abstractions of Tegra are not found!"
+# endif
+#endif
+
+//! Tegra's Seo.
+#ifdef __has_include
+# if __has_include(<seo>)
+#   include <seo>
+#else
+#   error "The seo of Tegra was not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
 

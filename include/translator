@@ -1,0 +1,3 @@
+#include "translator/translator.hpp"
+#include "translator/language.hpp"
+#include "translator/dictionary.hpp"

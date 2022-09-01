@@ -157,6 +157,8 @@ elseif(PROJECT_MAIN_TYPE STREQUAL "web")
      set(SUFFIX_TRANSLATIONS *.json)
 endif()
 
+include_directories(include/) #include tegra's file.
+
 file(GLOB PRECOMPILED precompiled/pch.hpp)
 file(
     GLOB HEADERS

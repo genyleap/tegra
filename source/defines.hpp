@@ -22,6 +22,8 @@ namespace Tegra::Defines {
 #define SUCCESS     0x0
 #define OFF         0x0
 
+#define TEGRA_ABSTRACTS 0x1 // Abstraction
+
 #define MESSAGE_OK      "OK"
 #define MESSAGE_FAILED  "FAILED"
 #define MESSAGE_YES     "YES"

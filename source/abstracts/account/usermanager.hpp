@@ -15,7 +15,7 @@
 
 #include "common.hpp"
 #include "core/core.hpp"
-#include "userdata.hpp"
+#include "basicdata.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;
@@ -23,13 +23,21 @@ TEGRA_USING_NAMESPACE Tegra::System;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Account)
 
+using ArrayIds = std::vector<OptionalNumeric>; ///< Array as int for user id.
+
+/*!
+ * \brief The UserData class
+ */
+struct UserData __tegra_final
+{
+    UserBasicData basic {}; ///< Basic Data (Default & Required)
+};
+
 struct DataTransfer final
 {
     DataGetway dataGetway {};   ///< Getway model.
     UserData* userDataPtr {};   ///< A pointer to UserData;
 };
-
-using ArrayIds = std::vector<OptionalNumeric>; ///< Array as int for user id.
 
 /*!
  * \brief The AbstractUserManager class

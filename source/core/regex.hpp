@@ -13,8 +13,23 @@
 #ifndef TEGRA_REGEX_HPP
 #define TEGRA_REGEX_HPP
 
-#include "common.hpp"
-#include "regexdefines.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Regex.
+#ifdef __has_include
+# if __has_include(<self/regex>)
+#   include <self/regex>
+#else
+#   error "The regex of Tegra was not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Regexation)
 
