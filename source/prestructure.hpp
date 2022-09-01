@@ -81,6 +81,17 @@ struct SemanticVersion final
 };
 
 /*!
+ * \brief The ApplicationType enum
+ *  For the future. ;)
+ *  Ability to switch between decentralized and centralized based software.
+ */
+enum class ApplicationType : u8
+{
+    Centralized    =  0x1, ///< A centralized application.
+    Decentralized  =  0x2, ///< A decentralized application (DApp).
+};
+
+/*!
  * \brief The SystemInfo struct
  */
 struct SystemInfo final
