@@ -17,6 +17,7 @@
 #include "groups.hpp"
 #include "usermedia.hpp"
 #include "core/device.hpp"
+#include "core/extra/timezone.hpp"
 #include "account/usermedia.hpp"
 #include "account/activities.hpp"
 
@@ -152,7 +153,6 @@ struct UserBasicData __tegra_final
     OptionalString              password     {}; ///< Password.
     OptionalString              signature    {}; ///< Signature.
     OptionalString              birthday     {}; ///< Birthday.
-    OptionalString              timezone     {}; ///< Timezone.
     OptionalString              language     {}; ///< Language.
     //! By Classes & Enums.
     Optional<Gender>            gender       {}; ///< Gender.
@@ -163,6 +163,7 @@ struct UserBasicData __tegra_final
     Optional<SocialAddress>     social       {}; ///< Social Network.
     Optional<PhysicalAddress>   address      {}; ///< Physical Address.
     Optional<NetworkAddress>    networkAddr  {}; ///< Network Address.
+    Optional<Timezone*>         timezone     {}; ///< Timezone.
     Optional<Device*>           devices      {}; ///< Devices.
     Optional<Activity>          activity     {}; ///< User Activities.
     Optional<DateTimesData>     datetime     {}; ///< User Datetimes data.

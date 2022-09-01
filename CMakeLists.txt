@@ -164,6 +164,7 @@ file(
     source/installer/${SUFFIX_HPPHEADER}
     source/framework/${SUFFIX_HPPHEADER}
     source/core/${SUFFIX_HPPHEADER}
+    source/core/extra/${SUFFIX_HPPHEADER}
     source/account/${SUFFIX_HPPHEADER}
     source/abstracts/${SUFFIX_HPPHEADER}
     source/abstracts/apis/${SUFFIX_HPPHEADER}
@@ -180,6 +181,7 @@ file(
     source/installer/${SUFFIX_SOURCE}
     source/framework/${SUFFIX_SOURCE}
     source/core/${SUFFIX_SOURCE}
+    source/core/extra/${SUFFIX_SOURCE}
     source/account/${SUFFIX_SOURCE}
     source/abstracts/${SUFFIX_SOURCE}
     source/abstracts/apis/${SUFFIX_SOURCE}
