@@ -13,7 +13,14 @@
 #ifndef VERSION_HPP
 #define VERSION_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 

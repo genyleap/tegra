@@ -1,0 +1,6 @@
+#include "common.hpp"
+#include "core/core.hpp"
+#include "core/config.hpp"
+#include "core/setting.hpp"
+#include "translator/translator.hpp"
+#include "translator/language.hpp"

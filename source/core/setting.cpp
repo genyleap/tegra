@@ -6,7 +6,7 @@ TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::Interface)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 SettingInterface::SettingInterface(
     const OptionalString &title,

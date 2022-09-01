@@ -1,5 +1,6 @@
 #include "database.hpp"
 #include "core.hpp"
+#include "application.hpp"
 #include "translator/translator.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;

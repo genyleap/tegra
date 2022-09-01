@@ -19,7 +19,7 @@
 TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::Types;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::Interface)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief The SettingData class

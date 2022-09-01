@@ -16,7 +16,9 @@
 #include "common.hpp"
 #include "pluginschema.hpp"
 
+TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Plugin;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
