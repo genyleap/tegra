@@ -36,7 +36,7 @@ using ExtraField = std::map<ExtraKey, std::string>;
 /*!
  * \brief The UserTypes enum
  */
-enum class UserTypes
+__tegra_enum_class UserTypes
 {
     Guest           =   0x1,    ///< As a guest.
     Admin           =   0x2,    ///< As a administrator.
@@ -47,22 +47,22 @@ enum class UserTypes
     ByCustomGroup   =   0x7     ///< As a customized group.
 };
 
-enum class Gender : u8
+__tegra_enum_class Gender : u8
 {
     Unknown, Male, Female
 };
 
-enum class Editors : u8
+__tegra_enum_class Editors : u8
 {
     Default, CKEditor, TinyMCE, Other
 };
 
-enum class Devices : u8
+__tegra_enum_class Devices : u8
 {
     Desktop, Mobile, Embedded, Console, Other
 };
 
-struct PhysicalAddress final
+struct PhysicalAddress __tegra___tegra_final
 {
     OptionalString country      {}; ///< Country.
     OptionalString state        {}; ///< State.
@@ -74,7 +74,7 @@ struct PhysicalAddress final
     Optional<ExtraField> extra  {}; ///< Extra.
 };
 
-struct SocialAddress final
+struct SocialAddress __tegra_final
 {
     OptionalString google       {}; ///< Google/Gmail.
     OptionalString instagram    {}; ///< Instagram.
@@ -89,7 +89,7 @@ struct SocialAddress final
     Optional<ExtraField> extra  {}; ///< Extra.
 };
 
-struct PersonalLinks final
+struct PersonalLinks __tegra_final
 {
     Optional<SocialAddress> social  {}; ///< Social Media.
     OptionalString email            {}; ///< Email Address.
@@ -111,7 +111,7 @@ struct BanData
     OptionalString until    {}; ///< Ban until.
 };
 
-struct UserMedia final
+struct UserMedia __tegra_final
 {
     Optional<Avatar>  avatar  {}; ///< Avatar.
     Optional<Image>   image   {}; ///< Image.
@@ -119,62 +119,62 @@ struct UserMedia final
     Optional<Story>   story   {}; ///< Story.
 };
 
-struct PhoneNumbers final
+struct PhoneNumbers __tegra_final
 {
     OptionalString mobile           {}; ///< Mobile Number.
     OptionalString tel              {}; ///< Telephone Number.
     Optional<ExtraField> extra      {}; ///< Extra.
 };
 
-struct NetworkAddress final
+struct NetworkAddress __tegra_final
 {
     OptionalString   ipv4  {}; ///< IP Version 4 Address.
     OptionalString   ipv6  {}; ///< IP Version 6 Address.
     OptionalString   mac   {}; ///< Mac Address.
 };
 
-struct MetaStrings final
+struct MetaStrings __tegra_final
 {
     OptionalString   bio        {}; ///< Bio Data.
     OptionalString   signature  {}; ///< Signature.
     Optional<ExtraField> extra  {}; ///< Extra.
 };
 
-struct Referrals final
+struct Referrals __tegra_final
 {
     OptionalString   referral  {}; ///< Referral For.
     OptionalString   invited   {}; ///< Invited From.
 };
 
-struct UserBasicData final
+struct UserBasicData __tegra_final
 {
     //! Raw Numeric
-    OptionalNumeric             memberId    {}; ///< User ID.
+    OptionalNumeric             memberId     {}; ///< User ID.
     //! Raw String
-    OptionalString              username    {}; ///< Username.
-    OptionalString              firstname   {}; ///< Firstname.
-    OptionalString              lastname    {}; ///< Lastname.
-    OptionalString              password    {}; ///< Password.
-    OptionalString              signature   {}; ///< Signature.
-    OptionalString              birthday    {}; ///< Birthday.
-    OptionalString              timezone    {}; ///< Timezone.
-    OptionalString              language    {}; ///< Language.
+    OptionalString              username     {}; ///< Username.
+    OptionalString              firstname    {}; ///< Firstname.
+    OptionalString              lastname     {}; ///< Lastname.
+    OptionalString              password     {}; ///< Password.
+    OptionalString              signature    {}; ///< Signature.
+    OptionalString              birthday     {}; ///< Birthday.
+    OptionalString              timezone     {}; ///< Timezone.
+    OptionalString              language     {}; ///< Language.
     //! By Classes
-    Optional<Gender>            gender      {}; ///< Gender.
-    Optional<GroupData>         groups      {}; ///< Group.
-    Optional<UserMedia>         media       {}; ///< User Media.
-    Optional<PhoneNumbers>      phone       {}; ///< Gender.
-    Optional<PersonalLinks>     links       {}; ///< Links.
-    Optional<SocialAddress>     social      {}; ///< Links.
-    Optional<PhysicalAddress>   address     {}; ///< Physical Address.
-    Optional<NetworkAddress>    networkAddr {}; ///< Network Address.
-    Optional<Devices>           devices     {}; ///< Devices.
-    Optional<Activity>          activity    {}; ///< User Activities.
-    Optional<DateTimesData>     datetime    {}; ///< User Datetimes data.
-    Optional<BanData>           ban         {}; ///< Ban Data.
-    Optional<Referrals>         referrals   {}; ///< Referrals.
-    Optional<MetaStrings>       metastring  {}; ///< Meta String.
-    Optional<Editors>           editor      {}; ///< User Editor.
+    Optional<Gender>            gender       {}; ///< Gender.
+    Optional<GroupData>         groups       {}; ///< Group.
+    Optional<UserMedia>         media        {}; ///< User Media.
+    Optional<PhoneNumbers>      phone        {}; ///< Gender.
+    Optional<PersonalLinks>     links        {}; ///< Links.
+    Optional<SocialAddress>     social       {}; ///< Links.
+    Optional<PhysicalAddress>   address      {}; ///< Physical Address.
+    Optional<NetworkAddress>    networkAddr  {}; ///< Network Address.
+    Optional<Devices>           devices      {}; ///< Devices.
+    Optional<Activity>          activity     {}; ///< User Activities.
+    Optional<DateTimesData>     datetime     {}; ///< User Datetimes data.
+    Optional<BanData>           ban          {}; ///< Ban Data.
+    Optional<Referrals>         referrals    {}; ///< Referrals.
+    Optional<MetaStrings>       metastring   {}; ///< Meta String.
+    Optional<Editors>           editor       {}; ///< User Editor.
     //! Raw Boolean
     OptionalBool                completed    {}; ///< Completed Mode.
     OptionalBool                subscription {}; ///< Subscription Mode.
@@ -182,6 +182,14 @@ struct UserBasicData final
     //! Raw ExtraField
     Optional<ExtraField>        extra        {}; ///< Extra Options.
 
+};
+
+/*!
+ * \brief The UserData class
+ */
+struct UserData __tegra_final
+{
+    UserBasicData basic {}; ///< Basic Data (Default & Required)
 };
 
 TEGRA_NAMESPACE_END
