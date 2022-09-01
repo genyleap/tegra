@@ -154,13 +154,13 @@ struct UserBasicData __tegra_final
     OptionalString              birthday     {}; ///< Birthday.
     OptionalString              timezone     {}; ///< Timezone.
     OptionalString              language     {}; ///< Language.
-    //! By Classes
+    //! By Classes & Enums.
     Optional<Gender>            gender       {}; ///< Gender.
     Optional<GroupData>         groups       {}; ///< Group.
     Optional<UserMedia>         media        {}; ///< User Media.
     Optional<PhoneNumbers>      phone        {}; ///< Gender.
     Optional<PersonalLinks>     links        {}; ///< Links.
-    Optional<SocialAddress>     social       {}; ///< Links.
+    Optional<SocialAddress>     social       {}; ///< Social Network.
     Optional<PhysicalAddress>   address      {}; ///< Physical Address.
     Optional<NetworkAddress>    networkAddr  {}; ///< Network Address.
     Optional<Device*>           devices      {}; ///< Devices.
