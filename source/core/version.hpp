@@ -22,6 +22,7 @@
 # endif
 #endif
 
+TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
@@ -34,7 +35,7 @@ class __tegra_export Version
 public:
     TEGRA_DEFAULT_INTERFACE_OCTORS(Version)
 
-    enum class ReleaseType : u8
+    __tegra_enum_class ReleaseType : u8
     {
         PreAlpha,               ///< Pre-alpha refers to all activities performed during the software project before formal testing.
         Alpha,                  ///< The alpha phase of the release life cycle is the first phase of software testing (alpha is the first letter of the Greek alphabet, used as the number 1).

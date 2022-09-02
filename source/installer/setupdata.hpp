@@ -24,14 +24,13 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Installer)
 
-using RquireTypes = std::map<std::string, bool>;
-using RquireTypesPair = std::pair<std::string, bool>;
+TEGRA_USING RquireTypes = std::map<std::string, bool>;
+TEGRA_USING RquireTypesPair = std::pair<std::string, bool>;
 
 #define PairEnable(key, value)\
-    std::pair<std::string, bool>(key, value)
+std::pair<std::string, bool>(key, value)
 
 struct SetupLevelInfo final
 {

@@ -40,11 +40,11 @@ TEGRA_NAMESPACE_BEGIN(Tegra)
 /*!
  * \brief The RdbmsInterface class
  */
-struct RdbmsInterface final
+struct RdbmsInterface __tegra_final
 {
     std::string codename    {};     ///< Code name for rdbms.
     std::string host        {};     ///< Host name.
-    std::string name        {};     ///< Name of host.
+    std::string name        {};     ///< Name of db.
     std::string username    {};     ///< Username.
     std::string password    {};     ///< Password.
     u32         port        {};     ///< Port of host.
@@ -53,13 +53,13 @@ struct RdbmsInterface final
 /*!
  * \brief The DataSetting struct
  */
-struct DataConfig final
+struct DataConfig __tegra_final
 {
     RdbmsInterface            rdbmsInfo   {};   ///< Rdbms info.
     ConfigType                configType  {};   ///< Config type.
     SectionType               sectionType {};   ///< Section type.
     Scope<Engine>             engine      {};   ///< Tegra Engine
-    Scope<Setting> setting     {};   ///< Tegra Setting
+    Scope<Setting>            setting     {};   ///< Tegra Setting
     std::string               configFile  {};   ///< Config file.
     JSon                      json        {};   ///< Json type.
 };
