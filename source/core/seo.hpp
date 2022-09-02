@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SEO_HPP
-#define SEO_HPP
+#ifndef TEGRA_SEO_HPP
+#define TEGRA_SEO_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -169,4 +169,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // SEO_HPP
+#endif // TEGRA_SEO_HPP

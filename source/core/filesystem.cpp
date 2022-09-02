@@ -1,4 +1,11 @@
-#include "filesystem.hpp"
+//! Tegra's Filesystem.
+#ifdef __has_include
+# if __has_include("filesystem.hpp")
+#   include "filesystem.hpp"
+#else
+#   error "Tegra's filesystem was not found!"
+# endif
+#endif
 
 #if defined(PLATFORM_MAC) && !defined(PLATFORM_MOBILE)
 #include <sys/stat.h>

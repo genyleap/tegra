@@ -1,5 +1,11 @@
-#include "html.hpp"
-#include "core.hpp"
+//! Tegra's Html.
+#ifdef __has_include
+# if __has_include("html.hpp")
+#   include "html.hpp"
+#else
+#   error "Tegra's html was not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
 

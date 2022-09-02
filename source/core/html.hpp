@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef HTML_HPP
-#define HTML_HPP
+#ifndef TEGRA_HTML_HPP
+#define TEGRA_HTML_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -200,4 +200,4 @@ public:
 
 TEGRA_NAMESPACE_END
 
-#endif // HTML_HPP
+#endif // TEGRA_HTML_HPP

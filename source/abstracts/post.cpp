@@ -1,4 +1,11 @@
-#include "post.hpp"
+//! Tegra's Abstract Post.
+#ifdef __has_include
+# if __has_include("abstracts/post.hpp")
+#   include "abstracts/post.hpp"
+#else
+#   error "Tegra's post was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

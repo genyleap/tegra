@@ -1,8 +1,20 @@
-#include "analyzer.hpp"
-#include "core.hpp"
-#include "logger.hpp"
-#include "regex.hpp"
-#include "modulemanager.hpp"
+//! Tegra's Analyzer.
+#ifdef __has_include
+# if __has_include("analyzer.hpp")
+#   include "analyzer.hpp"
+#else
+#   error "Tegra's analyzer was not found!"
+# endif
+#endif
+
+//! Tegra's Regex.
+#ifdef __has_include
+# if __has_include(<self/regex>)
+#   include <self/regex>
+#else
+#   error "Tegra's regex was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::Regexation;

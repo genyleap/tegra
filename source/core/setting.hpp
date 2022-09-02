@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SETTING_HPP
-#define SETTING_HPP
+#ifndef TEGRA_SETTING_HPP
+#define TEGRA_SETTING_HPP
 
 #include "common.hpp"
 #include "core/core.hpp"
@@ -95,7 +95,6 @@ private:
 
 struct SettingData final
 {
-    Scope<Engine>  engine   {};
     VectorString   option   {};
     SettingType    type     {};
     std::string    language {};
@@ -138,4 +137,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // SETTING_HPP
+#endif  // TEGRA_SETTING_HPP

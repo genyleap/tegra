@@ -1,4 +1,11 @@
-#include "setting.hpp"
+//! Tegra's Abstract Setting.
+#ifdef __has_include
+# if __has_include("abstracts/setting.hpp")
+#   include "abstracts/setting.hpp"
+#else
+#   error "Tegra's setting was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

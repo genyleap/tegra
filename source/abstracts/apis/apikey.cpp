@@ -1,4 +1,12 @@
-#include "apikey.hpp"
+//! Tegra's Abstract Apikey.
+#ifdef __has_include
+# if __has_include(<abstracts/apis/apikey>)
+#   include <abstracts/apis/apikey>
+#else
+#   error "Tegra's apikey was not found!"
+# endif
+#endif
+
 
 TEGRA_USING_NAMESPACE Tegra;
 

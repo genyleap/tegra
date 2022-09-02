@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TIMEZONE_HPP
-#define TIMEZONE_HPP
+#ifndef TEGRA_TIMEZONE_HPP
+#define TEGRA_TIMEZONE_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -66,4 +66,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // TIMEZONE_HPP
+#endif  // TEGRA_TIMEZONE_HPP

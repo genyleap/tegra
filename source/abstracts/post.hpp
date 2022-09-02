@@ -10,14 +10,53 @@
  *
  */
 
-#ifndef POST_ABSTRACT_HPP
-#define POST_ABSTRACT_HPP
+#ifndef TEGRA_POST_ABSTRACT_HPP
+#define TEGRA_POST_ABSTRACT_HPP
 
-#include "common.hpp"
-#include "core/core.hpp"
-#include "core/tags.hpp"
-#include "core/share.hpp"
-#include "core/message.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Core (Core Only).
+#ifdef __has_include
+# if __has_include(<core>)
+#   include <core>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+//! Tegra's Tags.
+#ifdef __has_include
+# if __has_include(<tags>)
+#   include <tags>
+#else
+#   error "Tegra's tags are not found!"
+# endif
+#endif
+
+//! Tegra's Share.
+#ifdef __has_include
+# if __has_include(<share>)
+#   include <share>
+#else
+#   error "Tegra's share was not found!"
+# endif
+#endif
+
+//! Tegra's Message.
+#ifdef __has_include
+# if __has_include(<message>)
+#   include <message>
+#else
+#   error "Tegra's message was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -154,4 +193,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // POST_ABSTRACT_HPP
+#endif  // TEGRA_POST_ABSTRACT_HPP

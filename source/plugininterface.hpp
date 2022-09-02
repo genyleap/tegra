@@ -10,11 +10,26 @@
  *
  */
 
-#ifndef PLUGIN_INTERFACE_HPP
-#define PLUGIN_INTERFACE_HPP
+#ifndef TEGRA_PLUGIN_INTERFACE_HPP
+#define TEGRA_PLUGIN_INTERFACE_HPP
 
-#include "common.hpp"
-#include "abstracts/dynamics/plugininterface.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include(<abstracts/dynamics>)
+#   include <abstracts/dynamics>
+#else
+#   error "Tegra's dynamics was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
 
@@ -74,4 +89,4 @@ private:
 };
 
 
-#endif // PLUGIN_INTERFACE_HPP
+#endif // TEGRA_PLUGIN_INTERFACE_HPP

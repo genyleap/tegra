@@ -13,17 +13,14 @@
 #ifndef TEGRA_APPLICATION_DATA_HPP
 #define TEGRA_APPLICATION_DATA_HPP
 
-#include "common.hpp"
-#include "core.hpp"
-#include "logger.hpp"
-#include "console.hpp"
-#include "terminal.hpp"
-#include "version.hpp"
-#include "prestructure.hpp"
-#include "translator/language.hpp"
-#include "translator/translator.hpp"
-#include "abstracts/dynamics/moduleschema.hpp"
-#include "abstracts/dynamics/pluginschema.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 

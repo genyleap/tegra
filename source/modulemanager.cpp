@@ -1,5 +1,20 @@
-#include "modulemanager.hpp"
-#include "core/logger.hpp"
+//! Tegra's Modulemanager.
+#ifdef __has_include
+# if __has_include("modulemanager.hpp")
+#   include "modulemanager.hpp"
+#else
+#   error "Tegra's modulemanager was not found!"
+# endif
+#endif
+
+//! Tegra's eLogger.
+#ifdef __has_include
+# if __has_include(<logger>)
+#   include <logger>
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

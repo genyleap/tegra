@@ -10,11 +10,26 @@
  *
  */
 
-#ifndef DEVICE_ABSTRACT_HPP
-#define DEVICE_ABSTRACT_HPP
+#ifndef TEGRA_DEVICE_ABSTRACT_HPP
+#define TEGRA_DEVICE_ABSTRACT_HPP
 
-#include "common.hpp"
-#include "core/core.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Core (Core Only).
+#ifdef __has_include
+# if __has_include(<core>)
+#   include <core>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;
@@ -70,4 +85,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // DEVICE_ABSTRACT_HPP
+#endif  // TEGRA_DEVICE_ABSTRACT_HPP

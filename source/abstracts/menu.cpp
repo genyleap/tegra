@@ -1,4 +1,11 @@
-#include "menu.hpp"
+//! Tegra's Abstract Menu.
+#ifdef __has_include
+# if __has_include("abstracts/menu.hpp")
+#   include "abstracts/menu.hpp"
+#else
+#   error "Tegra's menu was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

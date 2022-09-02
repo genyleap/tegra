@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef USER_ACTIVITIES_HPP
-#define USER_ACTIVITIES_HPP
+#ifndef TEGRA_USER_ACTIVITIES_HPP
+#define TEGRA_USER_ACTIVITIES_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -68,4 +68,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // USER_ACTIVITIES_HPP
+#endif // TEGRA_USER_ACTIVITIES_HPP

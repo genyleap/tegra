@@ -10,11 +10,27 @@
  *
  */
 
-#ifndef LANGUAGE_HPP
-#define LANGUAGE_HPP
+#ifndef TEGRA_LANGUAGE_HPP
+#define TEGRA_LANGUAGE_HPP
 
-#include "common.hpp"
-#include "core/url.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Url.
+#ifdef __has_include
+# if __has_include(<url>)
+#   include <url>
+#else
+#   error "Tegra's url was not found!"
+# endif
+#endif
+
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Multilangual)
 
@@ -83,4 +99,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // LANGUAGE_HPP
+#endif  // TEGRA_LANGUAGE_HPP

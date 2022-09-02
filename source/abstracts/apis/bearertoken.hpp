@@ -10,11 +10,26 @@
  *
  */
 
-#ifndef BEARER_TOKEN_ABSTRACT_HPP
-#define BEARER_TOKEN_ABSTRACT_HPP
+#ifndef TEGRA_BEARER_TOKEN_ABSTRACT_HPP
+#define TEGRA_BEARER_TOKEN_ABSTRACT_HPP
 
-#include "common.hpp"
-#include "abstracts/api.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Abstract Api.
+#ifdef __has_include
+# if __has_include(<abstracts/api>)
+#   include <abstracts/api>
+#else
+#   error "Tegra's api was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -50,4 +65,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // BEARER_TOKEN_ABSTRACT_HPP
+#endif  // TEGRA_BEARER_TOKEN_ABSTRACT_HPP

@@ -10,10 +10,17 @@
  *
  */
 
-#ifndef MODULE_SCHEMA_ABSTRACT_HPP
-#define MODULE_SCHEMA_ABSTRACT_HPP
+#ifndef TEGRA_MODULE_SCHEMA_ABSTRACT_HPP
+#define TEGRA_MODULE_SCHEMA_ABSTRACT_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -62,4 +69,4 @@ struct ModuleInfo __tegra_final
 
 TEGRA_NAMESPACE_END
 
-#endif  // MODULE_SCHEMA_ABSTRACT_HPP
+#endif  // TEGRA_MODULE_SCHEMA_ABSTRACT_HPP

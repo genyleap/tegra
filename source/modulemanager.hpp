@@ -10,13 +10,26 @@
  *
  */
 
-#ifndef MODULE_MANAGER_HPP
-#define MODULE_MANAGER_HPP
+#ifndef TEGRA_MODULE_MANAGER_HPP
+#define TEGRA_MODULE_MANAGER_HPP
 
-#include "common.hpp"
-#include "moduleinterface.hpp"
-#include "abstracts/dynamics/module.hpp"
-#include "abstracts/dynamics/modulemanager.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include(<abstracts/dynamics>)
+#   include <abstracts/dynamics>
+#else
+#   error "Tegra's dynamics was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
 
@@ -56,4 +69,4 @@ private:
 };
 
 
-#endif // MODULE_MANAGER_HPP
+#endif // TEGRA_MODULE_MANAGER_HPP

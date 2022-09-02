@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef MINIFY_HPP
-#define MINIFY_HPP
+#ifndef TEGRA_MINIFY_HPP
+#define TEGRA_MINIFY_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -86,4 +86,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // MINIFY_HPP
+#endif  // TEGRA_MINIFY_HPP

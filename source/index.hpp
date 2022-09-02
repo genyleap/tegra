@@ -10,10 +10,17 @@
  *
  */
 
-#ifndef INDEX_HPP
-#define INDEX_HPP
+#ifndef TEGRA_INDEX_HPP
+#define TEGRA_INDEX_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
@@ -45,4 +52,4 @@ public:
 
 TEGRA_NAMESPACE_END
 
-#endif // INDEX_HPP
+#endif // TEGRA_INDEX_HPP

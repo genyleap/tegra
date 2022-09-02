@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef USER_MEDIA_HPP
-#define USER_MEDIA_HPP
+#ifndef TEGRA_USER_MEDIA_HPP
+#define TEGRA_USER_MEDIA_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -241,4 +241,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // USER_MEDIA_HPP
+#endif // TEGRA_USER_MEDIA_HPP

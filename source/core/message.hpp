@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef MESSAGE_HPP
-#define MESSAGE_HPP
+#ifndef TEGRA_MESSAGE_HPP
+#define TEGRA_MESSAGE_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -85,4 +85,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // MESSAGE_HPP
+#endif  // TEGRA_MESSAGE_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TEGRA_APPLICATION_HPP
-#define TEGRA_APPLICATION_HPP
+#ifndef TEGRA_TEGRA_APPLICATION_HPP
+#define TEGRA_TEGRA_APPLICATION_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -162,4 +162,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // TEGRA_APPLICATION_HPP
+#endif // TEGRA_TEGRA_APPLICATION_HPP

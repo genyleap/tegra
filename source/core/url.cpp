@@ -1,5 +1,20 @@
-#include "url.hpp"
-#include "core/core.hpp"
+//! Tegra's Url.
+#ifdef __has_include
+# if __has_include("url.hpp")
+#   include "url.hpp"
+#else
+#   error "Tegra's url was not found!"
+# endif
+#endif
+
+//! Tegra's Core.
+#ifdef __has_include
+# if __has_include(<core>)
+#   include <core>
+#else
+#   error "Tegra's core was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

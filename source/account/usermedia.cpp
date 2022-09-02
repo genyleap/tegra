@@ -1,4 +1,11 @@
-#include "usermedia.hpp"
+//! Tegra's Account UserMedia
+#ifdef __has_include
+# if __has_include("account/usermedia.hpp")
+#   include "account/usermedia.hpp"
+#else
+#   error "Tegra's usermedia was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Abstracts;

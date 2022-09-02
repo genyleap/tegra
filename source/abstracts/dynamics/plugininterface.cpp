@@ -1,4 +1,11 @@
-#include "plugininterface.hpp"
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include("abstracts/dynamics/plugininterface.hpp")
+#   include "abstracts/dynamics/plugininterface.hpp"
+#else
+#   error "Tegra's plugininterface was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

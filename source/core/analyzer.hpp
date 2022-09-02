@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TEGRA_ANALYZER_HPP
-#define TEGRA_ANALYZER_HPP
+#ifndef TEGRA_TEGRA_ANALYZER_HPP
+#define TEGRA_TEGRA_ANALYZER_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -162,4 +162,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // TEGRA_ANALYZER_HPP
+#endif // TEGRA_TEGRA_ANALYZER_HPP

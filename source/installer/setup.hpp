@@ -10,14 +10,35 @@
  *
  */
 
-#ifndef SETUP_HPP
-#define SETUP_HPP
+#ifndef TEGRA_SETUP_HPP
+#define TEGRA_SETUP_HPP
 
-#include "setupdata.hpp"
-#include "common.hpp"
-#include "core/core.hpp"
-#include "core/application.hpp"
-#include "translator/language.hpp"
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+//! Tegra's Setupdata.
+#ifdef __has_include
+# if __has_include("setupdata.hpp")
+#   include "setupdata.hpp"
+#else
+#   error "Tegra's setupdata was not found!"
+# endif
+#endif
+
+//! Tegra's Application.
+#ifdef __has_include
+# if __has_include(<application>)
+#   include <application>
+#else
+#   error "The application of Tegra are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
@@ -138,4 +159,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // SETUP_HPP
+#endif // TEGRA_SETUP_HPP

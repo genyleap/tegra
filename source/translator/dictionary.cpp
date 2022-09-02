@@ -1,8 +1,20 @@
-#include "dictionary.hpp"
-#include "core/logger.hpp"
+//! Tegra's Dictionary.
+#ifdef __has_include
+# if __has_include("dictionary.hpp")
+#   include "dictionary.hpp"
+#else
+#   error "Tegra's dictionary was not found!"
+# endif
+#endif
 
-#include <algorithm>
-#include <iostream>
+//! Tegra's eLogger.
+#ifdef __has_include
+# if __has_include(<logger>)
+#   include <logger>
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Translation)
 TEGRA_USING_NAMESPACE Tegra::eLogger;

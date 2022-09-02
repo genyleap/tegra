@@ -10,10 +10,17 @@
  *
  */
 
-#ifndef SETUP_DATA_HPP
-#define SETUP_DATA_HPP
+#ifndef TEGRA_SETUP_DATA_HPP
+#define TEGRA_SETUP_DATA_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
@@ -111,4 +118,4 @@ struct ServerData final
 
 TEGRA_NAMESPACE_END
 
-#endif // SETUP_DATA_HPP
+#endif // TEGRA_SETUP_DATA_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef URL_HPP
-#define URL_HPP
+#ifndef TEGRA_URL_HPP
+#define TEGRA_URL_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -94,4 +94,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // URL_HPP
+#endif  // TEGRA_URL_HPP

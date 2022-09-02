@@ -1,4 +1,11 @@
-#include "device.hpp"
+//! Tegra's Abstract Device.
+#ifdef __has_include
+# if __has_include("abstracts/device.hpp")
+#   include "abstracts/device.hpp"
+#else
+#   error "Tegra's device was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

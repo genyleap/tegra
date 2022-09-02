@@ -10,10 +10,17 @@
  *
  */
 
-#ifndef PRESTRUCTURE_HPP
-#define PRESTRUCTURE_HPP
+#ifndef TEGRA_PRESTRUCTURE_HPP
+#define TEGRA_PRESTRUCTURE_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -107,4 +114,4 @@ struct SystemInfo final
     Optional<SystemLicense>     license         {};
 };
 
-#endif // PRESTRUCTURE_HPP
+#endif // TEGRA_PRESTRUCTURE_HPP

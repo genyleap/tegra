@@ -1,4 +1,11 @@
-#include "pluginmanager.hpp"
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include("abstracts/dynamics/pluginmanager.hpp")
+#   include "abstracts/dynamics/pluginmanager.hpp"
+#else
+#   error "Tegra's pluginmanager was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

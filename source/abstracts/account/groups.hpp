@@ -10,10 +10,17 @@
  *
  */
 
-#ifndef GROUPS_ABSTRACT_HPP
-#define GROUPS_ABSTRACT_HPP
+#ifndef TEGRA_GROUPS_ABSTRACT_HPP
+#define TEGRA_GROUPS_ABSTRACT_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -126,4 +133,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // GROUPS_ABSTRACT_HPP
+#endif  // TEGRA_GROUPS_ABSTRACT_HPP

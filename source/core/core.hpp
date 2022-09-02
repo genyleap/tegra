@@ -13,14 +13,59 @@
 #ifndef TEGRA_CORE_HPP
 #define TEGRA_CORE_HPP
 
-#include "common.hpp"
-#include "logger.hpp"
-#include "version.hpp"
-#include "prestructure.hpp"
-#include "abstracts/dynamics/moduleschema.hpp"
-#include "abstracts/dynamics/pluginschema.hpp"
-#include "translator/language.hpp"
-#include "translator/translator.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Prestructure.
+#ifdef __has_include
+# if __has_include(<prestructure>)
+#   include <prestructure>
+#else
+#   error "Tegra's prestructure was not found!"
+# endif
+#endif
+
+//! Tegra's Translator.
+#ifdef __has_include
+# if __has_include(<translator>)
+#   include <translator>
+#else
+#   error "Tegra's translator was not found!"
+# endif
+#endif
+
+//! Tegra's Terminal.
+#ifdef __has_include
+# if __has_include(<terminal>)
+#   include <terminal>
+#else
+#   error "Tegra's terminal was not found!"
+# endif
+#endif
+
+//! Tegra's eLogger.
+#ifdef __has_include
+# if __has_include(<logger>)
+#   include <logger>
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
+
+//! Tegra's Interfaces (Dynamics).
+#ifdef __has_include
+# if __has_include(<abstracts/dynamics>)
+#   include <abstracts/dynamics>
+#else
+#   error "Tegra's dynamics was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
@@ -649,4 +694,4 @@ public:
 
 TEGRA_NAMESPACE_END
 
-#endif // CORE_HPP
+#endif // TEGRA_CORE_HPP

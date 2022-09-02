@@ -1,4 +1,11 @@
-#include "page.hpp"
+//! Tegra's Abstract Page.
+#ifdef __has_include
+# if __has_include("abstracts/page.hpp")
+#   include "abstracts/page.hpp"
+#else
+#   error "Tegra's page was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

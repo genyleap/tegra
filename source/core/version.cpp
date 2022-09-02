@@ -1,4 +1,11 @@
-#include "version.hpp"
+//! Tegra's Version.
+#ifdef __has_include
+# if __has_include("version.hpp")
+#   include "version.hpp"
+#else
+#   error "Tegra's version was not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
 

@@ -1,5 +1,5 @@
-#ifndef SETUP_VIEW_HPP
-#define SETUP_VIEW_HPP
+#ifndef TEGRA_SETUP_VIEW_HPP
+#define TEGRA_SETUP_VIEW_HPP
 
 class Setup
 {

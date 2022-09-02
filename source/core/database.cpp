@@ -1,7 +1,11 @@
-#include "database.hpp"
-#include "core.hpp"
-#include "application.hpp"
-#include "translator/translator.hpp"
+//! Tegra's Database.
+#ifdef __has_include
+# if __has_include("database.hpp")
+#   include "database.hpp"
+#else
+#   error "Tegra's database was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

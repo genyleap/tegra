@@ -10,12 +10,26 @@
  *
  */
 
-#ifndef PLUGIN_MANAGER_HPP
-#define PLUGIN_MANAGER_HPP
+#ifndef TEGRA_PLUGIN_MANAGER_HPP
+#define TEGRA_PLUGIN_MANAGER_HPP
 
-#include "plugininterface.hpp"
-#include "abstracts/dynamics/plugin.hpp"
-#include "abstracts/dynamics/pluginmanager.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include(<abstracts/dynamics>)
+#   include <abstracts/dynamics>
+#else
+#   error "Tegra's dynamics was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
 
@@ -51,8 +65,8 @@ public:
 private:
   TEGRA_DEFAULT_OCTORS(PluginManager)
   bool m_status = {false};
-  std::unique_ptr<PluginManagerPimpl> m_implementation;
+  Scope<PluginManagerPimpl> m_implementation;
 };
 
 
-#endif // PLUGIN_MANAGER_HPP
+#endif // TEGRA_PLUGIN_MANAGER_HPP

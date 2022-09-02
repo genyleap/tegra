@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef GROUPS_HPP
-#define GROUPS_HPP
+#ifndef TEGRA_GROUPS_HPP
+#define TEGRA_GROUPS_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -83,4 +83,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // GROUPS_HPP
+#endif  // TEGRA_GROUPS_HPP

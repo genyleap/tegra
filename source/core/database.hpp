@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef DATABASE_HPP
-#define DATABASE_HPP
+#ifndef TEGRA_DATABASE_HPP
+#define TEGRA_DATABASE_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -375,4 +375,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // DATABASE_HPP
+#endif  // TEGRA_DATABASE_HPP
