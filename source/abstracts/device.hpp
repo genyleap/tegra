@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef DEVICE_ABSTRACT_HPP
-#define DEVICE_ABSTRACT_HPP
+#ifndef TEGRA_DEVICE_ABSTRACT_HPP
+#define TEGRA_DEVICE_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -85,4 +85,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // DEVICE_ABSTRACT_HPP
+#endif  // TEGRA_DEVICE_ABSTRACT_HPP

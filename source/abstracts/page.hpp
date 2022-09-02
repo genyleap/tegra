@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef PAGE_ABSTRACT_HPP
-#define PAGE_ABSTRACT_HPP
+#ifndef TEGRA_PAGE_ABSTRACT_HPP
+#define TEGRA_PAGE_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -266,4 +266,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // PAGE_ABSTRACT_HPP
+#endif  // TEGRA_PAGE_ABSTRACT_HPP

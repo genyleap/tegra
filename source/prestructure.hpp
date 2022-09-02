@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef PRESTRUCTURE_HPP
-#define PRESTRUCTURE_HPP
+#ifndef TEGRA_PRESTRUCTURE_HPP
+#define TEGRA_PRESTRUCTURE_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -114,4 +114,4 @@ struct SystemInfo final
     Optional<SystemLicense>     license         {};
 };
 
-#endif // PRESTRUCTURE_HPP
+#endif // TEGRA_PRESTRUCTURE_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SETTING_ABSTRACT_HPP
-#define SETTING_ABSTRACT_HPP
+#ifndef TEGRA_SETTING_ABSTRACT_HPP
+#define TEGRA_SETTING_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -180,4 +180,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // SETTING_ABSTRACT_HPP
+#endif  // TEGRA_SETTING_ABSTRACT_HPP

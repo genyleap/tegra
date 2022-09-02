@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef VERSION_HPP
-#define VERSION_HPP
+#ifndef TEGRA_VERSION_HPP
+#define TEGRA_VERSION_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -69,4 +69,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // VERSION_HPP
+#endif  // TEGRA_VERSION_HPP

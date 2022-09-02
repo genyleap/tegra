@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef USER_BASIC_DATA_ABSTRACT_HPP
-#define USER_BASIC_DATA_ABSTRACT_HPP
+#ifndef TEGRA_USER_BASIC_DATA_ABSTRACT_HPP
+#define TEGRA_USER_BASIC_DATA_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -189,4 +189,4 @@ struct UserBasicData __tegra_final
 
 TEGRA_NAMESPACE_END
 
-#endif // USER_BASIC_DATA_ABSTRACT_HPP
+#endif // TEGRA_USER_BASIC_DATA_ABSTRACT_HPP

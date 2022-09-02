@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef MODULE_MANAGER_HPP
-#define MODULE_MANAGER_HPP
+#ifndef TEGRA_MODULE_MANAGER_HPP
+#define TEGRA_MODULE_MANAGER_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -69,4 +69,4 @@ private:
 };
 
 
-#endif // MODULE_MANAGER_HPP
+#endif // TEGRA_MODULE_MANAGER_HPP

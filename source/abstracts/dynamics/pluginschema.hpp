@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef PLUGIN_SCHEMA_ABSTRACT_HPP
-#define PLUGIN_SCHEMA_ABSTRACT_HPP
+#ifndef TEGRA_PLUGIN_SCHEMA_ABSTRACT_HPP
+#define TEGRA_PLUGIN_SCHEMA_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -72,4 +72,4 @@ struct PluginInfo __tegra_final
 
 TEGRA_NAMESPACE_END
 
-#endif  // PLUGIN_SCHEMA_ABSTRACT_HPP
+#endif  // TEGRA_PLUGIN_SCHEMA_ABSTRACT_HPP

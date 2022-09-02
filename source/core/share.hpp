@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SHARE_HPP
-#define SHARE_HPP
+#ifndef TEGRA_SHARE_HPP
+#define TEGRA_SHARE_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -66,4 +66,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // SHARE_HPP
+#endif  // TEGRA_SHARE_HPP

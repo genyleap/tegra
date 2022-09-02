@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SETUP_DATA_HPP
-#define SETUP_DATA_HPP
+#ifndef TEGRA_SETUP_DATA_HPP
+#define TEGRA_SETUP_DATA_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -118,4 +118,4 @@ struct ServerData final
 
 TEGRA_NAMESPACE_END
 
-#endif // SETUP_DATA_HPP
+#endif // TEGRA_SETUP_DATA_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TEMPLATES_HPP
-#define TEMPLATES_HPP
+#ifndef TEGRA_TEMPLATES_HPP
+#define TEGRA_TEMPLATES_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -234,4 +234,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // TEMPLATES_HPP
+#endif  // TEGRA_TEMPLATES_HPP

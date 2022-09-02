@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TRANSFER_ABSTRACT_HPP
-#define TRANSFER_ABSTRACT_HPP
+#ifndef TEGRA_TRANSFER_ABSTRACT_HPP
+#define TEGRA_TRANSFER_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -85,4 +85,4 @@ private:
 };
 TEGRA_NAMESPACE_END
 
-#endif  // TRANSFER_ABSTRACT_HPP
+#endif  // TEGRA_TRANSFER_ABSTRACT_HPP

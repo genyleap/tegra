@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TAGS_HPP
-#define TAGS_HPP
+#ifndef TEGRA_TAGS_HPP
+#define TEGRA_TAGS_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -91,4 +91,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // TAGS_HPP
+#endif  // TEGRA_TAGS_HPP

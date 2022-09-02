@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef POST_ABSTRACT_HPP
-#define POST_ABSTRACT_HPP
+#ifndef TEGRA_POST_ABSTRACT_HPP
+#define TEGRA_POST_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -193,4 +193,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // POST_ABSTRACT_HPP
+#endif  // TEGRA_POST_ABSTRACT_HPP

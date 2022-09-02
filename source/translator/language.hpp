@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef LANGUAGE_HPP
-#define LANGUAGE_HPP
+#ifndef TEGRA_LANGUAGE_HPP
+#define TEGRA_LANGUAGE_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -99,4 +99,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // LANGUAGE_HPP
+#endif  // TEGRA_LANGUAGE_HPP

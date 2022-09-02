@@ -694,4 +694,4 @@ public:
 
 TEGRA_NAMESPACE_END
 
-#endif // CORE_HPP
+#endif // TEGRA_CORE_HPP

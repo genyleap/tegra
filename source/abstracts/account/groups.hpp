@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef GROUPS_ABSTRACT_HPP
-#define GROUPS_ABSTRACT_HPP
+#ifndef TEGRA_GROUPS_ABSTRACT_HPP
+#define TEGRA_GROUPS_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -133,4 +133,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // GROUPS_ABSTRACT_HPP
+#endif  // TEGRA_GROUPS_ABSTRACT_HPP

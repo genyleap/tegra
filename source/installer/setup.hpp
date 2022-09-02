@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SETUP_HPP
-#define SETUP_HPP
+#ifndef TEGRA_SETUP_HPP
+#define TEGRA_SETUP_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -159,4 +159,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // SETUP_HPP
+#endif // TEGRA_SETUP_HPP

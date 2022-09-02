@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef INDEX_HPP
-#define INDEX_HPP
+#ifndef TEGRA_INDEX_HPP
+#define TEGRA_INDEX_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -52,4 +52,4 @@ public:
 
 TEGRA_NAMESPACE_END
 
-#endif // INDEX_HPP
+#endif // TEGRA_INDEX_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef SERVICE_ABSTRACT_HPP
-#define SERVICE_ABSTRACT_HPP
+#ifndef TEGRA_SERVICE_ABSTRACT_HPP
+#define TEGRA_SERVICE_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -223,4 +223,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // SERVICE_ABSTRACT_HPP
+#endif  // TEGRA_SERVICE_ABSTRACT_HPP

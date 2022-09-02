@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef DEVICE_HPP
-#define DEVICE_HPP
+#ifndef TEGRA_DEVICE_HPP
+#define TEGRA_DEVICE_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -78,4 +78,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // DEVICE_HPP
+#endif  // TEGRA_DEVICE_HPP

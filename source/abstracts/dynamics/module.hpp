@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef MODULE_ABSTRACT_HPP
-#define MODULE_ABSTRACT_HPP
+#ifndef TEGRA_MODULE_ABSTRACT_HPP
+#define TEGRA_MODULE_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -139,4 +139,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // MODULE_ABSTRACT_HPP
+#endif  // TEGRA_MODULE_ABSTRACT_HPP

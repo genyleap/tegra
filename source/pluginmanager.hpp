@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef PLUGIN_MANAGER_HPP
-#define PLUGIN_MANAGER_HPP
+#ifndef TEGRA_PLUGIN_MANAGER_HPP
+#define TEGRA_PLUGIN_MANAGER_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -65,8 +65,8 @@ public:
 private:
   TEGRA_DEFAULT_OCTORS(PluginManager)
   bool m_status = {false};
-  std::unique_ptr<PluginManagerPimpl> m_implementation;
+  Scope<PluginManagerPimpl> m_implementation;
 };
 
 
-#endif // PLUGIN_MANAGER_HPP
+#endif // TEGRA_PLUGIN_MANAGER_HPP

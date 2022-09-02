@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef USER_MANAGER_HPP
-#define USER_MANAGER_HPP
+#ifndef TEGRA_USER_MANAGER_HPP
+#define TEGRA_USER_MANAGER_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -93,4 +93,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // USER_MANAGER_HPP
+#endif // TEGRA_USER_MANAGER_HPP

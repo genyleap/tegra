@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef BEARER_TOKEN_ABSTRACT_HPP
-#define BEARER_TOKEN_ABSTRACT_HPP
+#ifndef TEGRA_BEARER_TOKEN_ABSTRACT_HPP
+#define TEGRA_BEARER_TOKEN_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -65,4 +65,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // BEARER_TOKEN_ABSTRACT_HPP
+#endif  // TEGRA_BEARER_TOKEN_ABSTRACT_HPP

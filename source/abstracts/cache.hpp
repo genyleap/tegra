@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef CACHE_ABSTRACT_HPP
-#define CACHE_ABSTRACT_HPP
+#ifndef TEGRA_CACHE_ABSTRACT_HPP
+#define TEGRA_CACHE_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -84,4 +84,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // CACHE_ABSTRACT_HPP
+#endif  // TEGRA_CACHE_ABSTRACT_HPP

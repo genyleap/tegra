@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef APIKEY_ABSTRACT_HPP
-#define APIKEY_ABSTRACT_HPP
+#ifndef TEGRA_APIKEY_ABSTRACT_HPP
+#define TEGRA_APIKEY_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -80,4 +80,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // APIKEY_ABSTRACT_HPP
+#endif  // TEGRA_APIKEY_ABSTRACT_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef CAPTCHA_ABSTRACT_HPP
-#define CAPTCHA_ABSTRACT_HPP
+#ifndef TEGRA_CAPTCHA_ABSTRACT_HPP
+#define TEGRA_CAPTCHA_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -53,4 +53,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // CAPTCHA_ABSTRACT_HPP
+#endif  // TEGRA_CAPTCHA_ABSTRACT_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef MENU_ABSTRACT_HPP
-#define MENU_ABSTRACT_HPP
+#ifndef TEGRA_MENU_ABSTRACT_HPP
+#define TEGRA_MENU_ABSTRACT_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -253,4 +253,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // MENU_ABSTRACT_HPP
+#endif  // TEGRA_MENU_ABSTRACT_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef PLUGIN_INTERFACE_HPP
-#define PLUGIN_INTERFACE_HPP
+#ifndef TEGRA_PLUGIN_INTERFACE_HPP
+#define TEGRA_PLUGIN_INTERFACE_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -89,4 +89,4 @@ private:
 };
 
 
-#endif // PLUGIN_INTERFACE_HPP
+#endif // TEGRA_PLUGIN_INTERFACE_HPP

@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef MODULE_INTERFACE_HPP
-#define MODULE_INTERFACE_HPP
+#ifndef TEGRA_MODULE_INTERFACE_HPP
+#define TEGRA_MODULE_INTERFACE_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -89,4 +89,4 @@ private:
 };
 
 
-#endif // MODULE_INTERFACE_HPP
+#endif // TEGRA_MODULE_INTERFACE_HPP
