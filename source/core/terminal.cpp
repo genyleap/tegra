@@ -1,6 +1,11 @@
-﻿#include "terminal.hpp"
-#include <ostream>
-#include <iomanip>
+﻿//! Tegra's Terminal.
+#ifdef __has_include
+# if __has_include("terminal.hpp")
+#   include "terminal.hpp"
+#else
+#   error "Tegra's terminal was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::System;
 

@@ -1,4 +1,11 @@
-#include "minify.hpp"
+//! Tegra's Minify.
+#ifdef __has_include
+# if __has_include("minify.hpp")
+#   include "minify.hpp"
+#else
+#   error "Tegra's minify was not found!"
+# endif
+#endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
 

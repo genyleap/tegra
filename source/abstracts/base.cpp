@@ -1,4 +1,11 @@
-#include "base.hpp"
+//! Tegra's Abstract Base.
+#ifdef __has_include
+# if __has_include("abstracts/base.hpp")
+#   include "abstracts/base.hpp"
+#else
+#   error "Tegra's base was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

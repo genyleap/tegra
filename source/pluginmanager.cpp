@@ -1,6 +1,20 @@
-#include "pluginmanager.hpp"
+//! Tegra's Pluginmanager.
+#ifdef __has_include
+# if __has_include("pluginmanager.hpp")
+#   include "pluginmanager.hpp"
+#else
+#   error "Tegra's pluginmanager was not found!"
+# endif
+#endif
 
-#include "core/logger.hpp"
+//! Tegra's eLogger.
+#ifdef __has_include
+# if __has_include(<logger>)
+#   include <logger>
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

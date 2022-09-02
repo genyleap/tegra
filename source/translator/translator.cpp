@@ -1,8 +1,29 @@
-#include "translator.hpp"
-#include "core/core.hpp"
-#include "core/config.hpp"
-#include "core/logger.hpp"
-#include "core/filesystem.hpp"
+//! Tegra's Translator.
+#ifdef __has_include
+# if __has_include("translator.hpp")
+#   include "translator.hpp"
+#else
+#   error "Tegra's translator was not found!"
+# endif
+#endif
+
+//! Tegra's eLogger.
+#ifdef __has_include
+# if __has_include(<logger>)
+#   include <logger>
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
+
+//! Tegra's FileSystem.
+#ifdef __has_include
+# if __has_include(<self/filesystem>)
+#   include <self/filesystem>
+#else
+#   error "Tegra's filesystem was not found!"
+# endif
+#endif
 
 #include <stdio.h>
 #ifdef PLATFORM_WINDOWS

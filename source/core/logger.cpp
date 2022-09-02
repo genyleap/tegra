@@ -1,5 +1,20 @@
-﻿#include "logger.hpp"
-#include "terminal.hpp"
+﻿//! Tegra's Logger.
+#ifdef __has_include
+# if __has_include("logger.hpp")
+#   include "logger.hpp"
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
+
+//! Tegra's Terminal.
+#ifdef __has_include
+# if __has_include("terminal.hpp")
+#   include "terminal.hpp"
+#else
+#   error "Tegra's terminal was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Terminal;
 

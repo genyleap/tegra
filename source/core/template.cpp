@@ -1,10 +1,11 @@
-#include "template.hpp"
-#include "core/core.hpp"
-#include "core/config.hpp"
-#include "core/logger.hpp"
-#include "core/seo.hpp"
-#include "translator/language.hpp"
-#include <map>
+//! Tegra's Template.
+#ifdef __has_include
+# if __has_include("template.hpp")
+#   include "template.hpp"
+#else
+#   error "Tegra's template was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::SEO;

@@ -13,13 +13,6 @@
 #ifndef TEGRA_LOGGER_HPP
 #define TEGRA_LOGGER_HPP
 
-#include <ctime>
-#include <iostream>
-#include <mutex>
-#include <sstream>
-#include <string>
-#include <thread>
-
 //! Tegra's Common.
 #ifdef __has_include
 # if __has_include(<common>)

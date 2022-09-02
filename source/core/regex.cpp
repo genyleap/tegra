@@ -1,4 +1,11 @@
-﻿#include "regex.hpp"
+﻿//! Tegra's Regex.
+#ifdef __has_include
+# if __has_include("regex.hpp")
+#   include "regex.hpp"
+#else
+#   error "Tegra's regex was not found!"
+# endif
+#endif
 
 #if defined(_MSC_VER) && _MSC_VER >= 1900
 #include <unordered_map>

@@ -1,10 +1,20 @@
-#include "common.hpp"
-#include "core/core.hpp"
-#include "core/application.hpp"
-#include "core/database.hpp"
-#include "core/config.hpp"
-#include "core/seo.hpp"
-#include "core/version.hpp"
+//! Tegra's Seo.
+#ifdef __has_include
+# if __has_include("seo.hpp")
+#   include "seo.hpp"
+#else
+#   error "Tegra's seo was not found!"
+# endif
+#endif
+
+//! Tegra's Database.
+#ifdef __has_include
+# if __has_include(<database>)
+#   include <database>
+#else
+#   error "The database of Tegra was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

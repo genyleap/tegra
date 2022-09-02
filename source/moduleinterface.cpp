@@ -1,4 +1,11 @@
-#include "moduleinterface.hpp"
+//! Tegra's Moduleinterface.
+#ifdef __has_include
+# if __has_include("moduleinterface.hpp")
+#   include "moduleinterface.hpp"
+#else
+#   error "Tegra's moduleinterface was not found!"
+# endif
+#endif
 
 class ModuleInterfaceImpl
 {

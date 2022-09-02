@@ -22,9 +22,14 @@
 # endif
 #endif
 
-#include "plugininterface.hpp"
-#include "abstracts/dynamics/plugin.hpp"
-#include "abstracts/dynamics/pluginmanager.hpp"
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include(<abstracts/dynamics>)
+#   include <abstracts/dynamics>
+#else
+#   error "Tegra's dynamics was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
 

@@ -1,4 +1,11 @@
-#include "share.hpp"
+//! Tegra's Share.
+#ifdef __has_include
+# if __has_include("share.hpp")
+#   include "share.hpp"
+#else
+#   error "Tegra's share was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

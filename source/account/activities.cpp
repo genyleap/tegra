@@ -1,4 +1,11 @@
-#include "activities.hpp"
+//! Tegra's Account Activities.
+#ifdef __has_include
+# if __has_include("account/activities.hpp")
+#   include "account/activities.hpp"
+#else
+#   error "Tegra's activities are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

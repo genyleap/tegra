@@ -1,4 +1,11 @@
-#include "transfer.hpp"
+//! Tegra's Abstract Transfer.
+#ifdef __has_include
+# if __has_include("abstracts/transfer.hpp")
+#   include "abstracts/transfer.hpp"
+#else
+#   error "Tegra's transfer was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

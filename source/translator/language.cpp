@@ -1,7 +1,29 @@
-#include "language.hpp"
-#include "core/core.hpp"
-#include "core/config.hpp"
-#include "core/logger.hpp"
+//! Tegra's Language.
+#ifdef __has_include
+# if __has_include("language.hpp")
+#   include "language.hpp"
+#else
+#   error "Tegra's language was not found!"
+# endif
+#endif
+
+//! Tegra's Core.
+#ifdef __has_include
+# if __has_include(<core>)
+#   include <core>
+#else
+#   error "Tegra's core was not found!"
+# endif
+#endif
+
+//! Tegra's Config.
+#ifdef __has_include
+# if __has_include(<config>)
+#   include <config>
+#else
+#   error "Tegra's config was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

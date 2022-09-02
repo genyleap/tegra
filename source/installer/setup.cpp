@@ -1,8 +1,11 @@
-#include "setup.hpp"
-#include "core/core.hpp"
-#include "core/application.hpp"
-#include "core/system.hpp"
-#include <filesystem>
+//! Tegra's Setup.
+#ifdef __has_include
+# if __has_include("setup.hpp")
+#   include "setup.hpp"
+#else
+#   error "Tegra's setup was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::System;
 

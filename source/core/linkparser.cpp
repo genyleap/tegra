@@ -1,5 +1,11 @@
-#include "linkparser.hpp"
-#include "core.hpp"
+//! Tegra's LinkParser.
+#ifdef __has_include
+# if __has_include("linkparser.hpp")
+#   include "linkparser.hpp"
+#else
+#   error "Tegra's linkparser was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;

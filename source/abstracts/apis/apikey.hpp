@@ -22,7 +22,15 @@
 # endif
 #endif
 
-#include "abstracts/api.hpp"
+//! Tegra's Abstract Api.
+#ifdef __has_include
+# if __has_include(<abstracts/api>)
+#   include <abstracts/api>
+#else
+#   error "Tegra's api was not found!"
+# endif
+#endif
+
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 

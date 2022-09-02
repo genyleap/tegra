@@ -1,4 +1,11 @@
-#include "modulemanager.hpp"
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include("abstracts/dynamics/modulemanager.hpp")
+#   include "abstracts/dynamics/modulemanager.hpp"
+#else
+#   error "Tegra's modulemanager was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

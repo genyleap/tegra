@@ -1,8 +1,47 @@
-#include "index.hpp"
-#include "core/core.hpp"
-#include "core/template.hpp"
-#include "core/database.hpp"
-#include "installer/setup.hpp"
+//! Tegra's Index.
+#ifdef __has_include
+# if __has_include("index.hpp")
+#   include "index.hpp"
+#else
+#   error "Tegra's index was not found!"
+# endif
+#endif
+
+//! Tegra's Installer/Setup.
+#ifdef __has_include
+# if __has_include("installer/setup.hpp")
+#   include "installer/setup.hpp"
+#else
+#   error "Tegra's installer/setup was not found!"
+# endif
+#endif
+
+//! Tegra's Core.
+#ifdef __has_include
+# if __has_include(<core>)
+#   include <core>
+#else
+#   error "Tegra's core was not found!"
+# endif
+#endif
+
+//! Tegra's Template.
+#ifdef __has_include
+# if __has_include(<template>)
+#   include <template>
+#else
+#   error "Tegra's template was not found!"
+# endif
+#endif
+
+//! Tegra's Database.
+#ifdef __has_include
+# if __has_include(<database>)
+#   include <database>
+#else
+#   error "Tegra's database was not found!"
+# endif
+#endif
 
 //!Tegra
 TEGRA_USING_NAMESPACE Tegra;

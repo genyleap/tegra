@@ -1,4 +1,11 @@
-#include "application.hpp"
+//! Tegra's Application.
+#ifdef __has_include
+# if __has_include("application.hpp")
+#   include "application.hpp"
+#else
+#   error "Tegra's application was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

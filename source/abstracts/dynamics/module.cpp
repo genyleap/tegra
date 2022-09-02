@@ -1,4 +1,11 @@
-#include "module.hpp"
+//! Tegra's Abstract Dynamics.
+#ifdef __has_include
+# if __has_include("abstracts/dynamics/module.hpp")
+#   include "abstracts/dynamics/module.hpp"
+#else
+#   error "Tegra's module was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

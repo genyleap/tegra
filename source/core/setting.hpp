@@ -95,7 +95,6 @@ private:
 
 struct SettingData final
 {
-    Scope<Engine>  engine   {};
     VectorString   option   {};
     SettingType    type     {};
     std::string    language {};

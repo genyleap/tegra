@@ -1,4 +1,11 @@
-#include "groups.hpp"
+//! Tegra's Groups.
+#ifdef __has_include
+# if __has_include(<abstracts/groups>)
+#   include <abstracts/groups>
+#else
+#   error "Tegra's groups are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

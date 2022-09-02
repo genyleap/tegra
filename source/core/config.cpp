@@ -1,6 +1,11 @@
-#include "core/core.hpp"
-#include "config.hpp"
-#include "logger.hpp"
+//! Tegra's Config.
+#ifdef __has_include
+# if __has_include("config.hpp")
+#   include "config.hpp"
+#else
+#   error "Tegra's config was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

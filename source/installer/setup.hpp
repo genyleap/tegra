@@ -22,8 +22,23 @@
 # endif
 #endif
 
-#include "setupdata.hpp"
-#include "core/application.hpp"
+//! Tegra's Setupdata.
+#ifdef __has_include
+# if __has_include("setupdata.hpp")
+#   include "setupdata.hpp"
+#else
+#   error "Tegra's setupdata was not found!"
+# endif
+#endif
+
+//! Tegra's Application.
+#ifdef __has_include
+# if __has_include(<application>)
+#   include <application>
+#else
+#   error "The application of Tegra are not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

@@ -1,4 +1,11 @@
-#include "service.hpp"
+//! Tegra's Abstract Service.
+#ifdef __has_include
+# if __has_include("abstracts/service.hpp")
+#   include "abstracts/service.hpp"
+#else
+#   error "Tegra's service was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

@@ -1,7 +1,20 @@
-#include "system.hpp"
+//! Tegra's System.
+#ifdef __has_include
+# if __has_include("system.hpp")
+#   include "system.hpp"
+#else
+#   error "Tegra's system was not found!"
+# endif
+#endif
 
-#include "common.hpp"
-#include "core/core.hpp"
+//! Tegra's Core.
+#ifdef __has_include
+# if __has_include(<core>)
+#   include <core>
+#else
+#   error "Tegra's core was not found!"
+# endif
+#endif
 
 #if defined(PLATFORM_MAC)
 #include <sys/socket.h>

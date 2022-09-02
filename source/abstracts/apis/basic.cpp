@@ -1,4 +1,11 @@
-#include "basic.hpp"
+//! Tegra's Abstract Basic.
+#ifdef __has_include
+# if __has_include(<abstracts/apis/basic>)
+#   include <abstracts/apis/basic>
+#else
+#   error "Tegra's basic was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

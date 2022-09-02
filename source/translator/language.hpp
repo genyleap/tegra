@@ -22,7 +22,15 @@
 # endif
 #endif
 
-#include "core/url.hpp"
+//! Tegra's Url.
+#ifdef __has_include
+# if __has_include(<url>)
+#   include <url>
+#else
+#   error "Tegra's url was not found!"
+# endif
+#endif
+
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Multilangual)
 

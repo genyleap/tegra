@@ -1,4 +1,11 @@
-#include "usermanager.hpp"
+//! Tegra's Account Usermanager.
+#ifdef __has_include
+# if __has_include("account/usermanager.hpp")
+#   include "account/usermanager.hpp"
+#else
+#   error "Tegra's usermanager was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

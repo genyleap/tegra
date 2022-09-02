@@ -22,7 +22,14 @@
 # endif
 #endif
 
-#include "dictionary.hpp"
+//! Tegra's Dictionary.
+#ifdef __has_include
+# if __has_include("dictionary.hpp")
+#   include "dictionary.hpp"
+#else
+#   error "Tegra's dictionary was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;

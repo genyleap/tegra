@@ -1,4 +1,11 @@
-#include "device.hpp"
+//! Tegra's Device.
+#ifdef __has_include
+# if __has_include("device.hpp")
+#   include "device.hpp"
+#else
+#   error "Tegra's device was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

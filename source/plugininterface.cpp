@@ -1,4 +1,11 @@
-#include "plugininterface.hpp"
+//! Tegra's Plugininterface.
+#ifdef __has_include
+# if __has_include("plugininterface.hpp")
+#   include "plugininterface.hpp"
+#else
+#   error "Tegra's plugininterface was not found!"
+# endif
+#endif
 
 class PluginInterfaceImpl
 {

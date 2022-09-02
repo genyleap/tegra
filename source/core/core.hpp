@@ -49,6 +49,15 @@
 # endif
 #endif
 
+//! Tegra's eLogger.
+#ifdef __has_include
+# if __has_include(<logger>)
+#   include <logger>
+#else
+#   error "Tegra's logger was not found!"
+# endif
+#endif
+
 //! Tegra's Interfaces (Dynamics).
 #ifdef __has_include
 # if __has_include(<abstracts/dynamics>)
