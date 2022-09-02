@@ -1,10 +1,16 @@
-//! Tegra's Core.
+#ifndef  TEGRA_KERNEL
+#define TEGRA_KERNEL
+#endif
+
+//!Core feature
+#ifdef TEGRA_KERNEL
 #ifdef __has_include
 # if __has_include("core.hpp")
 #   include "core.hpp"
 #else
 #   error "Tegra's core was not found!"
 # endif
+#endif
 #endif
 
 //! Tegra's Core (Basic Requirements).
@@ -17,6 +23,7 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
