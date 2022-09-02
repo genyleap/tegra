@@ -13,9 +13,32 @@
 #ifndef PLUGIN_MANAGER_ABSTRACT_HPP
 #define PLUGIN_MANAGER_ABSTRACT_HPP
 
-#include "common.hpp"
-#include "plugin.hpp"
-#include "plugininterface.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Plugin.
+#ifdef __has_include
+# if __has_include("plugin.hpp")
+#   include "plugin.hpp"
+#else
+#   error "Tegra's module was not found!"
+# endif
+#endif
+
+//! Tegra's Plugin interface.
+#ifdef __has_include
+# if __has_include("plugininterface.hpp")
+#   include "plugininterface.hpp"
+#else
+#   error "Tegra's plugin interface was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 

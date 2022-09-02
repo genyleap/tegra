@@ -13,18 +13,16 @@
 #ifndef TEGRA_TRANSLATOR_HPP
 #define TEGRA_TRANSLATOR_HPP
 
-//! STL
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-#include <map>
-#include <sstream>
-#include <string>
-#include <string_view>
-#include <vector>
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
-#include "common.hpp"
-#include "translator/dictionary.hpp"
+#include "dictionary.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::Types;

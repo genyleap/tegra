@@ -13,8 +13,24 @@
 #ifndef TRANSFER_ABSTRACT_HPP
 #define TRANSFER_ABSTRACT_HPP
 
-#include "common.hpp"
-#include "api.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+// ToDo change for overridden version.
+//! Tegra's Api.
+#ifdef __has_include
+# if __has_include(<abstracts/api>)
+#   include <abstracts/api>
+#else
+#   error "Tegra's api was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 
@@ -33,7 +49,7 @@ __tegra_enum_class TransferMethodState : u8
 struct TransferData __tegra_final
 {
     TransferMethodState method   {};  ///< Transfer method for api service.
-    AuthenticationType  auth     {};  ///< Authentication type for api service.
+    AuthenticationType  auth     {};  ///< Authentication type for api service. // change with overridden version.
     OptionalString      path     {};  ///< Path for api service.
     OptionalString      output   {};  ///< Output from api service.
 };

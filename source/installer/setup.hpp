@@ -13,11 +13,17 @@
 #ifndef SETUP_HPP
 #define SETUP_HPP
 
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
 #include "setupdata.hpp"
-#include "common.hpp"
-#include "core/core.hpp"
 #include "core/application.hpp"
-#include "translator/language.hpp"
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;

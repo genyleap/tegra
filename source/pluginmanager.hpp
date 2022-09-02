@@ -13,6 +13,15 @@
 #ifndef PLUGIN_MANAGER_HPP
 #define PLUGIN_MANAGER_HPP
 
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
 #include "plugininterface.hpp"
 #include "abstracts/dynamics/plugin.hpp"
 #include "abstracts/dynamics/pluginmanager.hpp"

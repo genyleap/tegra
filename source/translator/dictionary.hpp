@@ -13,17 +13,14 @@
 #ifndef TEGRA_DICTIONARY_HPP
 #define TEGRA_DICTIONARY_HPP
 
-#include "common.hpp"
-
-//! STL
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-#include <map>
-#include <sstream>
-#include <string>
-#include <string_view>
-#include <vector>
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra::Types;
 

@@ -13,9 +13,23 @@
 #ifndef USER_BASIC_DATA_ABSTRACT_HPP
 #define USER_BASIC_DATA_ABSTRACT_HPP
 
-#include "common.hpp"
-#include "groups.hpp"
-#include "usermedia.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
+//! Tegra's Abstraction (Interface).
+#ifdef __has_include
+# if __has_include(<abstracts/account>)
+#   include <abstracts/account>
+#else
+#   error "The account abstraction of Tegra was not found!"
+# endif
+#endif
 
 TEGRA_USING_NAMESPACE Tegra;
 

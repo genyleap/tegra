@@ -13,7 +13,15 @@
 #ifndef DIGEST_AUTH_ABSTRACT_HPP
 #define DIGEST_AUTH_ABSTRACT_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
 #include "abstracts/api.hpp"
 
 TEGRA_USING_NAMESPACE Tegra::Types;

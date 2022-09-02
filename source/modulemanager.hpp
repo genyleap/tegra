@@ -13,7 +13,15 @@
 #ifndef MODULE_MANAGER_HPP
 #define MODULE_MANAGER_HPP
 
-#include "common.hpp"
+//! Tegra's Common.
+#ifdef __has_include
+# if __has_include(<common>)
+#   include <common>
+#else
+#   error "Tegra's common was not found!"
+# endif
+#endif
+
 #include "moduleinterface.hpp"
 #include "abstracts/dynamics/module.hpp"
 #include "abstracts/dynamics/modulemanager.hpp"
