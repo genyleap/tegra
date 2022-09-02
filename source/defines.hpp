@@ -41,6 +41,22 @@ namespace Tegra::Defines {
 #define ERROR_DB_CONNECT    64001
 #define ERROR_LOADING       64522
 
+//! Core defines.
+#undef  TEGRA_KERNEL
+#define TEGRA_KERNEL 0x1
+#undef  TEGRA_BACKEND
+#define TEGRA_BACKEND 0x1
+#undef  TEGRA_VIEW
+#define TEGRA_VIEW 0x1
+#undef  TEGRA_TEMPLATES
+#define TEGRA_TEMPLATES 0x1
+
+#undef  TEGRA_MODULE
+#define TEGRA_MODULE 0x1
+
+#undef  TEGRA_PLUGIN
+#define TEGRA_PLUGIN 0x1
+
 /*---------------------Default ports------------------------*/
 // Port numbers range from 0 to 65536, but only port numbers 0 to 1024 are
 // reserved for privileged services and designated as well-known ports. This list
