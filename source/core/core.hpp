@@ -22,15 +22,6 @@
 # endif
 #endif
 
-//! Tegra's Version.
-#ifdef __has_include
-# if __has_include(<version>)
-#   include <version>
-#else
-#   error "Tegra's version was not found!"
-# endif
-#endif
-
 //! Tegra's Prestructure.
 #ifdef __has_include
 # if __has_include(<prestructure>)
@@ -46,6 +37,15 @@
 #   include <translator>
 #else
 #   error "Tegra's translator was not found!"
+# endif
+#endif
+
+//! Tegra's Terminal.
+#ifdef __has_include
+# if __has_include(<terminal>)
+#   include <terminal>
+#else
+#   error "Tegra's terminal was not found!"
 # endif
 #endif
 

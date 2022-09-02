@@ -4,6 +4,7 @@
 #include "core/config.hpp"
 #include "core/terminal.hpp"
 #include "core/console.hpp"
+#include "core/database.hpp"
 #include "core/version.hpp"
 #include "core/logger.hpp"
 #include "core/setting.hpp"

@@ -1,12 +1,22 @@
-#include "core.hpp"
-#include "application.hpp"
-#include "logger.hpp"
-#include "config.hpp"
-#include "database.hpp"
-#include "console.hpp"
-#include "terminal.hpp"
-#include "translator/language.hpp"
+//! Tegra's Core.
+#ifdef __has_include
+# if __has_include("core.hpp")
+#   include "core.hpp"
+#else
+#   error "Tegra's core was not found!"
+# endif
+#endif
 
+//! Tegra's Core (Basic Requirements).
+#ifdef __has_include
+# if __has_include(<requirements>)
+#   include <requirements>
+#else
+#   error "Tegra's requirements are not found!"
+# endif
+#endif
+
+TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
