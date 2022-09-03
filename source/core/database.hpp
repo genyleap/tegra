@@ -31,11 +31,6 @@
 # endif
 #endif
 
-
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Database)
 
 
@@ -93,7 +88,7 @@ struct Constants final
         "answers", "rating", "review", "transaction", "likes"
     };
 
-    __tegra_inline_static_const Types::VectorString drivers {
+    __tegra_inline_static_const VectorString drivers {
         "mysql", "postgresql"
     };
 

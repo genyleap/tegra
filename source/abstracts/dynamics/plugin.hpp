@@ -31,10 +31,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::Abstracts::Plugin;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 /*!
@@ -79,7 +75,7 @@ public:
      * \brief getPluginType function returns type of plugin.
      * \returns a type as PluginType.
      */
-    __tegra_no_discard_virtual Optional<PluginType> getPluginType()  __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual Optional<Abstracts::Plugin::PluginType> getPluginType()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
      * \brief getVersion function returns version of plugin.
@@ -118,17 +114,17 @@ public:
      * \brief type function returns type of plugin.
      * \returns as PluginType.
      */
-    __tegra_virtual PluginType type() __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual Abstracts::Plugin::PluginType type() __tegra_const_noexcept = __tegra_zero;
 
 protected:
-    PluginInfo* m_pluginInfo;
+    Abstracts::Plugin::PluginInfo* m_pluginInfo;
     friend class AbstractPluginManager;
     void setCodeName(const OptionalString& codename);
     void setName(const OptionalString& name);
     void setDescription(const OptionalString& desc);
     void setCompiledDate(const OptionalString& compiledDate);
     void setLicense(const Optional<SystemLicense>& licese);
-    void setPluginType(const PluginType pluginType);
+    void setPluginType(const Abstracts::Plugin::PluginType pluginType);
     void setVersion(const Optional<SemanticVersion>& version);
     void setAuthor(const OptionalString& author);
     void setUrl(const OptionalString& url);

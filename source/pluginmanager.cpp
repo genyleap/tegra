@@ -18,6 +18,8 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Plugin;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 #if defined(PLATFORM_MAC) || defined(PLATFORM_LINUX)

@@ -31,7 +31,6 @@
 # endif
 #endif
 
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Multilangual)
 
 /*!
@@ -39,8 +38,8 @@ TEGRA_NAMESPACE_BEGIN(Tegra::Multilangual)
  */
 struct LanguageStruct final
 {
-    Types::LanguageType   get               {}; ///< LanguageType
-    Types::LanguageCodes  languageSupport   {}; ///< Language support.
+    LanguageType   get               {}; ///< LanguageType
+    LanguageCodes  languageSupport   {}; ///< Language support.
     Url                   url               {}; ///< Url{en-us, fa-ir}.
 };
 
@@ -55,25 +54,25 @@ public:
      * \brief set function will sets all data from translator adaptor inside the system.
      * \param data as a map [list].
      */
-    void registerAll(const Types::LanguageType& data);
+    void registerAll(const LanguageType& data);
 
     /*!
      * \brief registerLanguage
      * \param code
      */
-    void registerLanguage(const Types::LanguageCodes& code);
+    void registerLanguage(const LanguageCodes& code);
 
     /*!
      * \brief languageSupport
      * \returns
      */
-    Types::LanguageCodes languageSupport() __tegra_const_noexcept;
+    LanguageCodes languageSupport() __tegra_const_noexcept;
 
     /*!
      * \brief sections
      * \returns
      */
-    Types::VectorSection sections() __tegra_const_noexcept;
+    VectorSection sections() __tegra_const_noexcept;
 
     /*!
      * \brief getLanguageCode
@@ -91,7 +90,7 @@ public:
      * \brief get function will returns all data.
      * \returns as map.
      */
-    __tegra_no_discard Types::LanguageType get() __tegra_const_noexcept;
+    __tegra_no_discard LanguageType get() __tegra_const_noexcept;
 
 private:
     LanguageStruct* m_languageStruct{};

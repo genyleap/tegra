@@ -22,10 +22,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 ///!Concept of constans.

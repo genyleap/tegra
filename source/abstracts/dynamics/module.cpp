@@ -8,6 +8,7 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Module;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 

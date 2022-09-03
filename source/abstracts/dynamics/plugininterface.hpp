@@ -31,12 +31,10 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 using NameList      =   std::vector<std::string>;
-using PluginList    =   std::vector<PluginInfo>;
+using PluginList    =   std::vector<Abstracts::Plugin::PluginInfo>;
 using ErrorString   =   std::vector<std::string>;
 
 /*!

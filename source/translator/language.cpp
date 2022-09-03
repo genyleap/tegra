@@ -90,7 +90,7 @@ LanguageType Language::get() __tegra_const_noexcept
     return m_languageStruct->get;
 }
 
-void Language::registerLanguage(const Types::LanguageCodes& code)
+void Language::registerLanguage(const LanguageCodes& code)
 {
     m_languageStruct->languageSupport = code;
 }

@@ -31,10 +31,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 enum class DeviceState : u8
@@ -51,7 +47,7 @@ struct DeviceInfo final
     OptionalString  ipAddress   {}; ///< Device IP Address.
     OptionalString  macAddress  {}; ///< Device Mac Address.
     //!Dynamics
-    Optional<DeviceType> type   {}; ///< Device Type (Desktop, Mobile and etc.).
+    Optional<Tegra::System::DeviceType> type   {}; ///< Device Type (Desktop, Mobile and etc.).
     Optional<DeviceState> state {}; ///< Device State.
 };
 

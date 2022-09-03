@@ -7,6 +7,9 @@
 # endif
 #endif
 
+TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
+
 class PluginInterfaceImpl
 {
 public:

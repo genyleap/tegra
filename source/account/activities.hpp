@@ -31,18 +31,12 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-TEGRA_USING_NAMESPACE Tegra::Abstracts::Account;
-
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief The AbstractActivities class
  */
-class __tegra_export Activities : public AbstractActivities
+class __tegra_export Activities : public Abstracts::Account::AbstractActivities
 {
 public:
     Activities();
@@ -53,16 +47,16 @@ public:
      * \param memberId is unique id for user.
      * \returns as Activity data.
      */
-    __tegra_no_discard ActivityData get(const OptionalNumeric memberId) __tegra_const_noexcept_override;
+    __tegra_no_discard Abstracts::Account::ActivityData get(const OptionalNumeric memberId) __tegra_const_noexcept_override;
 
     /*!
      * \brief set function will sets user activities.
      * \param activity is data based on Activity struct members.
      */
-    __tegra_virtual void set(const ActivityData& activity) __tegra_const_noexcept_override;
+    __tegra_virtual void set(const Abstracts::Account::ActivityData& activity) __tegra_const_noexcept_override;
 
 private:
-    ActivityData m_activity;
+    Abstracts::Account::ActivityData m_activity;
     TEGRA_DISABLE_COPY(Activities)
 };
 

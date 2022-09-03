@@ -21,8 +21,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Terminal)
 
 class __tegra_export NativeTerminal {

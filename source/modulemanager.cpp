@@ -17,6 +17,8 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Module;
 TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 

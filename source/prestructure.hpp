@@ -22,7 +22,7 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief The SystemStatus enum
@@ -113,5 +113,7 @@ struct SystemInfo __tegra_final
     Optional<SystemType>        type            {};
     Optional<SystemLicense>     license         {};
 };
+
+TEGRA_NAMESPACE_END
 
 #endif // TEGRA_PRESTRUCTURE_HPP

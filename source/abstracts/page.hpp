@@ -40,9 +40,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 /*!
@@ -81,27 +78,27 @@ __tegra_enum_class PageThemeStyle : u8
 struct PageProperties __tegra_final
 {
     ///!BASIC
-    OptionalNumeric id              {};    ///< Index of page.
-    OptionalNumeric priority        {};    ///< Index of page position.
-    OptionalString  title           {};    ///< Title (subject) of page.
-    OptionalString  url             {};    ///< Url for page.
-    Tags            tags            {};    ///< Tags list for page.
-    OptionalString  text            {};    ///< Text (main content) for page.
-    OptionalString  documentTitle   {};    ///< Document title (title of page).
-    OptionalString  metaDescr       {};    ///< Meta description (more details) for page.
+    OptionalNumeric     id              {};    ///< Index of page.
+    OptionalNumeric     priority        {};    ///< Index of page position.
+    OptionalString      title           {};    ///< Title (subject) of page.
+    OptionalString      url             {};    ///< Url for page.
+    Tags                tags            {};    ///< Tags list for page.
+    OptionalString      text            {};    ///< Text (main content) for page.
+    OptionalString      documentTitle   {};    ///< Document title (title of page).
+    OptionalString      metaDescr       {};    ///< Meta description (more details) for page.
     ///!MEDIA
-    MediaType  cover    {};    ///< Image or video for page.
-    IconType   icon     {};    ///< Icon for page.
+    System::MediaType   cover           {};    ///< Image or video for page.
+    System::IconType    icon            {};    ///< Icon for page.
     ///!DATETIME
-    OptionalString  createdDate  {};    ///< Created date time.
-    OptionalString  publishTime  {};    ///< Publishing time.
-    OptionalString  pinnedTime   {};    ///< Pinned time.
-    OptionalString  lastModified {};    ///< Last Modified date-time.
+    OptionalString      createdDate     {};    ///< Created date time.
+    OptionalString      publishTime     {};    ///< Publishing time.
+    OptionalString      pinnedTime      {};    ///< Pinned time.
+    OptionalString      lastModified    {};    ///< Last Modified date-time.
     ///!EXTRA
-    OptionalBool    inclueInSitemap            {};  ///< If included in sitemap section.
-    OptionalBool    canBeModeratedFromFrontend {};  ///< Can be moderated from frontend?!
-    OptionalBool    accessByApi {};  ///< Can be access from api output.
-    OptionalString  theme       {};  ///< Page theme.
+    OptionalBool        inclueInSitemap            {};  ///< If included in sitemap section.
+    OptionalBool        canBeModeratedFromFrontend {};  ///< Can be moderated from frontend?!
+    OptionalBool        accessByApi {};  ///< Can be access from api output.
+    OptionalString      theme       {};  ///< Page theme.
 };
 
 /*!

@@ -22,8 +22,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Translation)
 
 using DicType       = MultiMap<std::string, Map<std::string, std::string>>;

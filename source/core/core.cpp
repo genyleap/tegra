@@ -621,7 +621,7 @@ std::map <std::string, std::string> Engine::langs()
     std::map<std::string, std::string> l = {};
     //!Getting language from configuration file
     for(auto &var : Configuration::GET["langs"]) {
-        l.insert(Types::PairString(var["uri"].asString(),var["code"].asString()));
+        l.insert(PairString(var["uri"].asString(),var["code"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()) + "/");
     }
@@ -633,7 +633,7 @@ std::map <std::string, std::string> Engine::langsByPath(const std::string& path)
     std::map<std::string, std::string> l = {};
     //!Getting language from configuration file
     for(auto &var : Configuration::GET["langs"]) {
-        l.insert(Types::PairString(var["uri"].asString(),var["code"].asString()));
+        l.insert(PairString(var["uri"].asString(),var["code"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()) + "/");
         this->langUri.push_back("/" + std::string(var["uri"].asString()) + "/" + std::string(path.empty() ? "" : path));

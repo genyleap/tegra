@@ -161,15 +161,12 @@ struct STATICS final {
 #define __tegra_unknown "unknown"
 
 template<typename T>
-using Function = std::function<T>;
-
-template<typename T>
 using Scope = std::unique_ptr<T>;
 
 template<typename T, typename ... Args>
 constexpr Scope<T> CreateScope(Args&& ... args)
 {
-  return std::make_unique<T>(std::forward<Args>(args)...);
+    return std::make_unique<T>(std::forward<Args>(args)...);
 }
 
 #define TEGRA_SCOPE_POINTER(Class, alias, param) std::unique_ptr<Class>alias(new Class(param));
@@ -182,9 +179,8 @@ using Ref = std::shared_ptr<T>;
 template<typename T, typename ... Args>
 constexpr Ref<T> CreateRef(Args&& ... args)
 {
-  return std::make_shared<T>(std::forward<Args>(args)...);
+    return std::make_shared<T>(std::forward<Args>(args)...);
 }
-
 
 #define TEGRA_POINTER_TO_AN_OBJECT(object, name)\
 typedef object* (*name)();

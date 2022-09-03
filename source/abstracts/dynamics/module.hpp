@@ -31,10 +31,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::Abstracts::Module;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 /*!
@@ -79,7 +75,7 @@ public:
      * \brief getModuleType function returns type of module.
      * \returns a type as ModuleType.
      */
-    __tegra_no_discard_virtual Optional<ModuleType> getModuleType()  __tegra_const_noexcept = __tegra_zero;
+    __tegra_no_discard_virtual Optional<Abstracts::Module::ModuleType> getModuleType()  __tegra_const_noexcept = __tegra_zero;
 
     /*!
      * \brief getVersion function returns version of module.
@@ -118,17 +114,17 @@ public:
      * \brief type function returns type of module.
      * \returns as ModuleType.
      */
-    __tegra_virtual ModuleType type() __tegra_const_noexcept = __tegra_zero;
+    __tegra_virtual Abstracts::Module::ModuleType type() __tegra_const_noexcept = __tegra_zero;
 
 protected:
-    ModuleInfo* m_moduleInfo;
+    Abstracts::Module::ModuleInfo* m_moduleInfo;
     friend class AbstractModuleManager;
     void setCodeName(const OptionalString& codename);
     void setName(const OptionalString& name);
     void setDescription(const OptionalString& desc);
     void setCompiledDate(const OptionalString& compiledDate);
     void setLicense(const Optional<SystemLicense>& licese);
-    void setModuleType(const ModuleType moduleType);
+    void setModuleType(const Abstracts::Module::ModuleType moduleType);
     void setVersion(const Optional<SemanticVersion>& version);
     void setAuthor(const OptionalString& author);
     void setUrl(const OptionalString& url);
