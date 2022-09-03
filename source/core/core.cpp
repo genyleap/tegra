@@ -24,6 +24,7 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
+TEGRA_USING_NAMESPACE Tegra::View;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
@@ -302,6 +303,7 @@ Engine::Engine()
 {
     ///< New instances.
     __tegra_safe_instance(translator, Translation::Translator);
+    __tegra_safe_instance(viewIndex, ViewIndex);
     Scope<Configuration> config(new Configuration(ConfigType::File));
     config->init(SectionType::SystemCore);
 }
@@ -309,6 +311,7 @@ Engine::Engine()
 Engine::~Engine()
 {
     __tegra_safe_delete(translator);
+    __tegra_safe_delete(viewIndex);
 }
 
 bool Engine::initialize()

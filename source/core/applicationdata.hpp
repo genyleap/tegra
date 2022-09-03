@@ -30,10 +30,10 @@ TEGRA_NAMESPACE_BEGIN(Tegra)
 struct ApplicationData final
 {
     ///Types
-    OptionalString  path             {__tegra_unknown};
-    OptionalString  templateId       {__tegra_unknown};
-    OptionalString  templateErrorId  {__tegra_unknown};
-    OptionalString  module           {__tegra_unknown};
+    OptionalString  path                 {__tegra_unknown};
+    OptionalString  templateViewId       {__tegra_unknown};
+    OptionalString  templateViewErrorId  {__tegra_unknown};
+    OptionalString  module               {__tegra_unknown};
 
     ///Classes & Structures
     SystemInfo systemInfo                       {};

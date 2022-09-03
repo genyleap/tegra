@@ -49,6 +49,15 @@
 # endif
 #endif
 
+//! Tegra's View.
+#ifdef __has_include
+# if __has_include(<view>)
+#   include <view>
+#else
+#   error "Tegra's view was not found!"
+# endif
+#endif
+
 //! Tegra's eLogger.
 #ifdef __has_include
 # if __has_include(<logger>)
@@ -604,8 +613,6 @@ public:
      */
     VectorString tableFilter(const VectorString& tables, TableType tableType);
 
-    std::map<std::string, std::string> defaultView();
-
     /*!
      * @brief Sometimes we need to remove dashes from the uri or content based data.
      * @param src is a content source.
@@ -698,6 +705,8 @@ public:
     void setPath(const std::string& p);
 
     mutable std::string currentPath{};
+
+    View::ViewIndex* viewIndex;
 };
 
 TEGRA_NAMESPACE_END

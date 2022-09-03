@@ -43,11 +43,20 @@
 # endif
 #endif
 
+//! Tegra's View.
+#ifdef __has_include
+# if __has_include(<view>)
+#   include <view>
+#else
+#   error "Tegra's view was not found!"
+# endif
+#endif
+
 //!Tegra
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
+TEGRA_USING_NAMESPACE Tegra::View;
 TEGRA_USING_NAMESPACE Tegra::Database;
-
 TEGRA_USING_NAMESPACE Framework;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Default)
@@ -60,26 +69,28 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
 
     auto config = Configuration(ConfigType::File);
 
+    engine.viewIndex->registerView(UserViewType::User, "compez", "kambiz");
+
     config.init(SectionType::SystemCore);
 
     {
-        appDataPtr->path                =   req->getPath();                  // Path
-        appDataPtr->module              =   SYSTEM_VIEW_INDEX::INDEX.data(); // Index, Preinstall
-        appDataPtr->templateId          =   SYSTEM_USER_VIEW_ROOT;           // User Root {templates::{user}}
-        appDataPtr->templateErrorId     =   SYSTEM_USER_VIEW_ROOT;           // User Root {templates::{user}}
+        appDataPtr->path                    =   req->getPath();                     // Path
+        appDataPtr->module                  =   SYSTEM_VIEW_INDEX::INDEX.data();    // Index, Preinstall
+        appDataPtr->templateViewId          =   __tegra_null_str;                   // User Root {templates::{user}}
+        appDataPtr->templateViewErrorId     =   __tegra_null_str;                   // User Root {templates::{user}}
 
         if(!isset(config.isInstalled())) {
-            for(const auto& t : engine.defaultView())
+            for(const auto& t : engine.viewIndex->defaultView(UserViewType::User))
             {
                 std::clog << t.second << std::endl;
-                if(t.first == "preinstall") appDataPtr->templateId->append(t.second);
-                if(t.first == "error") appDataPtr->templateErrorId->append(t.second);
+                if(t.first == "preinstall") appDataPtr->templateViewId->append(t.second);
+                if(t.first == "error") appDataPtr->templateViewErrorId->append(t.second);
             }
         } else {
-            for(const auto& t : engine.defaultView())
+            for(const auto& t : engine.viewIndex->defaultView(UserViewType::User))
             {
-                if(t.first == "index") appDataPtr->templateId->append(t.second);
-                if(t.first == "error") appDataPtr->templateErrorId->append(t.second);
+                if(t.first == "index") appDataPtr->templateViewId->append(t.second);
+                if(t.first == "error") appDataPtr->templateViewErrorId->append(t.second);
             }
         }
     }
@@ -127,16 +138,15 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
         }
     }
 
-    std::clog << engine.isMultilanguage() << std::endl;
-    std::clog << currentPath << std::endl;
+    std::clog <<appDataPtr->templateViewId.value() << std::endl;
+
     if (engine.isMultilanguage() && IsConnected) {
         //Multi-Language logic code here...
-        auto resp = HttpResponse::newHttpViewResponse(appDataPtr->templateId.value(), theme->viewData);
+        auto resp = HttpResponse::newHttpViewResponse(appDataPtr->templateViewId.value(), theme->viewData);
         callback(resp);
     } else if(currentPath == "/" && IsConnected) {
         //Single-Language logic code here...
-        std::clog << appDataPtr->templateId.value();
-        auto resp = HttpResponse::newHttpViewResponse(appDataPtr->templateId.value(), theme->viewData);
+        auto resp = HttpResponse::newHttpViewResponse(appDataPtr->templateViewId.value(), theme->viewData);
         callback(resp);
     } else {
         //Page not found!
@@ -161,7 +171,7 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
             theme->viewData.insert("goback",       TEGRA_TRANSLATOR("dialog", "goback"));
         }
 
-        auto resp = HttpResponse::newHttpViewResponse(appDataPtr->templateErrorId.value(), theme->viewData);
+        auto resp = HttpResponse::newHttpViewResponse(appDataPtr->templateViewErrorId.value(), theme->viewData);
         callback(resp);
     }
 

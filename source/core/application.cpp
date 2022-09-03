@@ -195,14 +195,14 @@ OptionalString Application::module() __tegra_const_noexcept
     return appDataPtr->module.value_or(__tegra_unknown);
 }
 
-OptionalString Application::templateErrorId() __tegra_const_noexcept
+OptionalString Application::templateViewErrorId() __tegra_const_noexcept
 {
-    return appDataPtr->templateErrorId.value_or(__tegra_unknown);
+    return appDataPtr->templateViewErrorId.value_or(__tegra_unknown);
 }
 
-OptionalString Application::templateId() __tegra_const_noexcept
+OptionalString Application::templateViewId() __tegra_const_noexcept
 {
-    return appDataPtr->templateId.value_or(__tegra_unknown);
+    return appDataPtr->templateViewId.value_or(__tegra_unknown);
 }
 
 TEGRA_NAMESPACE_END

@@ -126,16 +126,16 @@ public:
     OptionalString module() __tegra_const_noexcept;
 
     /*!
-     * \brief templateId will gets error template id.
+     * \brief templateViewErrorId will gets error template id.
      * \returns string.
      */
-    OptionalString templateErrorId() __tegra_const_noexcept;
+    OptionalString templateViewErrorId() __tegra_const_noexcept;
 
     /*!
-     * \brief templateId will gets template id.
+     * \brief templateViewId will gets template id.
      * \returns string.
      */
-    OptionalString templateId() __tegra_const_noexcept;
+    OptionalString templateViewId() __tegra_const_noexcept;
 
     Scope<System::Engine>   engine      {};
     Scope<Tegra::Version>   version     {};
