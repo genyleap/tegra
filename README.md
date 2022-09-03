@@ -5,7 +5,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-plus-plus.svg)](https://forthebadge.com)
 
 Welcome to the Tegra development repository!
-Tegra is an open source super-high end performance, user-friendly, multi-lingual and multi-purpose modern system based on **C++20** which enables you to build websites and powerful online applications.
+Tegra is an open source super high-end performance, user-friendly, multi-lingual and multi-purpose modern system based on **C++20** which enables you to build websites and powerful online applications.
 
 [![GitHub issues](https://img.shields.io/github/issues/genyleap/tegra)](https://github.com/genyleap/tegra/issues)
 [![GitHub forks](https://img.shields.io/github/forks/genyleap/tegra)](https://github.com/genyleap/tegra/network)
