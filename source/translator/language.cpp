@@ -125,7 +125,7 @@ std::string Language::getLanguage() __tegra_const_noexcept
     String path = { m_languageStruct->url.getLanguageUri().value_or("en-us") }; //!->/{language}/uri/
     std::string lcode{};
     for(auto c : Configuration::GET[TEGRA_LANGS]) {
-        if(c["uri"] == path.substr(1, 5)) {
+        if(c["uri"] == path.substr(1, 6)) {
             lcode = c["code"].asString();
         } else {
             if(c["code"].asString() == Configuration::GET[TEGRA_DEFAULT_LANG]) {

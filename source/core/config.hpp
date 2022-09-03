@@ -33,7 +33,6 @@
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
-
 /*!
  * \brief The RdbmsInterface class
  */

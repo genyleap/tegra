@@ -77,7 +77,7 @@ std::ostream &NativeTerminal::Error(std::ostream &stream) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                             static_cast<WORD>(FOREGROUND_COLORS::RED));
 #else
-    stream << "\033[0;91m";
+    stream << "\033[1;91m";
 #endif
     return stream;
 }
@@ -87,7 +87,7 @@ std::ostream &NativeTerminal::Success(std::ostream &stream) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                             static_cast<WORD>(FOREGROUND_COLORS::GREEN));
 #else
-    stream << "\033[0;32m";
+    stream << "\033[1;32m";
 #endif
     return stream;
 }
@@ -97,7 +97,7 @@ std::ostream &NativeTerminal::Done(std::ostream &stream) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                             static_cast<WORD>(FOREGROUND_COLORS::LIGHTGREEN));
 #else
-    stream << "\033[0;92m";
+    stream << "\033[1;92m";
 #endif
     return stream;
 }

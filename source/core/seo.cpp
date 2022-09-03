@@ -18,7 +18,6 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::SEO)
 
@@ -176,7 +175,7 @@ void StaticMeta::setDefault(const std::string& path)
             }
 
         } catch (const SqlException& e) {
-            eLogger::Log("Database Error: " + FROM_TEGRA_STRING(e.base().what()), eLogger::LoggerType::Info);
+            eLogger::Log("Database Error: " + FROM_TEGRA_STRING(e.base().what()), eLogger::LoggerType::Critical);
         }
     }
 
@@ -228,10 +227,10 @@ void StaticMeta::setData(const MetaType& type, const MapString& data)
         iterMap siteKeywords     =  m_staticPrivateMembers->config.find("keywords");
         iterMap siteAuthor       =  m_staticPrivateMembers->config.find("author");
 
-        Types::String siteCharset    =  Configuration::GET["system"]["encoding"].asString();
-        Types::String siteLanguage   =  Configuration::GET["language"].asString();
-        Types::String siteGenerator  =  m_staticPrivateMembers->generator.data();
-        Types::String siteDeveloper  =  m_staticPrivateMembers->developer.data();
+        String siteCharset    =  Configuration::GET["system"]["encoding"].asString();
+        String siteLanguage   =  Configuration::GET["language"].asString();
+        String siteGenerator  =  m_staticPrivateMembers->generator.data();
+        String siteDeveloper  =  m_staticPrivateMembers->developer.data();
         // Page data
         if (m_staticPrivateMembers->config.end() != siteViewport)     { m_staticPrivateMembers->baseTags.insert(PairString("viewport"   , siteViewport->second    ));}
         if (m_staticPrivateMembers->config.end() != siteName)         { m_staticPrivateMembers->baseTags.insert(PairString("title"      , siteName->second        ));}
@@ -278,7 +277,7 @@ void StaticMeta::setData(const MetaType& type, const MapString& data)
     }
     catch (const SqlException& e)
     {
-        eLogger::Log("Database Error: " + FROM_TEGRA_STRING(e.base().what()), eLogger::LoggerType::Info);
+        eLogger::Log("Database Error: " + FROM_TEGRA_STRING(e.base().what()), eLogger::LoggerType::Critical);
     }
 }
 

@@ -47,6 +47,19 @@ TEGRA_NAMESPACE_BEGIN(Tegra::System)
 #define SYSTEM_SYSTEM_SHEET            "systemStyle"
 #define SYSTEM_LINK_SHEET              "linkSheet"
 #define SYSTEM_META_SHEET              "meta"
+#define SYSTEM_USER_VIEW_ROOT          "templates::user::"
+#define SYSTEM_ADMIN_VIEW_ROOT         "templates::admin::"
+
+//!System view indexes.
+struct SYSTEM_VIEW_INDEX final
+{
+    static constexpr std::string_view   PREINSTALL  = "preinstall";
+    static constexpr std::string_view   INDEX       = "index";
+    static constexpr std::string_view   HOME        = "home";
+    static constexpr std::string_view   SETUP       = "setup";
+    static constexpr std::string_view   ERROR       = "error";
+    static constexpr std::string_view   UNKNOWN     = "unknown";
+};
 
 using StaticMap = std::map<std::string, std::string>;
 

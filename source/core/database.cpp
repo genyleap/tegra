@@ -8,6 +8,7 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
 TEGRA_USING_NAMESPACE Tegra::System;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Database)
@@ -752,13 +753,19 @@ bool Connection::isConnected() __tegra_noexcept
 {
     bool res {false};
     auto dbc = AppFramework::application().getDbClient();
-    if (isset(dbc->hasAvailableConnections()) && true)
+    if(!isNullPtr(dbc))
     {
-        res = true;
+        if (isset(dbc->hasAvailableConnections()) && true)
+        {
+            res = true;
+        } else {
+            if(DeveloperMode::IsEnable)
+                eLogger::Log("Database Connection Error: " + FROM_TEGRA_STRING("There is a problem connecting to the database, please check your settings!"), eLogger::LoggerType::Critical);
+            res = false;
+        }
     } else {
         if(DeveloperMode::IsEnable)
-            eLogger::Log("Database Connection Error: " + FROM_TEGRA_STRING("There is a problem connecting to the database, please check your settings!"), eLogger::LoggerType::Critical);
-        res = false;
+            eLogger::Log("Database driver has not defined!", eLogger::LoggerType::Critical);
     }
     return res;
 }

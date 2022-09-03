@@ -40,15 +40,11 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-
-TEGRA_USING_NAMESPACE Tegra::System;
-
-TEGRA_NAMESPACE_BEGIN(Tegra::Installer)
-
 TEGRA_USING DefaultApp = std::map<std::string, bool>;
 
 TEGRA_USING DefaultAppPair = std::pair<std::string, bool>;
+
+TEGRA_NAMESPACE_BEGIN(Tegra::Installer)
 
 /*!
  * \brief The Setup class
