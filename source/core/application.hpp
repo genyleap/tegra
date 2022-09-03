@@ -40,13 +40,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-TEGRA_USING_NAMESPACE Tegra::Abstracts::Module;
-TEGRA_USING_NAMESPACE Tegra::Abstracts::Plugin;
-
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
@@ -100,25 +93,25 @@ public:
      * \brief modules function will gets all modules on Tegra.
      * \returns a list of modules with their information.
      */
-    __tegra_no_discard std::vector<ModuleInfo> modules() __tegra_noexcept;
+    __tegra_no_discard std::vector<Abstracts::Module::ModuleInfo> modules() __tegra_noexcept;
 
     /*!
      * \brief registerModules
      * \param moduleList
      */
-    void registerModules(const std::vector<ModuleInfo>& moduleList) __tegra_noexcept;
+    void registerModules(const std::vector<Abstracts::Module::ModuleInfo>& moduleList) __tegra_noexcept;
 
     /*!
      * \brief registerPlugins
      * \param moduleList
      */
-    void registerPlugins(const std::vector<PluginInfo>& pluginsList) __tegra_noexcept;
+    void registerPlugins(const std::vector<Abstracts::Plugin::PluginInfo>& pluginsList) __tegra_noexcept;
 
     /*!
      * \brief plugins function will gets all plugins on Tegra.
      * \returns a list of plugins with their information.
      */
-    __tegra_no_discard std::vector<PluginInfo> plugins() __tegra_noexcept;
+    __tegra_no_discard std::vector<Abstracts::Plugin::PluginInfo> plugins() __tegra_noexcept;
 
     /*!
      * \brief path as string.
@@ -144,17 +137,17 @@ public:
      */
     OptionalString templateId() __tegra_const_noexcept;
 
-    Scope<Engine>   engine  {};
-    Scope<Version>  version {};
-    Scope<SystemInfo>  systemInfo {};
+    Scope<System::Engine>   engine      {};
+    Scope<Tegra::Version>   version     {};
+    Scope<SystemInfo>       systemInfo  {};
 
     Translation::Translator* translator{__tegra_nullptr}; //alternative translator for engine.
     Multilangual::Language* language{__tegra_nullptr};
 
 private:
 
-    std::vector<ModuleInfo> m_moduleInfoList;
-    std::vector<PluginInfo> m_pluginInfoList;
+    std::vector<Tegra::Abstracts::Module::ModuleInfo> m_moduleInfoList;
+    std::vector<Abstracts::Plugin::PluginInfo> m_pluginInfoList;
 
     static Application* appPtr;
     static ApplicationData* appDataPtr;

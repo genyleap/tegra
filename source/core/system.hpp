@@ -22,7 +22,7 @@
 # endif
 #endif
 
-TEGRA_NAMESPACE_BEGIN(Tegra)
+TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
 class SystemInfo;
 /*!

@@ -22,7 +22,7 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief The SystemStatus enum
@@ -61,7 +61,7 @@ __tegra_enum_class SystemLicense: u8
 /*!
  * \brief The CompatibilityLevel struct
  */
-struct CompatibilityLevel final
+struct CompatibilityLevel __tegra_final
 {
     u8 NoneCompatibility;
     u8 SimpleCompatibility;
@@ -79,7 +79,7 @@ struct CompatibilityLevel final
  * Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
  * @version Semantic Versioning 2.0.0
  */
-struct SemanticVersion final
+struct SemanticVersion __tegra_final
 {
     uint Major                  {};
     uint Minor                  {};
@@ -101,7 +101,7 @@ enum class ApplicationType : u8
 /*!
  * \brief The SystemInfo struct
  */
-struct SystemInfo final
+struct SystemInfo __tegra_final
 {
     //!Basic Information
     OptionalString              codeName        {};
@@ -113,5 +113,7 @@ struct SystemInfo final
     Optional<SystemType>        type            {};
     Optional<SystemLicense>     license         {};
 };
+
+TEGRA_NAMESPACE_END
 
 #endif // TEGRA_PRESTRUCTURE_HPP

@@ -22,11 +22,7 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
-
-TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
-
-__tegra_enum_class FileType : u8
+enum class FileType : u8
 {
     INI     =   0x1,  ///<An INI file is a configuration file for computer software that consists of a text-based content with a structure and syntax comprising key–value pairs for properties, and sections that organize the properties.
     JSON    =   0x2,  ///<JSON (JavaScript Object Notation) is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values).
@@ -37,14 +33,14 @@ __tegra_enum_class FileType : u8
     RUNCOM  =   0x7   ///<RUNCOM is a CTSS macro command (script) processor.
 };
 
-__tegra_enum_class ConfigType : u8
+enum class ConfigType : u8
 {
     File,       ///<Config based on file such as json.
     Database,   ///<Config based on database.
     Network     ///<Config based on network I/O.
 };
 
-__tegra_enum_class SectionType : u8
+enum class SectionType : u8
 {
     SystemCore, ///<Configuration for system core.
     Database,   ///<Configuration for database.
@@ -53,6 +49,7 @@ __tegra_enum_class SectionType : u8
     Custom      ///<Configuration for our custom sections.
 };
 
+TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 #if !defined(ENABLE_SAFE_ONLY)
 TEGRA_USING AbstractConfigMember = std::variant<FileType, std::string, std::vector<std::string>, bool>;

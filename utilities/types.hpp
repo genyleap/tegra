@@ -28,8 +28,6 @@
 
 #include "precompiled/pch.hpp" //get some header.
 
-namespace Tegra::Types {
-
 using schar        = signed char;
 using uchar        = unsigned char;
 using ushort       = unsigned short;
@@ -121,7 +119,5 @@ using StringStream      = std::basic_stringstream<char>;
 using String            = std::string;
 using IfStreamer        = std::ifstream;
 using StringStream      = std::stringstream;
-
-}
 
 #endif // PROJECT_TYPES_HPP

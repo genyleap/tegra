@@ -40,10 +40,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts::Account)
 
 using ArrayIds = std::vector<OptionalNumeric>; ///< Array as int for user id.
@@ -58,7 +54,7 @@ struct UserData __tegra_final
 
 struct DataTransfer final
 {
-    DataGetway dataGetway {};   ///< Getway model.
+    System::DataGetway dataGetway {};   ///< Getway model.
     UserData* userDataPtr {};   ///< A pointer to UserData;
 };
 

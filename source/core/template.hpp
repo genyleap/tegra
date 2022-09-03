@@ -99,8 +99,8 @@ public:
      */
     struct Requirments
     {
-        Tegra::Types::MapConfig config;
-        Tegra::SEO::StaticMeta staticMeta;
+        MapConfig config;
+        SEO::StaticMeta staticMeta;
     };
 
     /** Template source folder */

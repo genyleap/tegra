@@ -31,10 +31,7 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-
-namespace FileSystem = std::filesystem;
+TEGRA_NAMESPACE FileSystem = std::filesystem;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Translation)
 

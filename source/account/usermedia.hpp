@@ -31,18 +31,12 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-TEGRA_USING_NAMESPACE Tegra::Abstracts::Account;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Account)
 
 /*!
  * \brief The Avatar class
  */
-class __tegra_export Avatar : public AbstractAvatar
+class __tegra_export Avatar : public Abstracts::Account::AbstractAvatar
 {
 public:
     TEGRA_DEFAULT_OCTORS(Avatar)
@@ -82,17 +76,17 @@ public:
      * \param viewStatus as AvatarViewStatus enum.
      * \returns as one of AvatarViewStatus's items.
      */
-    __tegra_no_discard AvatarViewStatus viewStatus(const AvatarViewStatus viewStatus) __tegra_const_noexcept_override;
+    __tegra_no_discard Abstracts::Account::AvatarViewStatus viewStatus(const Abstracts::Account::AvatarViewStatus viewStatus) __tegra_const_noexcept_override;
 
 
 private:
-    AvatarViewStatus m_avatarViewStatus;
+    Abstracts::Account::AvatarViewStatus m_avatarViewStatus;
 };
 
 /*!
  * \brief The Image class
  */
-class __tegra_export Image : public AbstractImage
+class __tegra_export Image : public Abstracts::Account::AbstractImage
 {
 public:
     TEGRA_DEFAULT_OCTORS(Image)
@@ -132,17 +126,17 @@ public:
      * \param viewStatus as ImageViewStatus enum.
      * \returns as one of ImageViewStatus's items.
      */
-    __tegra_no_discard ImageViewStatus viewStatus(const ImageViewStatus viewStatus) __tegra_const_noexcept_override;
+    __tegra_no_discard Abstracts::Account::ImageViewStatus viewStatus(const Abstracts::Account::ImageViewStatus viewStatus) __tegra_const_noexcept_override;
 
 
 private:
-    ImageViewStatus m_imageViewStatus;
+    Abstracts::Account::ImageViewStatus m_imageViewStatus;
 };
 
 /*!
  * \brief The Cover class
  */
-class __tegra_export Cover : public AbstractCover
+class __tegra_export Cover : public Abstracts::Account::AbstractCover
 {
 public:
     TEGRA_DEFAULT_OCTORS(Cover)
@@ -182,17 +176,17 @@ public:
      * \param viewStatus as ImageViewStatus enum.
      * \returns as one of ImageViewStatus's items.
      */
-    __tegra_no_discard CoverViewStatus viewStatus(const CoverViewStatus viewStatus) __tegra_const_noexcept_override;
+    __tegra_no_discard Abstracts::Account::CoverViewStatus viewStatus(const Abstracts::Account::CoverViewStatus viewStatus) __tegra_const_noexcept_override;
 
 
 private:
-    CoverViewStatus m_coverViewStatus;
+    Abstracts::Account::CoverViewStatus m_coverViewStatus;
 };
 
 /*!
  * \brief The Story class
  */
-class __tegra_export Story : public AbstractStory
+class __tegra_export Story : public Abstracts::Account::AbstractStory
 {
 public:
     TEGRA_DEFAULT_OCTORS(Story)
@@ -232,11 +226,11 @@ public:
      * \param viewStatus as StoryViewStatus enum.
      * \returns as one of StoryViewStatus's items.
      */
-    __tegra_no_discard StoryViewStatus viewStatus(const StoryViewStatus viewStatus) __tegra_const_noexcept_override;
+    __tegra_no_discard Abstracts::Account::StoryViewStatus viewStatus(const Abstracts::Account::StoryViewStatus viewStatus) __tegra_const_noexcept_override;
 
 
 private:
-    StoryViewStatus m_storyViewStatus;
+    Abstracts::Account::StoryViewStatus m_storyViewStatus;
 };
 
 TEGRA_NAMESPACE_END

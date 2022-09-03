@@ -31,14 +31,12 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-
 class ModuleInterfaceImpl;
 
 /*!
  * \brief The ModuleInterface class is exported from the mail library.
  */
-class __tegra_export ModuleInterface : public AbstractModuleInterface
+class __tegra_export ModuleInterface : public Tegra::Abstracts::AbstractModuleInterface
 {
 public:
     TEGRA_DEFAULT_INTERFACE_OCTORS(ModuleInterface)
@@ -49,7 +47,7 @@ public:
    * \brief addDetail function sets all information of modules.
    * \param plist is type of ModuleList [std::vector<ModuleInfo>]
    */
-  void addDetail(const ModuleList& plist) __tegra_const_noexcept_override;
+  void addDetail(const Tegra::Abstracts::ModuleList& plist) __tegra_const_noexcept_override;
 
   /*!
    * \brief addName function sets name of modules.
@@ -67,25 +65,25 @@ public:
    * \brief getDetail function gets detail from modules.
    * \return list of detail such as name, version and etc.
    */
-  __tegra_no_discard ModuleList& getDetail() __tegra_const_noexcept_override;
+  __tegra_no_discard Tegra::Abstracts::ModuleList& getDetail() __tegra_const_noexcept_override;
 
   /*!
    * \brief getNames function gets name of modules.
    * \return list of module.
    */
-  __tegra_no_discard NameList& getNames() __tegra_const_noexcept_override;
+  __tegra_no_discard Tegra::Abstracts::NameList& getNames() __tegra_const_noexcept_override;
 
   /*!
    * \brief getErrors function gets list of errors.
    * \return list of errors as string [ErrorString : std::vector<std::string>].
    */
-  __tegra_no_discard ErrorString& getErrors() __tegra_const_noexcept_override;
+  __tegra_no_discard Tegra::Abstracts::ErrorString& getErrors() __tegra_const_noexcept_override;
 
 private:
   ModuleInterfaceImpl*  m_pImpl = {nullptr};
-  NameList              m_nameList;
-  ModuleList            m_moduleList;
-  ErrorString           m_errors;
+  Tegra::Abstracts::NameList              m_nameList;
+  Tegra::Abstracts::ModuleList            m_moduleList;
+  Tegra::Abstracts::ErrorString           m_errors;
 };
 
 

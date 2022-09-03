@@ -1,10 +1,16 @@
-//! Tegra's Core.
+#ifndef  TEGRA_KERNEL
+#define TEGRA_KERNEL
+#endif
+
+//!Core feature
+#ifdef TEGRA_KERNEL
 #ifdef __has_include
 # if __has_include("core.hpp")
 #   include "core.hpp"
 #else
 #   error "Tegra's core was not found!"
 # endif
+#endif
 #endif
 
 //! Tegra's Core (Basic Requirements).
@@ -17,6 +23,7 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
@@ -614,7 +621,7 @@ std::map <std::string, std::string> Engine::langs()
     std::map<std::string, std::string> l = {};
     //!Getting language from configuration file
     for(auto &var : Configuration::GET["langs"]) {
-        l.insert(Types::PairString(var["uri"].asString(),var["code"].asString()));
+        l.insert(PairString(var["uri"].asString(),var["code"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()) + "/");
     }
@@ -626,7 +633,7 @@ std::map <std::string, std::string> Engine::langsByPath(const std::string& path)
     std::map<std::string, std::string> l = {};
     //!Getting language from configuration file
     for(auto &var : Configuration::GET["langs"]) {
-        l.insert(Types::PairString(var["uri"].asString(),var["code"].asString()));
+        l.insert(PairString(var["uri"].asString(),var["code"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()));
         this->langUri.push_back("/" + std::string(var["uri"].asString()) + "/");
         this->langUri.push_back("/" + std::string(var["uri"].asString()) + "/" + std::string(path.empty() ? "" : path));

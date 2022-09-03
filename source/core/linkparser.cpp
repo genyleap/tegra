@@ -8,18 +8,15 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 LinkParser::LinkParser()
 {
-
 }
 
 LinkParser::~LinkParser()
 {
-
 }
 
 void LinkParser::parse(std::string& url)

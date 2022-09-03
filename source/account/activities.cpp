@@ -8,6 +8,8 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+TEGRA_USING_NAMESPACE Tegra::Abstracts;
+TEGRA_USING_NAMESPACE Tegra::Abstracts::Account;
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
 

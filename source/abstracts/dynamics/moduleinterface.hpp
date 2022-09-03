@@ -32,12 +32,10 @@
 #endif
 
 
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 using NameList      =   std::vector<std::string>;
-using ModuleList    =   std::vector<ModuleInfo>;
+using ModuleList    =   std::vector<Abstracts::Module::ModuleInfo>;
 using ErrorString   =   std::vector<std::string>;
 
 /*!

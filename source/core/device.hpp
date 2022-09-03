@@ -40,17 +40,12 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::System;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
  * \brief The Device class
  */
-class __tegra_export Device : public AbstractDevice
+class __tegra_export Device : public Abstracts::AbstractDevice
 {
 public:
     Device();
@@ -61,18 +56,18 @@ public:
      * \param device as array holds DeviceInfo.
      * \returns as boolean.
      */
-    __tegra_no_discard bool set(const std::vector<DeviceInfo>& device) __tegra_const_noexcept_override;
+    __tegra_no_discard bool set(const std::vector<Abstracts::DeviceInfo>& device) __tegra_const_noexcept_override;
 
     /*!
      * \brief get function will reterives user-agent data from user's device only.
      * \param memberId as array is unique user id.
      * \returns DeviceInfo as data.
      */
-    __tegra_no_discard DeviceInfo get(const std::vector<OptionalNumeric>& memberId) __tegra_const_noexcept_override;
+    __tegra_no_discard Abstracts::DeviceInfo get(const std::vector<OptionalNumeric>& memberId) __tegra_const_noexcept_override;
 
 
 private:
-    DeviceInfo *deviceInfoPtr{};
+    Abstracts::DeviceInfo *deviceInfoPtr{};
     TEGRA_DISABLE_COPY(Device)
 };
 

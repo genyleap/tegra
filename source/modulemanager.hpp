@@ -31,14 +31,12 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-
 class ModuleManagerPimpl;
 
 /*!
  * \brief The ModuleManager class
  */
-class __tegra_export ModuleManager : public AbstractModuleManager
+class __tegra_export ModuleManager : public Tegra::Abstracts::AbstractModuleManager
 {
 public:
   static ModuleManager& instance();
@@ -48,13 +46,13 @@ public:
    * \param module is module name.
    * \return module.
    */
-  __tegra_no_discard AbstractModule* load(const std::string& module) override;
+  __tegra_no_discard Tegra::Abstracts::AbstractModule* load(const std::string& module) override;
 
   /*!
    * \brief unload function unloads the module and returns true if the module could be unloaded; otherwise returns false.
    * \param module
    */
-  void unload(AbstractModule*& module) override;
+  void unload(Tegra::Abstracts::AbstractModule*& module) override;
 
   /*!
    * \brief isLoaded function returns true if the module is loaded; otherwise returns false.
@@ -65,7 +63,7 @@ public:
 private:
   TEGRA_DEFAULT_OCTORS(ModuleManager)
   bool m_status = {false};
-  std::unique_ptr<ModuleManagerPimpl> m_implementation;
+  Tegra::Scope<ModuleManagerPimpl> m_implementation;
 };
 
 

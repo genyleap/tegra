@@ -31,20 +31,17 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-
 TEGRA_NAMESPACE_BEGIN(Tegra)
+
 
 /*!
  * \brief The RdbmsInterface class
  */
-struct RdbmsInterface final
+struct RdbmsInterface __tegra_final
 {
     std::string codename    {};     ///< Code name for rdbms.
     std::string host        {};     ///< Host name.
-    std::string name        {};     ///< Name of host.
+    std::string name        {};     ///< Name of db.
     std::string username    {};     ///< Username.
     std::string password    {};     ///< Password.
     u32         port        {};     ///< Port of host.
@@ -53,15 +50,15 @@ struct RdbmsInterface final
 /*!
  * \brief The DataSetting struct
  */
-struct DataConfig final
+struct DataConfig __tegra_final
 {
-    RdbmsInterface            rdbmsInfo   {};   ///< Rdbms info.
-    ConfigType                configType  {};   ///< Config type.
-    SectionType               sectionType {};   ///< Section type.
-    Scope<Engine>             engine      {};   ///< Tegra Engine
-    Scope<Setting> setting     {};   ///< Tegra Setting
-    std::string               configFile  {};   ///< Config file.
-    JSon                      json        {};   ///< Json type.
+    RdbmsInterface          rdbmsInfo   {};   ///< Rdbms info.
+    ConfigType              configType  {};   ///< Config type.
+    SectionType             sectionType {};   ///< Section type.
+    Tegra::Scope<System::Engine>   engine      {};   ///< Tegra Engine
+//    Tegra::Scope<Setting>          setting     {};   ///< Tegra Setting
+    std::string             configFile  {};   ///< Config file.
+    JSon                    json        {};   ///< Json type.
 };
 
 TEGRA_USING RdbmsTypeList = std::vector<std::optional<RdbmsInterface>>;
@@ -69,7 +66,7 @@ TEGRA_USING RdbmsTypeList = std::vector<std::optional<RdbmsInterface>>;
 /*!
  * \brief The Configuration class
  */
-class Configuration : public AbstractConfiguration
+class Configuration : public Tegra::Abstracts::AbstractConfiguration
 {
 public:
     Configuration() = delete;
@@ -117,25 +114,25 @@ public:
      * \brief get function will gets value based on variable types.
      * \returns value based on it's type.
      */
-    std::optional<VariableType> get() __tegra_override;
+    std::optional<Abstracts::VariableType> get() __tegra_override;
 
     /*!
      * \brief Writing in the configuration file requires sending information of variable type.
      * \param variable of multi types.
      */
-    void write(const KeyValueType& variable) __tegra_override;
+    void write(const Abstracts::KeyValueType& variable) __tegra_override;
 
     /*!
      * \brief Updating in the configuration file requires sending information of variable type.
      * \param variable of multi types.
      */
-    void update(const KeyValueType& variable) __tegra_override;
+    void update(const Abstracts::KeyValueType& variable) __tegra_override;
 
     /*!
      * \brief Removing in the configuration file requires sending information of variable type.
      * \param variable of multi types.
      */
-    void remove(const KeyValueType& variable) __tegra_override;
+    void remove(const Abstracts::KeyValueType& variable) __tegra_override;
 
     /*!
      * \brief It is sometimes necessary to reset all configuration variables.

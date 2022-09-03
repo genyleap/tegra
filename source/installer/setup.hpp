@@ -41,9 +41,14 @@
 #endif
 
 TEGRA_USING_NAMESPACE Tegra;
+
 TEGRA_USING_NAMESPACE Tegra::System;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::Installer)
+
+TEGRA_USING DefaultApp = std::map<std::string, bool>;
+
+TEGRA_USING DefaultAppPair = std::pair<std::string, bool>;
 
 /*!
  * \brief The Setup class
@@ -59,19 +64,19 @@ public:
      * \brief installableApps
      * \returns installable applications as array based on key and value.
      */
-    std::map<std::string, bool> installableApps();
+    DefaultApp installableApps();
 
     /*!
      * \brief defaultBaseApps
      * \returns list of default unchangeable applications based on key and value.
      */
-    const std::map<std::string, bool> defaultBaseApps() __tegra_noexcept;
+    const DefaultApp defaultBaseApps() __tegra_noexcept;
 
     /*!
      * \brief defaultAppsList
      * \returns list of default applications based on key and value.
      */
-    std::map<std::string, bool> defaultAppsList() __tegra_noexcept;
+    DefaultApp defaultAppsList() __tegra_noexcept;
 
     /*!
      * \brief requiresList will gets list of requirements.
@@ -107,7 +112,7 @@ public:
      * \brief application will sets application for your system.
      * \returns true if system is in phase application.
      */
-    bool application(const std::map<std::string, bool>& appList) __tegra_noexcept;
+    bool application(const DefaultApp& appList) __tegra_noexcept;
 
     /*!
      * \brief serverDertail will sets system inputs for server config.
@@ -146,8 +151,8 @@ private:
     ServerData m_serverData;
     RequireList m_requireList;
     RquireTypes m_rlist;
-    std::map<std::string, bool> m_installableApps;
-    std::map<std::string, bool> m_defaultAppsList;
+    DefaultApp m_installableApps;
+    DefaultApp m_defaultAppsList;
     PrivateInstallerData m_privateInstallerData;
     Scope<Multilangual::Language> languagePtr{};
     SetupLevelInfo m_setupLevelInfo{};

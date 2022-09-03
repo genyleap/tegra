@@ -9,6 +9,7 @@
 
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::SEO;
+
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
 Template::Template(const UserType& usertype, const ApplicationData& appData) : utype(usertype)

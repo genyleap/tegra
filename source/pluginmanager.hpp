@@ -31,14 +31,12 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-
 class PluginManagerPimpl;
 
 /*!
  * \brief The PluginManager class
  */
-class __tegra_export PluginManager : public AbstractPluginManager
+class __tegra_export PluginManager : public Tegra::Abstracts::AbstractPluginManager
 {
 public:
   static PluginManager& instance();
@@ -48,13 +46,13 @@ public:
    * \param plugin is plugin name.
    * \return plugin.
    */
-  __tegra_no_discard AbstractPlugin* load(const std::string& plugin) override;
+  __tegra_no_discard Tegra::Abstracts::AbstractPlugin* load(const std::string& plugin) override;
 
   /*!
    * \brief unload function unloads the plugin and returns true if the plugin could be unloaded; otherwise returns false.
    * \param plugin
    */
-  void unload(AbstractPlugin*& plugin) override;
+  void unload(Tegra::Abstracts::AbstractPlugin*& plugin) override;
 
   /*!
    * \brief isLoaded function returns true if the plugin is loaded; otherwise returns false.
@@ -65,7 +63,7 @@ public:
 private:
   TEGRA_DEFAULT_OCTORS(PluginManager)
   bool m_status = {false};
-  Scope<PluginManagerPimpl> m_implementation;
+  Tegra::Scope<PluginManagerPimpl> m_implementation;
 };
 
 

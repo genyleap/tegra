@@ -40,30 +40,33 @@ Setup::~Setup()
     __tegra_safe_delete(appDataPtr);
 }
 
-const std::map<std::string, bool> Setup::defaultBaseApps() __tegra_noexcept
+const DefaultApp Setup::defaultBaseApps() __tegra_noexcept
 {
-    std::map<std::string, bool> defApps;
+    std::map<std::string, bool> defApps{};
     {
-        defApps.insert(std::pair<std::string, bool>("core", true));
-        defApps.insert(std::pair<std::string, bool>("cms", true));
-        defApps.insert(std::pair<std::string, bool>("statics", true));
-        defApps.insert(std::pair<std::string, bool>("blog", true));
+        if(isset(defApps.empty()))
+        {
+            defApps.insert(DefaultAppPair("core", true));
+            defApps.insert(DefaultAppPair("cms", true));
+            defApps.insert(DefaultAppPair("statics", true));
+            defApps.insert(DefaultAppPair("blog", true));
+        }
     }
     return defApps;
 }
 
 std::map<std::string, bool> Setup::defaultAppsList() __tegra_noexcept
 {
-    m_defaultAppsList.insert(std::pair<std::string, bool>("core", true));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("cms", true));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("statics", true));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("blog", true));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("news", false));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("sendfeedback", false));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("conversation", false));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("commerce", false));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("clubs", false));
-    m_defaultAppsList.insert(std::pair<std::string, bool>("forums", false));
+    m_defaultAppsList.insert(DefaultAppPair("core", true));
+    m_defaultAppsList.insert(DefaultAppPair("cms", true));
+    m_defaultAppsList.insert(DefaultAppPair("statics", true));
+    m_defaultAppsList.insert(DefaultAppPair("blog", true));
+    m_defaultAppsList.insert(DefaultAppPair("news", false));
+    m_defaultAppsList.insert(DefaultAppPair("sendfeedback", false));
+    m_defaultAppsList.insert(DefaultAppPair("conversation", false));
+    m_defaultAppsList.insert(DefaultAppPair("commerce", false));
+    m_defaultAppsList.insert(DefaultAppPair("clubs", false));
+    m_defaultAppsList.insert(DefaultAppPair("forums", false));
 
     return m_defaultAppsList;
 }
