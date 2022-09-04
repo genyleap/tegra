@@ -31,6 +31,9 @@
 # endif
 #endif
 
+TEGRA_USING SheetList  = std::vector<std::string>;
+TEGRA_USING CodeType   = std::vector<std::string>;
+
 TEGRA_NAMESPACE_BEGIN(Tegra::Multilangual)
 
 /*!
@@ -39,8 +42,8 @@ TEGRA_NAMESPACE_BEGIN(Tegra::Multilangual)
 struct LanguageStruct final
 {
     LanguageType   get               {}; ///< LanguageType
-    LanguageCodes  languageSupport   {}; ///< Language support.
-    Url                   url               {}; ///< Url{en-us, fa-ir}.
+    CodeType       languageSupport   {}; ///< Language support.
+    Url            url               {}; ///< Url{en-us, fa-ir}.
 };
 
 /*! Declaration of language support */
@@ -60,19 +63,25 @@ public:
      * \brief registerLanguage
      * \param code
      */
-    void registerLanguage(const LanguageCodes& code);
+    void registerLanguage(const CodeType& code);
 
     /*!
      * \brief languageSupport
      * \returns
      */
-    LanguageCodes languageSupport() __tegra_const_noexcept;
+    CodeType languageSupport() __tegra_const_noexcept;
 
     /*!
-     * \brief sections
+     * \brief registerSections
+     * \param sheet
+     */
+    void registerSheet(const SheetList& sheet);
+
+    /*!
+     * \brief sheets
      * \returns
      */
-    VectorSection sections() __tegra_const_noexcept;
+    CodeType sheets() __tegra_const_noexcept;
 
     /*!
      * \brief getLanguageCode
@@ -94,6 +103,7 @@ public:
 
 private:
     LanguageStruct* m_languageStruct{};
+    SheetList m_sheets;
 };
 
 TEGRA_NAMESPACE_END

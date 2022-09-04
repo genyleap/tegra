@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TEGRA_SYSTEM_HPP
-#define TEGRA_SYSTEM_HPP
+#ifndef TEGRA_SYSTEM_INFORMATION_HPP
+#define TEGRA_SYSTEM_INFORMATION_HPP
 
 //! Tegra's Common.
 #ifdef __has_include
@@ -22,16 +22,16 @@
 # endif
 #endif
 
-TEGRA_NAMESPACE_BEGIN(Tegra::System)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
-class SystemInfo;
+class SystemInformation;
 /*!
- * \brief The SystemInfo class
+ * \brief The SystemInformation class
  */
-class SystemInfo {
+class SystemInformation {
 public:
-    SystemInfo();
-    ~SystemInfo();
+    SystemInformation();
+    ~SystemInformation();
 
     /*!
      * \brief getHostUserName function gets local host username.
@@ -111,4 +111,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif // TEGRA_SYSTEM_HPP
+#endif // TEGRA_SYSTEM_INFORMATION_HPP

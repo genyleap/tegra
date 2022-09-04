@@ -79,7 +79,8 @@ bool Translator::init() __tegra_noexcept
                                 translations + "/" + std::string(f) + ".json"};
             if(fs::Path::exists(file)) {
                 std::ifstream i(file);
-                jsonParser->push_back(JSon::parse(i));
+                auto jres = JSon::parse(i);
+                jsonParser->push_back(jres);
                 m_hasError = false;
                 res = true;
             } else {
@@ -423,18 +424,25 @@ LanguageTemplate Translator::translate(const std::string& lang, const std::strin
 
 DictonaryType Translator::data(const std::string& sheet) __tegra_noexcept
 {
-    DictonaryType d;
-    auto items = *jsonParser;
-    for(const auto& root : items) {
-        for(const auto& i : root["data"][sheet]) {
-            if (i.is_object()) {
-                d.insert(std::pair(root["language-spec"]["code"],
-                                   std::pair(i["word_key"].get<std::string>(),
-                                             i["default_value"].get<std::string>())));
+    DictonaryType dic;
+    auto itemsPtr = *jsonParser;
+    if(jsonParser->items().begin().value()["data"].contains(sheet))
+    {
+        for(const auto& root : itemsPtr)
+        {
+            for(const auto& i : root["data"][sheet])
+            {
+                if (i.is_object())
+                    dic.insert(std::pair(root["language-spec"]["code"],
+                                         std::pair(i["word_key"].get<std::string>(),
+                                                   i["default_value"].get<std::string>())));
             }
         }
+    } else {
+        Log("Warning Message: [" + sheet + "] does not exist in the language data.\t" , LoggerType::Warning);
     }
-    return d;
+
+    return dic;
 }
 
 TEGRA_NAMESPACE_END

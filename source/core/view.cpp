@@ -24,20 +24,20 @@ __tegra_no_discard std::map<std::string, std::string> ViewIndex::defaultView(con
     case UserViewType::User:
         m_view.insert(std::pair<std::string, std::string>("home"         , SYSTEM_USER_VIEW_ROOT + FROM_TEGRA_STRING("::home")));
         m_view.insert(std::pair<std::string, std::string>("index"        , SYSTEM_USER_VIEW_ROOT + FROM_TEGRA_STRING("::index")));
-        m_view.insert(std::pair<std::string, std::string>("setup"        , SYSTEM_USER_VIEW_ROOT + FROM_TEGRA_STRING("::setup")));
+        m_view.insert(std::pair<std::string, std::string>("setup"        , SYSTEM_USER_VIEW_ROOT + FROM_TEGRA_STRING("::install")));
         m_view.insert(std::pair<std::string, std::string>("error"        , SYSTEM_USER_VIEW_ROOT + FROM_TEGRA_STRING("::error")));
         m_view.insert(std::pair<std::string, std::string>("preinstall"   , SYSTEM_USER_VIEW_ROOT + FROM_TEGRA_STRING("::preinstall")));
         break;
     case UserViewType::Admin:
         m_view.insert(std::pair<std::string, std::string>("dashboard"    , SYSTEM_ADMIN_VIEW_ROOT + FROM_TEGRA_STRING("::dashboard")));
         m_view.insert(std::pair<std::string, std::string>("index"        , SYSTEM_ADMIN_VIEW_ROOT + FROM_TEGRA_STRING("::index")));
-        m_view.insert(std::pair<std::string, std::string>("setup"        , SYSTEM_ADMIN_VIEW_ROOT + FROM_TEGRA_STRING("::setup")));
+        m_view.insert(std::pair<std::string, std::string>("setup"        , SYSTEM_ADMIN_VIEW_ROOT + FROM_TEGRA_STRING("::install")));
         m_view.insert(std::pair<std::string, std::string>("error"        , SYSTEM_ADMIN_VIEW_ROOT + FROM_TEGRA_STRING("::error")));
         break;
     case UserViewType::Moder:
         m_view.insert(std::pair<std::string, std::string>("dashboard"    , SYSTEM_MODER_VIEW_ROOT + FROM_TEGRA_STRING("::dashboard")));
         m_view.insert(std::pair<std::string, std::string>("index"        , SYSTEM_MODER_VIEW_ROOT + FROM_TEGRA_STRING("::index")));
-        m_view.insert(std::pair<std::string, std::string>("setup"        , SYSTEM_MODER_VIEW_ROOT + FROM_TEGRA_STRING("::setup")));
+        m_view.insert(std::pair<std::string, std::string>("setup"        , SYSTEM_MODER_VIEW_ROOT + FROM_TEGRA_STRING("::install")));
         m_view.insert(std::pair<std::string, std::string>("error"        , SYSTEM_MODER_VIEW_ROOT + FROM_TEGRA_STRING("::error")));
         break;
     case UserViewType::Guest:

@@ -18,7 +18,7 @@
 # if __has_include(<requirements>)
 #   include <requirements>
 #else
-#   error "Tegra's requirements are not found!"
+#   error "Tegra's requirements was not found!"
 # endif
 #endif
 
@@ -341,7 +341,6 @@ bool Engine::initialize()
         if(System::DeveloperMode::IsEnable)
             Log("No parsing...!", LoggerType::Failed);  ///< Parsing Failed!
     }
-
     return res;
 }
 
@@ -865,6 +864,57 @@ bool Engine::isMultilanguage() const noexcept
 void Engine::setPath(const std::string &p)
 {
     currentPath = p;
+}
+
+Technique::Technique(const Framework::HttpRequestPtr& request)
+{
+    const auto r = request->getParameter(FROM_TEGRA_STRING(Technique::method));
+    if(r == Technique::NONE) {
+        registerMethod(true, false, false);
+    } else if(r == Technique::AJAX) {
+        registerMethod(false, true, false);
+    } else if(r == Technique::ANGULAR) {
+        registerMethod(false, false, true);
+    }
+}
+
+bool Technique::none()
+{
+    if (isset(m_none)) {
+        return m_none;
+    } else {
+        return false;
+    }
+}
+
+bool Technique::ajax()
+{
+    if (isset(m_ajax)) {
+        return m_ajax;
+    } else {
+        return false;
+    }
+}
+
+bool Technique::angular()
+{
+    if (isset(m_angular)) {
+        return m_angular;
+    } else {
+        return false;
+    }
+}
+
+Technique::~Technique()
+{
+
+}
+
+void Technique::registerMethod(bool none, bool ajax, bool angular)
+{
+    m_none      =   none;
+    m_ajax      =   ajax;
+    m_angular   =   angular;
 }
 
 TEGRA_NAMESPACE_END

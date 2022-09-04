@@ -1,9 +1,9 @@
-//! Tegra's Config.
+//! Tegra's Configuration.
 #ifdef __has_include
-# if __has_include("config.hpp")
-#   include "config.hpp"
+# if __has_include("configuration.hpp")
+#   include "configuration.hpp"
 #else
-#   error "Tegra's config was not found!"
+#   error "Tegra's configuration was not found!"
 # endif
 #endif
 

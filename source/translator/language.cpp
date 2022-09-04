@@ -39,7 +39,7 @@ Language::Language()
 
     config->init(SectionType::SystemCore); //!System core for language.
 
-    auto lcodes = LanguageCodes{}; //!Language codes.
+    auto lcodes = CodeType{}; //!Language codes.
 
     for(auto c : Configuration::GET[TEGRA_LANGS])
     {
@@ -62,7 +62,7 @@ Language::Language(const std::string& uri)
 
     config->init(SectionType::SystemCore); //!System core for language.
 
-    auto lcodes = LanguageCodes{}; //!Language codes.
+    auto lcodes = CodeType{}; //!Language codes.
 
     for(auto c : Configuration::GET[TEGRA_LANGS])
     {
@@ -90,12 +90,12 @@ LanguageType Language::get() __tegra_const_noexcept
     return m_languageStruct->get;
 }
 
-void Language::registerLanguage(const LanguageCodes& code)
+void Language::registerLanguage(const CodeType& code)
 {
     m_languageStruct->languageSupport = code;
 }
 
-LanguageCodes Language::languageSupport() __tegra_const_noexcept
+CodeType Language::languageSupport() __tegra_const_noexcept
 {
     return m_languageStruct->languageSupport;
 }
@@ -116,6 +116,18 @@ std::string Language::getLanguageCode() __tegra_const_noexcept
         }
     }
     return lcode;
+}
+
+void Language::registerSheet(const SheetList& sheet)
+{
+    m_sheets = sheet;
+}
+
+CodeType Language::sheets() __tegra_const_noexcept
+{
+    if(isset(m_sheets.empty()))
+        eLogger::Log("There is no custom language sheet! Please use registerSheet({yoursheets}) before.", eLogger::LoggerType::Warning);
+    return m_sheets;
 }
 
 std::string Language::getLanguage() __tegra_const_noexcept

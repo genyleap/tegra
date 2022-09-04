@@ -69,8 +69,6 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
 
     auto config = Configuration(ConfigType::File);
 
-    engine.viewIndex->registerView(UserViewType::User, "compez", "kambiz");
-
     config.init(SectionType::SystemCore);
 
     {
@@ -89,7 +87,7 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
         } else {
             for(const auto& t : engine.viewIndex->defaultView(UserViewType::User))
             {
-                if(t.first == "index") appDataPtr->templateViewId->append(t.second);
+                if(t.first == "home") appDataPtr->templateViewId->append(t.second);
                 if(t.first == "error") appDataPtr->templateViewErrorId->append(t.second);
             }
         }
@@ -100,8 +98,6 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
     Scope<Multilangual::Language> languagePtr(new Multilangual::Language(appDataPtr->path.value()));
 
     Scope<LoadListTemplate>templateList(new LoadListTemplate(languagePtr->getLanguage(), appDataPtr->path.value()));
-
-    std::clog << languagePtr->getLanguageCode() << std::endl;
 
     auto currentPath = appDataPtr->path.value();
 
@@ -117,28 +113,28 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
 
     theme->viewData.insert("meta", theme->staticMeta->metaData()); //!Metadata
 
-    std::clog << TEGRA_TRANSLATOR("global", "name") << std::endl;
-
     /* Custom Translate Section */
-    theme->viewData.insert("title",        templateList->title().value_or(TEGRA_TRANSLATOR("global", "name")));
-    theme->viewData.insert("description",  templateList->description().value_or(TEGRA_TRANSLATOR("global", "slogan_desc")));
-    theme->viewData.insert("copyright", TEGRA_TRANSLATOR("sideblock", "copyright"));
-    theme->viewData.insert("home", TEGRA_TRANSLATOR("menu", "home"));
-    theme->viewData.insert("feature", TEGRA_TRANSLATOR("menu", "features"));
-    theme->viewData.insert("contact", TEGRA_TRANSLATOR("menu", "contactus"));
-    theme->viewData.insert("source", TEGRA_TRANSLATOR("menu", "source"));
+    theme->viewData.insert("title"          , templateList->title().value_or(TEGRA_TRANSLATOR("global", "name")));
+    theme->viewData.insert("description"    , templateList->description().value_or(TEGRA_TRANSLATOR("global", "slogan_desc")));
+    theme->viewData.insert("copyright"      , TEGRA_TRANSLATOR("sideblock", "copyright"));
+    theme->viewData.insert("home"           , TEGRA_TRANSLATOR("menu", "home"));
+    theme->viewData.insert("feature"        , TEGRA_TRANSLATOR("menu", "features"));
+    theme->viewData.insert("contact"        , TEGRA_TRANSLATOR("menu", "contactus"));
+    theme->viewData.insert("source"         , TEGRA_TRANSLATOR("menu", "source"));
+    theme->viewData.insert("setup"          , TEGRA_TRANSLATOR("setup", "setup"));
 
     /* Dynamic Translate Section */
-    SheetType sheets {"global", "dialog", "account"};
-    for(const auto& key : sheets) {
-        for(const auto& s : engine.translator->data(key)) {
-            if(s.first == engine.getLanguage()) {
+    SheetList sheets {"global", "dialog", "account"};
+    languagePtr->registerSheet(sheets);
+    auto l = languagePtr->getLanguageCode();
+    for(const auto& key : languagePtr.get()->sheets())
+    {
+        for(const auto& s : Application::get(*appDataPtr)->translator->data(key))
+        {
+            if(s.first == l)
                 theme->viewData.insert(s.second.first, s.second.second);
-            }
         }
     }
-
-    std::clog <<appDataPtr->templateViewId.value() << std::endl;
 
     if (engine.isMultilanguage() && IsConnected) {
         //Multi-Language logic code here...

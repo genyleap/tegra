@@ -30,7 +30,7 @@ struct SYSTEM_VIEW_INDEX final
     static constexpr std::string_view   PREINSTALL  = "preinstall";
     static constexpr std::string_view   INDEX       = "index";
     static constexpr std::string_view   HOME        = "home";
-    static constexpr std::string_view   SETUP       = "setup";
+    static constexpr std::string_view   SETUP       = "install";
     static constexpr std::string_view   ERROR       = "error";
     static constexpr std::string_view   UNKNOWN     = "unknown";
 };

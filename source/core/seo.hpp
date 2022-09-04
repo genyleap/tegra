@@ -18,7 +18,7 @@
 # if __has_include(<requirements>)
 #   include <requirements>
 #else
-#   error "Tegra's requirements are not found!"
+#   error "Tegra's requirements was not found!"
 # endif
 #endif
 
@@ -27,7 +27,7 @@
 # if __has_include(<interface>)
 #   include <interface>
 #else
-#   error "The abstractions of Tegra are not found!"
+#   error "The abstractions of Tegra was not found!"
 # endif
 #endif
 

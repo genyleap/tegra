@@ -18,7 +18,7 @@
 # if __has_include(<requirements>)
 #   include <requirements>
 #else
-#   error "Tegra's requirements are not found!"
+#   error "Tegra's requirements was not found!"
 # endif
 #endif
 
@@ -36,7 +36,7 @@
 # if __has_include(<application>)
 #   include <application>
 #else
-#   error "The application of Tegra are not found!"
+#   error "The application of Tegra was not found!"
 # endif
 #endif
 

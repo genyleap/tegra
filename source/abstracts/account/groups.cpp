@@ -3,7 +3,7 @@
 # if __has_include(<abstracts/groups>)
 #   include <abstracts/groups>
 #else
-#   error "Tegra's groups are not found!"
+#   error "Tegra's groups was not found!"
 # endif
 #endif
 

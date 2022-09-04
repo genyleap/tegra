@@ -1,7 +1,7 @@
 #include "common.hpp"
 #include "prestructure.hpp"
 #include "core/core.hpp"
-#include "core/config.hpp"
+#include "core/configuration.hpp"
 #include "core/terminal.hpp"
 #include "core/console.hpp"
 #include "core/database.hpp"

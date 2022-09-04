@@ -278,7 +278,7 @@ public:
     __tegra_no_discard DictonaryType data(const std::string& sheet) __tegra_noexcept;
 
 protected:
-    JSonPointer       jsonParser;   // JSon Parser
+    JSonPointer       jsonParser{};   // JSon Parser
     LanguageMap       wordMap{};    // Language map.
 
     LanguageList      m_list{};

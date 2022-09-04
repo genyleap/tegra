@@ -3,7 +3,7 @@
 # if __has_include("account/activities.hpp")
 #   include "account/activities.hpp"
 #else
-#   error "Tegra's activities are not found!"
+#   error "Tegra's activities was not found!"
 # endif
 #endif
 

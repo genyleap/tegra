@@ -693,11 +693,6 @@ public:
      */
     bool isMultilanguage() __tegra_const_noexcept;
 
-    /*!
-     * \brief Lanuage translator engine.
-     */
-    Translation::Translator* translator{__tegra_nullptr};
-
     bool m_multilang {};
 
     std::string m_languageStr {__tegra_null_str};
@@ -707,6 +702,34 @@ public:
     mutable std::string currentPath{};
 
     View::ViewIndex* viewIndex;
+
+protected:
+    /*!
+     * \brief Lanuage translator engine.
+     */
+    Translation::Translator* translator{__tegra_nullptr};
+};
+
+class Technique final {
+public:
+    Technique(const Framework::HttpRequestPtr& request);
+    ~Technique();
+
+    static constexpr std::string_view  method   = "technique";
+    static constexpr std::string_view  NONE     = "none";
+    static constexpr std::string_view  AJAX     = "ajax";
+    static constexpr std::string_view  ANGULAR  = "angular";
+
+    bool none();
+    bool ajax();
+    bool angular();
+
+    void registerMethod(bool none, bool ajax, bool angular);
+
+private:
+    bool m_none{};
+    bool m_ajax{};
+    bool m_angular{};
 };
 
 TEGRA_NAMESPACE_END
