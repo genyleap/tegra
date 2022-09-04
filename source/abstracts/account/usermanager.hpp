@@ -27,7 +27,7 @@
 # if __has_include(<core>)
 #   include <core>
 #else
-#   error "Tegra's requirements are not found!"
+#   error "Tegra's requirements was not found!"
 # endif
 #endif
 

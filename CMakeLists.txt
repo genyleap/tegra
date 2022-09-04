@@ -22,7 +22,7 @@ set(PROJECT_TARGET ${PROJECT_NAME} CACHE STRING "Project Target Name.")
 
 set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_VERSION_MINOR 2)
-set(PROJECT_VERSION_PATCH 373)
+set(PROJECT_VERSION_PATCH 383)
 set(PROJECT_VERSION_TWEAK 0)
 
 # ---- Project settings ----
@@ -523,6 +523,9 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/templates DESTINATION ${CMAKE_BINARY_DIR}/
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/final/server-log)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR}/final)
 install(DIRECTORY DESTINATION ${CMAKE_BINARY_DIR}/final/server-log)
+
+add_compile_options(-frtti -fexceptions)
+target_compile_options(${PROJECT_NAME} PUBLIC -frtti -fexceptions)
 
 #Ignore unused files.
 list(APPEND CPACK_SOURCE_IGNORE_FILES /.git/ /build/ .gitignore .DS_Store)

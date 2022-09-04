@@ -18,7 +18,7 @@
 # if __has_include(<requirements>)
 #   include <requirements>
 #else
-#   error "Tegra's requirements are not found!"
+#   error "Tegra's requirements was not found!"
 # endif
 #endif
 
@@ -27,7 +27,7 @@
 # if __has_include(<interface>)
 #   include <interface>
 #else
-#   error "The abstractions of Tegra are not found!"
+#   error "The abstractions of Tegra was not found!"
 # endif
 #endif
 
@@ -36,7 +36,7 @@
 # if __has_include(<application>)
 #   include <application>
 #else
-#   error "The application of Tegra are not found!"
+#   error "The application of Tegra was not found!"
 # endif
 #endif
 
@@ -126,16 +126,16 @@ public:
     OptionalString module() __tegra_const_noexcept;
 
     /*!
-     * \brief templateId will gets error template id.
+     * \brief templateViewErrorId will gets error template id.
      * \returns string.
      */
-    OptionalString templateErrorId() __tegra_const_noexcept;
+    OptionalString templateViewErrorId() __tegra_const_noexcept;
 
     /*!
-     * \brief templateId will gets template id.
+     * \brief templateViewId will gets template id.
      * \returns string.
      */
-    OptionalString templateId() __tegra_const_noexcept;
+    OptionalString templateViewId() __tegra_const_noexcept;
 
     Scope<System::Engine>   engine      {};
     Scope<Tegra::Version>   version     {};

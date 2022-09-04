@@ -32,8 +32,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::Abstracts)
 
 /*!
@@ -83,6 +81,7 @@ public:
 private:
     TEGRA_DISABLE_COPY(AbstractTransferMethod)
 };
+
 TEGRA_NAMESPACE_END
 
 #endif  // TEGRA_TRANSFER_ABSTRACT_HPP

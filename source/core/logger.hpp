@@ -22,9 +22,6 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Types;
-
 TEGRA_NAMESPACE_BEGIN(Tegra::eLogger)
 
 /*!
@@ -43,13 +40,17 @@ enum LoggerType : u8
     InProgress  =   0x8     ///<Print as in progress message.
 };
 
-enum class Mode : u8
+__tegra_enum_class Mode : u8
 {
     User        =   0x0,    ///<Based on user log.
     Developer   =   0x1,    ///<Based on developer for debuging log.
     DataMining  =   0x2     ///<Based on data log.
 };
 
+__tegra_enum_class LogeState : u8
+{
+    ForceToError, Normal
+};
 
 #define Log(message, type)                                                                  \
 Logger::echo(__tegra_compiler_counter,                                                      \
@@ -74,6 +75,8 @@ public:
     ~Logger();
 
     inline static Mode LoggerModel = Mode::User;
+
+    inline static LogeState LoggerState = LogeState::Normal;
 
     /*!
      * \brief echo function will prints all data inline of usage!

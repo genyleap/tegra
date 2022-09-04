@@ -1,5 +1,5 @@
 /*!
- * @file        config.hpp
+ * @file        configuration.hpp
  * @brief       This file is part of the Tegra System.
  * @details     System configuration.
  * @author      <a href='https://www.kambizasadzadeh.com'>Kambiz Asadzadeh</a>
@@ -10,8 +10,8 @@
  *
  */
 
-#ifndef TEGRA_CONFIG_HPP
-#define TEGRA_CONFIG_HPP
+#ifndef TEGRA_CONFIGURATION_HPP
+#define TEGRA_CONFIGURATION_HPP
 
 //! Tegra's Core (Basic Requirements).
 #ifdef __has_include
@@ -32,7 +32,6 @@
 #endif
 
 TEGRA_NAMESPACE_BEGIN(Tegra)
-
 
 /*!
  * \brief The RdbmsInterface class
@@ -245,4 +244,4 @@ private:
 
 TEGRA_NAMESPACE_END
 
-#endif  // TEGRA_CONFIG_HPP
+#endif  // TEGRA_CONFIGURATION_HPP

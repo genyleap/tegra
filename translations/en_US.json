@@ -2501,7 +2501,7 @@
          {
             "word_key": "setup_slogan_desc",
             "module": "system",
-            "default_value": "Tegra Content Management System, an open source system with multi-lingual and multi-purpose features for building extremely super high-end performance websites.",
+            "default_value": "Tegra is an open source super high-end performance, user-friendly, multi-lingual and multi-purpose modern system based on C++20 which enables you to build websites and powerful online applications.",
             "custom_value": "",
             "status": true
          },

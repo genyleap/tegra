@@ -1,0 +1,73 @@
+<!-- BEGIN CPP -->
+<%inc #include <iostream> %>
+<%c++ std::string detail=@@.get<std::string>("detail");%>
+<%c++ std::string bootstrapCSS=@@.get<std::string>("bootstrapCSS");%>
+<%c++ auto metas=@@.get<std::vector<std::string>>("meta");%>
+<%c++ auto options=@@.get<std::vector<std::string>>("options");%>
+<%c++ auto css=@@.get<std::vector<std::string>>("thirdPartyCss");%>
+<%c++ auto js=@@.get<std::vector<std::string>>("thirdPartyJs");%>
+<%c++ auto links=@@.get<std::vector<std::string>>("linkSheet");%>
+<%c++ auto style=@@.get<std::vector<std::string>>("systemStyle");%>
+<%c++ auto dataArray=@@.get<std::map<std::string, std::string>>("dataArray");%>
+
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+<title>[[title]]</title>
+<!-- Begin Meta Data -->
+<%c++ if(metas.size()>0){%>
+<%c++ for(auto iter:metas){%>
+{%iter%}
+<%c++}%>
+<%c++}%>
+<!-- End Meta Data -->
+
+<!-- Begin assets -->
+<%c++ for(auto iter:css){%>
+<link href="{%iter%}" rel="stylesheet">
+<%c++}%>
+
+<meta name="theme-color" content="#712cf9">
+<!-- End assets -->
+
+<!-- Begin icons -->
+<%c++ for(auto iter:links){%>
+{%iter%}
+<%c++}%>
+
+<!-- Begin system style -->
+<style>
+<%c++ for(auto iter:style){%>
+{%iter%}
+<%c++}%>
+</style>
+</head>
+
+<body class="d-flex h-100 text-center text-bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">[[title]]</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">[[home]]</a>
+        <a class="nav-link fw-bold py-1 px-0" href="#">[[feature]]</a>
+        <a class="nav-link fw-bold py-1 px-0" href="#">[[contact]]</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <h1>[[title]]</h1>
+    <p class="lead">[[description]]</p>
+    <p class="lead">
+      <a href="https://github.com/genyleap/cms" target="_blank" class="btn btn-lg btn-primary">[[source]]</a>
+    </p>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>[[copyright]]</p>
+  </footer>
+</div>
+</body>
+</html>

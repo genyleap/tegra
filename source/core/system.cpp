@@ -38,19 +38,19 @@
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
 
-TEGRA_NAMESPACE_BEGIN(Tegra::System)
+TEGRA_NAMESPACE_BEGIN(Tegra)
 
-SystemInfo::SystemInfo()
+SystemInformation::SystemInformation()
 {
 
 }
 
-SystemInfo::~SystemInfo()
+SystemInformation::~SystemInformation()
 {
 
 }
 
-std::string SystemInfo::getHostUserName()
+std::string SystemInformation::getHostUserName()
 {
 #if defined(PLATFORM_MAC) || defined(PLATFORM_APPLE)
     return getenv("USER");
@@ -64,7 +64,7 @@ std::string SystemInfo::getHostUserName()
 #endif
 }
 
-std::string SystemInfo::getHostName()
+std::string SystemInformation::getHostName()
 {
     std::string result{};
 #ifdef PLATFORM_DESKTOP
@@ -90,20 +90,20 @@ std::string SystemInfo::getHostName()
     return result;
 }
 
-std::string SystemInfo::getOsName()
+std::string SystemInformation::getOsName()
 {
     const std::string os{PLATFORM_OS};
     return os;
 }
 
-std::string SystemInfo::macAddressAsByteArray(unsigned char MACData[])
+std::string SystemInformation::macAddressAsByteArray(unsigned char MACData[])
 {
     std::string var {"unknown"};
     var = stringFormat("%02X-%02X-%02X-%02X-%02X-%02X", MACData[0], MACData[1], MACData[2], MACData[3], MACData[4], MACData[5]);
     return var;
 }
 
-std::string SystemInfo::getMacAddress()
+std::string SystemInformation::getMacAddress()
 {
     std::string result{};
 #ifdef PLATFORM_DESKTOP
@@ -136,7 +136,7 @@ std::string SystemInfo::getMacAddress()
     return result;
 }
 
-std::string SystemInfo::getIpV4Address()
+std::string SystemInformation::getIpV4Address()
 {
     std::string result = "Unknown";
 #ifdef PLATFORM_DESKTOP
@@ -162,7 +162,7 @@ std::string SystemInfo::getIpV4Address()
 #endif
 }
 
-std::string SystemInfo::getIpV6Address()
+std::string SystemInformation::getIpV6Address()
 {
     std::string result = "Unknown";
 #ifdef PLATFORM_DESKTOP
@@ -185,7 +185,7 @@ std::string SystemInfo::getIpV6Address()
 #endif
 }
 
-std::string SystemInfo::getMachineUniqueId()
+std::string SystemInformation::getMachineUniqueId()
 {
 #ifdef PLATFORM_DESKTOP
 #if defined(PLATFORM_MAC)
@@ -217,7 +217,7 @@ std::string SystemInfo::getMachineUniqueId()
 #endif
 }
 
-std::string SystemInfo::getStorageDiskModel()
+std::string SystemInformation::getStorageDiskModel()
 {
     std::string result = "Unknown";
 #ifdef PLATFORM_DESKTOP
@@ -240,7 +240,7 @@ std::string SystemInfo::getStorageDiskModel()
 #endif
 }
 
-std::string SystemInfo::getStorageDiskSerialNumber()
+std::string SystemInformation::getStorageDiskSerialNumber()
 {
     std::string result = "Unknown";
 #ifdef PLATFORM_DESKTOP
@@ -263,7 +263,7 @@ std::string SystemInfo::getStorageDiskSerialNumber()
 #endif
 }
 
-std::string SystemInfo::getGpuModel()
+std::string SystemInformation::getGpuModel()
 {
     std::string result = "Unknown";
 #ifdef PLATFORM_DESKTOP
@@ -285,7 +285,7 @@ std::string SystemInfo::getGpuModel()
 #endif
 }
 
-std::string SystemInfo::getSerialNumber()
+std::string SystemInformation::getSerialNumber()
 {
     std::string result{"unknown"};
 #ifdef PLATFORM_DESKTOP

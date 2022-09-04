@@ -22,23 +22,18 @@
 # endif
 #endif
 
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::System;
+TEGRA_NAMESPACE_BEGIN(Tegra::Default)
 
-TEGRA_NAMESPACE_BEGIN(Pages)
-
-class Home : public Framework::HttpController<Home>
+class DefIndex : public Framework::HttpController<DefIndex>
 {
 public:
     METHOD_LIST_BEGIN
-
     {
-        ADD_METHOD_TO(Home::index, "", {Framework::Get});
-        ADD_METHOD_TO(Home::index, "/", {Framework::Get});
-        ADD_METHOD_VIA_REGEX(Home::index,  "/([a-z]*-[a-z]*)/", Framework::Get, Framework::Post);
-        ADD_METHOD_VIA_REGEX(Home::index,  "/([a-z]*-[a-z]*)", Framework::Get, Framework::Post);
+        ADD_METHOD_TO(DefIndex::index, "", {Framework::Get});
+        ADD_METHOD_TO(DefIndex::index, "/", {Framework::Get});
+        ADD_METHOD_VIA_REGEX(DefIndex::index,  "/([a-z]*-[a-z]*)/", Framework::Get, Framework::Post);
+        ADD_METHOD_VIA_REGEX(DefIndex::index,  "/([a-z]*-[a-z]*)", Framework::Get, Framework::Post);
     }
-
     METHOD_LIST_END
 
     /*!
@@ -46,7 +41,7 @@ public:
     * \param req for Http request.
     * \param callback for Http response.
     */
-    void index(const Framework::HttpRequestPtr& req, std::function<void(const Framework::HttpResponsePtr &)>&& callback) const;
+    void index(const Framework::HttpRequestPtr& req, std::function<void(const Framework::HttpResponsePtr&)>&& callback) __tegra_const;
 };
 
 

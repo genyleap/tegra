@@ -49,6 +49,15 @@
 # endif
 #endif
 
+//! Tegra's View.
+#ifdef __has_include
+# if __has_include(<view>)
+#   include <view>
+#else
+#   error "Tegra's view was not found!"
+# endif
+#endif
+
 //! Tegra's eLogger.
 #ifdef __has_include
 # if __has_include(<logger>)
@@ -66,10 +75,6 @@
 #   error "Tegra's dynamics was not found!"
 # endif
 #endif
-
-TEGRA_USING_NAMESPACE Tegra;
-TEGRA_USING_NAMESPACE Tegra::Abstracts;
-TEGRA_USING_NAMESPACE Tegra::Types;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
@@ -107,6 +112,16 @@ template <typename T1, typename T2>
 __tegra_no_discard constexpr bool equals(T1 const& first, T2 const& second) __tegra_noexcept
 {
     return first == second;
+}
+
+/*!
+ * @brief function for check pointer status.
+ * returns true if it is null pointer.
+ */
+template <typename T>
+__tegra_no_discard constexpr bool isNullPtr(T const& t) __tegra_noexcept
+{
+    return t == __tegra_nullptr ? true : false;
 }
 
 /*!
@@ -309,22 +324,22 @@ private:
     ExceptionData* m_exceptionData;
 };
 
-struct __tegra_export BootParameter final
+struct __tegra_export BootParameter __tegra_final
 {
-    bool                            fastBoot       {};      ///<This property is set to true when the system is booted with the highest possible state.
-    std::time_t                     initTime       {};      ///<The time spent on execution.
-    std::optional<std::string>      saveState      {};      ///<The system save state applied during a save operation after execution or completion of the operation..
-    std::optional<u32>              pageSize       {};      ///<The size of the requested page.
-    std::time_t                     pageInitTime   {};      ///<The loading time of the requested page.
-    std::optional<u32>              pageSpeed      {};      ///<The loading speed of the requested page.
-    std::optional<s32>              stateIndex     {};      ///<The state of index for any page.
-    std::optional<HostType>         hostType       {};      ///<This attribute specifies the type of site hosting. for example: Linux
-    std::optional<StorageType>      storageType    {};      ///<This attribute specifies the type of storage to use.
-    std::optional<UserMode>         userMode       {};      ///<This attribute specifies the type of user who uses the system.
-    std::optional<SyncDevice>       syncDevice     {};      ///<This attribute specifies the type of devices that are integrated with the system.
-    std::optional<SystemType>       systemType     {};      ///<This attribute determines the type of system consumption.
-    std::optional<SystemLicense>    systemLicense  {};      ///<The type of license to use the system.
-    std::optional<SystemStatus>     systemStatus   {};      ///<This attribute specifies the state the system is in.
+    bool                       fastBoot       {};      ///<This property is set to true when the system is booted with the highest possible state.
+    std::time_t                initTime       {};      ///<The time spent on execution.
+    Optional<std::string>      saveState      {};      ///<The system save state applied during a save operation after execution or completion of the operation..
+    Optional<u32>              pageSize       {};      ///<The size of the requested page.
+    std::time_t                pageInitTime   {};      ///<The loading time of the requested page.
+    Optional<u32>              pageSpeed      {};      ///<The loading speed of the requested page.
+    Optional<s32>              stateIndex     {};      ///<The state of index for any page.
+    Optional<HostType>         hostType       {};      ///<This attribute specifies the type of site hosting. for example: Linux
+    Optional<StorageType>      storageType    {};      ///<This attribute specifies the type of storage to use.
+    Optional<UserMode>         userMode       {};      ///<This attribute specifies the type of user who uses the system.
+    Optional<SyncDevice>       syncDevice     {};      ///<This attribute specifies the type of devices that are integrated with the system.
+    Optional<SystemType>       systemType     {};      ///<This attribute determines the type of system consumption.
+    Optional<SystemLicense>    systemLicense  {};      ///<The type of license to use the system.
+    Optional<SystemStatus>     systemStatus   {};      ///<This attribute specifies the state the system is in.
 };
 
 class __tegra_export EngineInterface
@@ -356,13 +371,13 @@ public:
      * @brief Getting current system state.
      * @returns returns string of system state, for example version and etc.
      */
-    virtual std::optional<std::string>      getSaveState        () final;
+    virtual Optional<std::string>      getSaveState        () final;
 
     /*!
      * @brief Getting current loaded page size.
      * @returns returns as unsigned int 32 for page size.
      */
-    virtual std::optional<u32>              getPageSize         () final;
+    virtual Optional<u32>              getPageSize         () final;
 
     /*!
      * @brief Getting current system current page init time duration.
@@ -374,49 +389,49 @@ public:
      * @brief Getting current page speed load.
      * @returns returns as counter of page speed.
      */
-    virtual std::optional<u32>              getPageSpeed        () final;
+    virtual Optional<u32>              getPageSpeed        () final;
 
     /*!
      * @brief Getting current system state index.
      * @returns returns as signed integer for state index.
      */
-    virtual std::optional<s32>              getStateIndex       () final;
+    virtual Optional<s32>              getStateIndex       () final;
 
     /*!
      * @brief Getting current installed host type.
      * @returns returns as HostType enum.
      */
-    virtual std::optional<HostType>         getHostType         () final;
+    virtual Optional<HostType>         getHostType         () final;
 
     /*!
      * @brief Getting current system user mode.
      * @returns returns as UserMode enum.
      */
-    virtual std::optional<UserMode>         getUserMode         () final;
+    virtual Optional<UserMode>         getUserMode         () final;
 
     /*!
      * @brief Getting current system sync mode.
      * @returns returns as SyncDevice enum.
      */
-    virtual std::optional<SyncDevice>       getSyncMode         () final;
+    virtual Optional<SyncDevice>       getSyncMode         () final;
 
     /*!
      * @brief Getting current system type.
      * @returns returns as SystemType enum.
      */
-    virtual std::optional<SystemType>       getSystemType       () final;
+    virtual Optional<SystemType>       getSystemType       () final;
 
     /*!
      * @brief Getting current system license.
      * @returns returns as SystemLicense enum.
      */
-    virtual std::optional<SystemLicense>    getSystemLicense    () final;
+    virtual Optional<SystemLicense>    getSystemLicense    () final;
 
     /*!
      * @brief Getting current state of the system.
      * @returns returns as SystemStatus enum.
      */
-    virtual std::optional<SystemStatus>     getSystemStatus     () final;
+    virtual Optional<SystemStatus>     getSystemStatus     () final;
 
 
 private:
@@ -678,11 +693,6 @@ public:
      */
     bool isMultilanguage() __tegra_const_noexcept;
 
-    /*!
-     * \brief Lanuage translator engine.
-     */
-    Translation::Translator* translator{__tegra_nullptr};
-
     bool m_multilang {};
 
     std::string m_languageStr {__tegra_null_str};
@@ -690,6 +700,36 @@ public:
     void setPath(const std::string& p);
 
     mutable std::string currentPath{};
+
+    View::ViewIndex* viewIndex;
+
+protected:
+    /*!
+     * \brief Lanuage translator engine.
+     */
+    Translation::Translator* translator{__tegra_nullptr};
+};
+
+class Technique final {
+public:
+    Technique(const Framework::HttpRequestPtr& request);
+    ~Technique();
+
+    static constexpr std::string_view  method   = "technique";
+    static constexpr std::string_view  NONE     = "none";
+    static constexpr std::string_view  AJAX     = "ajax";
+    static constexpr std::string_view  ANGULAR  = "angular";
+
+    bool none();
+    bool ajax();
+    bool angular();
+
+    void registerMethod(bool none, bool ajax, bool angular);
+
+private:
+    bool m_none{};
+    bool m_ajax{};
+    bool m_angular{};
 };
 
 TEGRA_NAMESPACE_END

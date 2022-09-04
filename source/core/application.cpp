@@ -7,9 +7,19 @@
 # endif
 #endif
 
+//! Tegra's CMake Config.
+#ifdef __has_include
+# if __has_include("config.hpp")
+#   include "config.hpp"
+#else
+#   error "Tegra's cmake config file was not found!"
+# endif
+#endif
+
 TEGRA_USING_NAMESPACE Tegra;
 TEGRA_USING_NAMESPACE Tegra::System;
 TEGRA_USING_NAMESPACE Tegra::eLogger;
+TEGRA_USING_NAMESPACE Tegra::Database;
 TEGRA_USING_NAMESPACE Tegra::Abstracts;
 TEGRA_USING_NAMESPACE Tegra::Abstracts::Module;
 TEGRA_USING_NAMESPACE Tegra::Abstracts::Plugin;
@@ -70,11 +80,40 @@ Application* Application::get(const ApplicationData& appData)
 
 void Application::start()
 {
+    auto appData = ApplicationData();              ///< Application Data
+    auto version = Version();                      ///< Version
+    auto semanticVersion = SemanticVersion();      ///< Semantic Version
+    auto con = Connection();                       ///< Connection
+    auto config = Configuration(ConfigType::File); ///< Configuration
+
+    // Configuration before use
+    config.init(SectionType::SystemCore);
+    {   // Set from cmake config.hpp.in
+        semanticVersion.Major = PROJECT_VERSION_MAJOR;
+        semanticVersion.Minor = PROJECT_VERSION_MINOR;
+        semanticVersion.Patch = PROJECT_VERSION_PATCH;
+        semanticVersion.PreRelease = PROJECT_VERSION_TYPE;
+        version.setVersion(semanticVersion, Tegra::Version::ReleaseType::Alpha);
+    }
+    // App Data
+    {
+        appData.path = __tegra_null_str;
+        appData.module = "core";
+        appData.semanticVersion = semanticVersion;
+        appData.releaseType = Tegra::Version::ReleaseType::Alpha;
+        appData.systemInfo.version = appData.semanticVersion;
+        appData.systemInfo.codeName = "concept";
+        appData.systemInfo.name = PROJECT_NAME;
+        appData.systemInfo.compiledDate = __tegra_compiled_date;
+        appData.systemInfo.license = SystemLicense::Free;
+        appData.systemInfo.type = SystemType::General;
+    }
+
     if(System::DeveloperMode::IsEnable)
         Log("Engine started!", LoggerType::Info); ///< Engine Start...
     {
         Console::print << "Starting..." << newline;
-        Console::print << "=================[Tegra System Info]=================\n";
+        Console::print << "=================[Tegra Core System Info]=================\n";
         Console::print << newline;
         Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << __tegra_space << systemInfo->name.value() << ""
@@ -84,8 +123,8 @@ void Application::start()
                        << " code name : "
                        << systemInfo->codeName.value() + " ]"<< " ⇙" << newline;
                                       Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
-                       << " version : "
-                       << version->getAsString() + " ]"
+                       << " core version : "
+                       << version.getAsString() + " ]"
                        << " ⇙" << newline;
                                       Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << " license type : "
@@ -172,7 +211,7 @@ OptionalString Application::model() __tegra_const_noexcept
 
 __tegra_no_discard std::vector<ModuleInfo> Application::modules() __tegra_noexcept
 {
-  return m_moduleInfoList;
+    return m_moduleInfoList;
 }
 
 void Application::registerModules(const std::vector<ModuleInfo>& modulesList) __tegra_noexcept
@@ -182,7 +221,7 @@ void Application::registerModules(const std::vector<ModuleInfo>& modulesList) __
 
 std::vector<PluginInfo> Application::plugins() __tegra_noexcept
 {
-   return m_pluginInfoList;
+    return m_pluginInfoList;
 }
 
 void Application::registerPlugins(const std::vector<PluginInfo>& pluginsList) __tegra_noexcept
@@ -195,14 +234,14 @@ OptionalString Application::module() __tegra_const_noexcept
     return appDataPtr->module.value_or(__tegra_unknown);
 }
 
-OptionalString Application::templateErrorId() __tegra_const_noexcept
+OptionalString Application::templateViewErrorId() __tegra_const_noexcept
 {
-    return appDataPtr->templateErrorId.value_or(__tegra_unknown);
+    return appDataPtr->templateViewErrorId.value_or(__tegra_unknown);
 }
 
-OptionalString Application::templateId() __tegra_const_noexcept
+OptionalString Application::templateViewId() __tegra_const_noexcept
 {
-    return appDataPtr->templateId.value_or(__tegra_unknown);
+    return appDataPtr->templateViewId.value_or(__tegra_unknown);
 }
 
 TEGRA_NAMESPACE_END
