@@ -129,6 +129,11 @@ if (BUILD_DEBUG_MODE)
   add_definitions(-DBUILD_DEBUG_MODE)
 endif()
 
+option(AUTO_TREATMENT_MODE "Auto Treatment mode" OFF)
+if (AUTO_TREATMENT_MODE)
+  add_definitions(-DAUTO_TREATMENT_MODE)
+endif()
+
 option(DEBUG_LOGGING	    "Enabling the build of debug logging" FALSE)
 if (DEBUG_LOGGING)
   add_definitions(-DDEBUG_LOGGING)

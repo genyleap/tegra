@@ -12,6 +12,8 @@ cmake_policy(SET CMP0048 NEW)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
 
+include(config.cmake)
+
 include(ExternalProject)
 include(FetchContent)
 
@@ -39,6 +41,8 @@ endif()
 set(PROJECT_CREATOR "Kambiz Asadzadeh" CACHE STRING "Creator of your project.") #Your project creator.
 
 set(PROJECT_LICENSE_TYPE "LGPL-v3.0" CACHE STRING "Project License Type.") #Your project license type.
+
+set(PROJECT_APP_NAME "Tegra" CACHE STRING "Project Application Name.") #Your project app name.
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
   execute_process(
@@ -167,7 +171,10 @@ file(
     source/framework/${SUFFIX_HPPHEADER}
     source/core/${SUFFIX_HPPHEADER}
     source/core/extra/${SUFFIX_HPPHEADER}
-    source/account/${SUFFIX_HPPHEADER}
+    source/classes/${SUFFIX_HPPHEADER}
+    source/classes/dynamics/${SUFFIX_HPPHEADER}
+    source/classes/page/${SUFFIX_HPPHEADER}
+    source/classes/account/${SUFFIX_HPPHEADER}
     source/abstracts/${SUFFIX_HPPHEADER}
     source/abstracts/apis/${SUFFIX_HPPHEADER}
     source/abstracts/account/${SUFFIX_HPPHEADER}
@@ -184,7 +191,10 @@ file(
     source/framework/${SUFFIX_SOURCE}
     source/core/${SUFFIX_SOURCE}
     source/core/extra/${SUFFIX_SOURCE}
-    source/account/${SUFFIX_SOURCE}
+    source/classes/${SUFFIX_SOURCE}
+    source/classes/dynamics/${SUFFIX_SOURCE}
+    source/classes/page/${SUFFIX_SOURCE}
+    source/classes/account/${SUFFIX_SOURCE}
     source/abstracts/${SUFFIX_SOURCE}
     source/abstracts/apis/${SUFFIX_SOURCE}
     source/abstracts/account/${SUFFIX_SOURCE}

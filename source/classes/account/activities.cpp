@@ -1,7 +1,7 @@
 //! Tegra's Account Activities.
 #ifdef __has_include
-# if __has_include("account/activities.hpp")
-#   include "account/activities.hpp"
+# if __has_include("activities.hpp")
+#   include "activities.hpp"
 #else
 #   error "Tegra's activities was not found!"
 # endif

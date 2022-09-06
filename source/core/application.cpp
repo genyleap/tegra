@@ -7,12 +7,12 @@
 # endif
 #endif
 
-//! Tegra's CMake Config.
+//! CMake's Config.
 #ifdef __has_include
 # if __has_include("config.hpp")
 #   include "config.hpp"
 #else
-#   error "Tegra's cmake config file was not found!"
+#   error "Tegra's config was not found!"
 # endif
 #endif
 
@@ -31,23 +31,32 @@ Application::Application(const ApplicationData& appData)
     __tegra_safe_instance_rhs(language, Multilangual::Language, appData.path.value_or(__tegra_unknown));
     __tegra_safe_instance(translator, Translation::Translator);
     __tegra_safe_instance(appDataPtr, ApplicationData);
+    __tegra_safe_instance(appInfoPtr, ApplicationInfo);
+    __tegra_safe_instance(pageArchivePtr, PageArchive);
     ///!Smart Scopes
     {
         __tegra_smart_instance(engine, Engine);
         __tegra_smart_instance(version, Version);
-        __tegra_smart_instance(systemInfo, SystemInfo);
     }
     ///!Inits
     {
-        version->setVersion(appData.semanticVersion, appData.releaseType);
+        if(!appInfoPtr->systemInfo.license.has_value())
+            appInfoPtr->systemInfo.license = SystemLicense::Free;
+        if(!appInfoPtr->systemInfo.type.has_value())
+            appInfoPtr->systemInfo.type = SystemType::Default;
+
+        appInfoPtr->releaseType = Version::ReleaseType::Alpha;
+        version->setVersion(appInfoPtr->semanticVersion, appInfoPtr->releaseType);
         appDataPtr->path = appData.path.value_or(__tegra_unknown);
+        appDataPtr->page = appData.page;
         {
-            systemInfo->name = appData.systemInfo.name;
-            systemInfo->codeName = appData.systemInfo.codeName;
-            systemInfo->compiledDate = appData.systemInfo.compiledDate;
-            systemInfo->license = appData.systemInfo.license;
-            systemInfo->type = appData.systemInfo.type;
-            systemInfo->version = appData.systemInfo.version;
+            systemInfo.name = appInfoPtr->systemInfo.name;
+            systemInfo.codeName = appInfoPtr->systemInfo.codeName;
+            systemInfo.compiledDate = appInfoPtr->systemInfo.compiledDate;
+            systemInfo.license = appInfoPtr->systemInfo.license;
+            systemInfo.type = appInfoPtr->systemInfo.type;
+            systemInfo.version = appInfoPtr->systemInfo.version;
+            systemInfo.version->PreRelease = appInfoPtr->systemInfo.version->PreRelease;
         }
     }
 }
@@ -56,12 +65,38 @@ Application::~Application()
 {
     __tegra_safe_delete(translator);
     __tegra_safe_delete(appDataPtr);
+    __tegra_safe_delete(appInfoPtr);
+    __tegra_safe_delete(pageArchivePtr);
     __tegra_safe_delete(language);
 }
-
+__tegra_no_discard SystemInfo Application::getSystemInfo() __tegra_const_noexcept
+{
+    auto semanticVersion = SemanticVersion();      ///< Semantic Version
+    auto sysInfo = SystemInfo();                   ///< System Info
+    // Configuration before use
+    semanticVersion.Major = PROJECT_VERSION_MAJOR;
+    semanticVersion.Minor = PROJECT_VERSION_MINOR;
+    semanticVersion.Patch = PROJECT_VERSION_PATCH;
+    semanticVersion.PreRelease = PROJECT_VERSION_TYPE;
+    version->setVersion(semanticVersion, appInfoPtr->releaseType);
+    sysInfo.version = systemInfo.version;
+    sysInfo.version->PreRelease = systemInfo.version->PreRelease;
+    sysInfo.codeName = "concept";
+    sysInfo.developer = PROJECT_CREATOR;
+    sysInfo.model = "basic";
+    sysInfo.name = PROJECT_NAME;
+    sysInfo.compiledDate = __tegra_compiled_date;
+    sysInfo.license = SystemLicense::Free;
+    sysInfo.type = SystemType::General;
+    return sysInfo;
+}
 Application* Application::appPtr;
 
 ApplicationData* Application::appDataPtr;
+
+ApplicationInfo* Application::appInfoPtr;
+
+//PageData* Application::pageDataPtr;
 
 Application* Application::get(const ApplicationData& appData)
 {
@@ -71,8 +106,7 @@ Application* Application::get(const ApplicationData& appData)
         {
             appPtr->path() = appData.path.value_or(__tegra_unknown);
             appDataPtr->path = appData.path.value_or(__tegra_unknown);
-            appDataPtr->semanticVersion = appData.semanticVersion;
-            appDataPtr->releaseType = appData.releaseType;
+            appDataPtr->page = appData.page;
         }
     }
     return appPtr;
@@ -86,7 +120,7 @@ void Application::start()
     auto con = Connection();                       ///< Connection
     auto config = Configuration(ConfigType::File); ///< Configuration
 
-    // Configuration before use
+         // Configuration before use
     config.init(SectionType::SystemCore);
     {   // Set from cmake config.hpp.in
         semanticVersion.Major = PROJECT_VERSION_MAJOR;
@@ -99,14 +133,8 @@ void Application::start()
     {
         appData.path = __tegra_null_str;
         appData.module = "core";
-        appData.semanticVersion = semanticVersion;
-        appData.releaseType = Tegra::Version::ReleaseType::Alpha;
-        appData.systemInfo.version = appData.semanticVersion;
-        appData.systemInfo.codeName = "concept";
-        appData.systemInfo.name = PROJECT_NAME;
-        appData.systemInfo.compiledDate = __tegra_compiled_date;
-        appData.systemInfo.license = SystemLicense::Free;
-        appData.systemInfo.type = SystemType::General;
+        appInfoPtr->semanticVersion = semanticVersion;
+        appInfoPtr->releaseType = Tegra::Version::ReleaseType::Alpha;
     }
 
     if(System::DeveloperMode::IsEnable)
@@ -116,23 +144,23 @@ void Application::start()
         Console::print << "=================[Tegra Core System Info]=================\n";
         Console::print << newline;
         Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
-                       << __tegra_space << systemInfo->name.value() << ""
+                       << __tegra_space << getSystemInfo().name.value() << ""
                        << " - compiled date on : "
-                       << systemInfo->compiledDate.value() + " ]" << newline;
+                       << getSystemInfo().compiledDate.value() + " ]" << newline;
         Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << " code name : "
-                       << systemInfo->codeName.value() + " ]"<< " ⇙" << newline;
+                       << getSystemInfo().codeName.value() + " ]"<< " ⇙" << newline;
                                       Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << " core version : "
                        << version.getAsString() + " ]"
                        << " ⇙" << newline;
                                       Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << " license type : "
-                       << this->license().value() + " ]"
+                       << this->license().value_or(__tegra_unknown) + " ]"
                        << " ⇙" << newline;
                                       Console::print << Terminal::NativeTerminal::Primary << " ⇨ ["
                        << " system type : "
-                       << this->type().value() + " ]"
+                       << this->type().value_or(__tegra_unknown) + " ]"
                        << " ⇙" << newline;
                                       Console::print << newline;
         Console::print << Terminal::NativeTerminal::Default;
@@ -153,18 +181,18 @@ OptionalString Application::path() __tegra_const_noexcept
 
 OptionalString Application::name() __tegra_const_noexcept
 {
-    return appDataPtr->systemInfo.name.value_or(__tegra_unknown);
+    return systemInfo.name.value_or(__tegra_unknown);
 }
 
 OptionalString Application::codeName() __tegra_const_noexcept
 {
-    return appDataPtr->systemInfo.codeName.value_or(__tegra_unknown);
+    return systemInfo.codeName.value_or(__tegra_unknown);
 }
 
 OptionalString Application::type() __tegra_const_noexcept
 {
     std::string res{};
-    switch (systemInfo->type.value()) {
+    switch (systemInfo.type.value()) {
     case SystemType::Private:
         res = "Private";
         break;
@@ -190,7 +218,7 @@ OptionalString Application::type() __tegra_const_noexcept
 OptionalString Application::license() __tegra_const_noexcept
 {
     std::string res{};
-    switch (systemInfo->license.value()) {
+    switch (systemInfo.license.value()) {
     case SystemLicense::Commercial:
         res = "Commercial";
         break;
@@ -206,7 +234,7 @@ OptionalString Application::license() __tegra_const_noexcept
 
 OptionalString Application::model() __tegra_const_noexcept
 {
-    return appDataPtr->systemInfo.codeName.value_or(__tegra_unknown);
+    return systemInfo.codeName.value_or(__tegra_unknown);
 }
 
 __tegra_no_discard std::vector<ModuleInfo> Application::modules() __tegra_noexcept

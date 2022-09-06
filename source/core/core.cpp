@@ -29,9 +29,15 @@ TEGRA_USING_NAMESPACE Tegra::eLogger;
 
 TEGRA_NAMESPACE_BEGIN(Tegra::System)
 
+Exception::Exception()
+{
+    __tegra_safe_instance(m_exceptionData, ExceptionData);
+    m_exceptionData->message = "message";
+}
+
 Exception::Exception(const Reason& reason, const std::string& message)
 {
-    m_exceptionData = new ExceptionData();
+    __tegra_safe_instance(m_exceptionData, ExceptionData);
     std::string eMessage{};
     switch (reason) {
     case Reason::Core:
@@ -55,7 +61,7 @@ Exception::Exception(const Reason& reason, const std::string& message)
     default:
         break;
     }
-    m_exceptionData->message = message;
+    m_exceptionData->message = eMessage + message;
 }
 
 Exception::~Exception()

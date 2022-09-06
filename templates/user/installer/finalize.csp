@@ -1,0 +1,267 @@
+<!-- BEGIN CPP -->
+<%inc #include <iostream> %>
+<%c++ std::string detail=@@.get<std::string>("detail");%>
+<%c++ std::string bootstrapCSS=@@.get<std::string>("bootstrapCSS");%>
+<%c++ auto metas=@@.get<std::vector<std::string>>("meta");%>
+<%c++ auto options=@@.get<std::vector<std::string>>("options");%>
+<%c++ auto css=@@.get<std::vector<std::string>>("thirdPartyCss");%>
+<%c++ auto js=@@.get<std::vector<std::string>>("thirdPartyJs");%>
+<%c++ auto links=@@.get<std::vector<std::string>>("linkSheet");%>
+<%c++ auto style=@@.get<std::vector<std::string>>("systemStyle");%>
+<%c++ auto dataArray=@@.get<std::map<std::string, std::string>>("dataArray");%>
+
+<!doctype html>
+<html lang="[[lang]]" class="h-100">
+<head>
+<%c++ if(metas.size()>0){%>
+<%c++ for(auto iter:metas){%>
+{%iter%}
+<%c++}%>
+<%c++}%>
+
+<title>[[title]]</title>
+
+<!-- CSS -->
+<%c++ for(auto iter:css){%>
+<link href="../../templates/user/{%iter%}" rel="stylesheet">
+<%c++}%>
+
+<!-- Begin icons -->
+<%c++ for(auto iter:links){%>
+{%iter%}
+<%c++}%>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.css" rel="stylesheet">
+  </head>
+
+<body class="bg-light">
+
+<div class="container">
+  <main>
+  <div class="py-5 text-center">
+  <img class="d-block mx-auto mb-4" src="../../templates/user/assets/images/favicons/favicon.svg" alt="" width="72" height="57">
+    <h2>[[step_initialization]] [[tegra_name]] [[tegra_version]] [[tegra_mode]]-[[tegra_number]]</h2>
+    <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
+    </div>
+    <hr>
+    <div class="alert alert-warning" role="alert">
+      [[finalize_message]]
+    </div>
+  </div>
+
+    <div class="row g-5">
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Your Server Info</span>
+        <span class="badge bg-secondary rounded-pill">6</span>
+      </h4>
+      <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-between bg-light">
+        <div class="text-success">
+          <h6 class="my-0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
+          <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.984 4.984 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z"/>
+        </svg>&nbsp;[[engine]]</h6>
+        </div>
+        <span class="text-success"><strong><em>Ready</em></strong></span>
+      </li>
+        <li class="list-group-item d-flex justify-content-between lh-sm">
+        <div>
+        <h6 class="my-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-hdd-stack" viewBox="0 0 16 16">
+        <path d="M14 10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12zM2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z"/>
+        <path d="M5 11.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM14 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
+        <path d="M5 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+      </svg>&nbsp;[[server_name]]</h6>
+          <small class="text-muted">[[server_name_desc]]</small>
+          </div>
+          <p><small>[[host_name]]</small></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-success">
+            <h6 class="my-0">[[operation_system]]</h6>
+            <small>Host OS</small>
+          </div>
+          <span class="text-success">[[os_name]]</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>[[hardware_ipv4]]</span>
+          <strong>[[ip_addtess]]</strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>C++ Standard</span>
+          <strong>20</strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>[[software_compiler]]</span>
+          <strong>Clang/LLVM</strong>
+        </li>
+      </ul>
+    </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">[[finalize_title]]</h4>
+        <form class="needs-validation" method="post" novalidate>
+          <div class="row g-3">
+
+
+            <div class="col-12">
+              <label for="username" class="form-label">[[username]]</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+              </svg></span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="admin" required>
+              <div class="invalid-feedback">
+                  Your username is required.
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <label for="password" class="form-label">[[password]]</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg></span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+              <div class="invalid-feedback">
+                  Your username is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="confirm_password" class="form-label">[[confirm_password]]</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+                <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg></span>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="" required>
+              <div class="invalid-feedback">
+                  Your confirm is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email_address" class="form-label">[[email_address]]</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+              </svg></span>
+                <input type="text" class="form-control" id="email_address" name="email_address" placeholder="" required>
+              <div class="invalid-feedback">
+                  Your email_address is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="firstname" class="form-label">[[firstname]]</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid firstname is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastname" class="form-label">[[lastname]]</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid lastname is required.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="country" class="form-label">[[cdn]]</label>
+              <select class="form-select" id="cdn" name="cdn" required>
+                <option value="">Choose...</option>
+                <option value="self">Local (Self-Hosted)</option>
+                <option value="cdn">Dynamic CDN</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="country" class="form-label">[[language]]</label>
+              <select class="form-select" id="language" name="language" required>
+                <option value="">Choose...</option>
+                <option value="english">English</option>
+                <option value="persian">Persian</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+          </div>
+          <hr class="my-4">
+
+            <h4 class="mb-3">[[site_details]]</h4>
+
+            <div class="mb-3">
+              <label for="website_title" class="form-label">[[website_title]]</label>
+              <input type="text" class="form-control" id="website_title" name="website_title" placeholder="">
+            </div>
+            <div class="mb-3">
+              <label for="website_description" class="form-label">[[website_description]]</label>
+              <textarea class="form-control" id="website_description" name="website_description" rows="3"></textarea>
+            </div>
+
+            <hr class="my-4">
+
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+<button type="submit" id="finalize_button" class="w-100 btn btn-primary btn-lg">[[finish]]</button>
+  <a class="btn btn-outline-secondary btn-lg px-4" href="javascript:history.back();">[[previous]]</a>
+</div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+<div class="mt-auto text-white-50 container">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+<p class="col-md-4 mb-0 text-muted">[[copyright]]</p>
+</footer>
+</div>
+</div>
+<!-- CMS core JavaScript -->
+<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
+<%c++ for(auto iter:js){%>
+<script src="../../templates/user/{%iter%}"></script>
+<%c++}%>
+
+<script>
+NProgress.start();
+window.onload = function() { // can also use window.addEventListener('load', (event) => {
+NProgress.done();
+};
+</script>
+</body>
+</html>
+

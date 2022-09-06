@@ -1,7 +1,7 @@
 //! Tegra's Account UserMedia
 #ifdef __has_include
-# if __has_include("account/usermedia.hpp")
-#   include "account/usermedia.hpp"
+# if __has_include("usermedia.hpp")
+#   include "usermedia.hpp"
 #else
 #   error "Tegra's usermedia was not found!"
 # endif

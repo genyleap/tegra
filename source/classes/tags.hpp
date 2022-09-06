@@ -39,13 +39,13 @@ using TagList = std::vector<TagsData>;
 class __tegra_export Tags
 {
 public:
-    TEGRA_DEFAULT_INTERFACE_OCTORS(Tags)
+    TEGRA_DEFAULT_OCTORS(Tags)
 
     /*!
      * \brief registerTag function will sets data in tag list.
      * \param tag is a type of tag.
      */
-    void registerTag(const TagsData& tag) __tegra_const_noexcept;
+    void registerTag(const TagsData& tag) __tegra_noexcept;
 
     /*!
      * \brief getTags function will gets tag data.
@@ -82,9 +82,8 @@ protected:
     __tegra_no_discard bool insertIntoDb(const TagsData& tag) __tegra_const_noexcept;
 
 private:
-    TEGRA_DISABLE_COPY(Tags)
-    TagsData* m_tagsData;
-    TagList* m_tagList;
+    TagsData mTagsData;
+    TagList mTagList;
 };
 
 TEGRA_NAMESPACE_END

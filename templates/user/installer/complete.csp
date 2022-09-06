@@ -1,0 +1,153 @@
+<!-- BEGIN CPP -->
+<%inc #include <iostream> %>
+<%c++ std::string detail=@@.get<std::string>("detail");%>
+<%c++ std::string bootstrapCSS=@@.get<std::string>("bootstrapCSS");%>
+<%c++ auto metas=@@.get<std::vector<std::string>>("meta");%>
+<%c++ auto options=@@.get<std::vector<std::string>>("options");%>
+<%c++ auto css=@@.get<std::vector<std::string>>("thirdPartyCss");%>
+<%c++ auto js=@@.get<std::vector<std::string>>("thirdPartyJs");%>
+<%c++ auto links=@@.get<std::vector<std::string>>("linkSheet");%>
+<%c++ auto style=@@.get<std::vector<std::string>>("systemStyle");%>
+<%c++ auto dataArray=@@.get<std::map<std::string, std::string>>("dataArray");%>
+
+<!doctype html>
+<html lang="[[lang]]" class="h-100">
+<head>
+<%c++ if(metas.size()>0){%>
+<%c++ for(auto iter:metas){%>
+{%iter%}
+<%c++}%>
+<%c++}%>
+
+<title>[[title]]</title>
+
+<!-- CSS -->
+<%c++ for(auto iter:css){%>
+<link href="../../templates/user/{%iter%}" rel="stylesheet">
+<%c++}%>
+
+<!-- Begin icons -->
+<%c++ for(auto iter:links){%>
+{%iter%}
+<%c++}%>
+<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+
+  </head>
+  <body>
+
+<main>
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img src="../../assets/images/favicons/favicon.svg" alt="" width="72" height="57">
+        <span class="fs-4">
+        <h3>
+          [[tegra_name]]
+          <small class="text-muted"> [[tegra_version]] [[tegra_mode]]-[[tegra_number]]</small>
+        </h3></span>
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold text-success">[[complete_title]] <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+</svg></h1>
+        <p class="col-md-8 fs-4">[[complete_message]]</p>
+        <button class="btn btn-primary btn-lg" type="button">[[goto_dashboard]]</button>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>[[website_ready]]</h2>
+          <p>[[go_website_desc]]</p>
+          <button class="btn btn-outline-light" type="button">[[go_website]]</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>[[system_support]]</h2>
+          <p>[[go_development_desc]]</p>
+          <button class="btn btn-outline-secondary" type="button">[[go_development]]</button>
+        </div>
+      </div>
+    </div>
+
+<div class="mt-auto text-white-50 container">
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+<p class="col-md-4 mb-0 text-muted">[[copyright]]</p>
+</footer>
+</div>
+  </div>
+</main>
+<!-- CMS core JavaScript -->
+<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
+<%c++ for(auto iter:js){%>
+<script src="../../templates/user/{%iter%}"></script>
+<%c++}%>
+
+<script>
+NProgress.start();
+window.onload = function() { // can also use window.addEventListener('load', (event) => {
+NProgress.done();
+};
+</script>
+</body>
+</html>

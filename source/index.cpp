@@ -93,6 +93,18 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
         }
     }
 
+    PageProperties pageProperties;
+    pageProperties.id = 1;
+    pageProperties.title = "Page Zero";
+    pageProperties.accessByApi = true;
+    pageProperties.inclueInSitemap = false;
+    pageProperties.priority  = 1;
+    pageProperties.url = "install";
+
+    auto pagez = Page(pageProperties);
+
+    Application::get(*appDataPtr)->pageArchivePtr->registerPage(pagez);
+
     Scope<Template> theme(new Template(UserType::User, *appDataPtr)); // Set user type for remplate.
 
     Scope<Multilangual::Language> languagePtr(new Multilangual::Language(appDataPtr->path.value()));

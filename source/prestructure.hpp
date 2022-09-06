@@ -108,10 +108,11 @@ struct SystemInfo __tegra_final
     OptionalString              name            {};
     Optional<SemanticVersion>   version         {};
     OptionalString              model           {};
+    OptionalString              developer       {};
     OptionalString              compiledDate    {};
     //!Extra
-    Optional<SystemType>        type            {};
-    Optional<SystemLicense>     license         {};
+    Optional<SystemType>        type            {SystemType::Default};
+    Optional<SystemLicense>     license         {SystemLicense::Free};
 };
 
 TEGRA_NAMESPACE_END

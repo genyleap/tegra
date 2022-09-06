@@ -7,6 +7,15 @@
 # endif
 #endif
 
+//! CMake's config.
+#ifdef __has_include
+# if __has_include(<config.hpp>)
+#   include <config.hpp>
+#else
+#   error "The database of Tegra was not found!"
+# endif
+#endif
+
 //! Tegra's Database.
 #ifdef __has_include
 # if __has_include(<database>)
@@ -102,12 +111,10 @@ void StaticMeta::setDefault(const std::string& path)
     m_staticPrivateMembers->baseTags    = {};
     m_staticPrivateMembers->staticExtra = {};
 
-    m_staticPrivateMembers->developer       = { System::CONFIG::DEVELOPER };
-    m_staticPrivateMembers->generator       = { System::CONFIG::FULL_NAME };
-    m_staticPrivateMembers->version         = { System::CONFIG::FULL_VERSION };
-    m_staticPrivateMembers->releaseMode     = { System::CONFIG::RELEASE_MODE };
-    m_staticPrivateMembers->releaseNumber   = { System::CONFIG::RELEASE_NUMBER };
-    m_staticPrivateMembers->copyright       = { System::CONFIG::FULL_NAME };
+
+    m_staticPrivateMembers->developer       = { PROJECT_CREATOR };
+    m_staticPrivateMembers->generator       = { PROJECT_NAME };
+    m_staticPrivateMembers->version         = { PROJECT_VERSION_STRING };
 
     if(Database::Connection::isConnected())
     {
@@ -193,12 +200,9 @@ void StaticMeta::setData(const MetaType& type, const MapString& data)
     m_staticPrivateMembers->extra       = data;
     m_staticPrivateMembers->staticExtra = {};
 
-    m_staticPrivateMembers->developer       = { System::CONFIG::DEVELOPER };
-    m_staticPrivateMembers->generator       = { System::CONFIG::FULL_NAME };
-    m_staticPrivateMembers->version         = { System::CONFIG::FULL_VERSION };
-    m_staticPrivateMembers->releaseMode     = { System::CONFIG::RELEASE_MODE };
-    m_staticPrivateMembers->releaseNumber   = { System::CONFIG::RELEASE_NUMBER };
-    m_staticPrivateMembers->copyright       = { System::CONFIG::FULL_NAME };
+    m_staticPrivateMembers->developer       = { PROJECT_CREATOR };
+    m_staticPrivateMembers->generator       = { PROJECT_NAME };
+    m_staticPrivateMembers->version         = { PROJECT_VERSION_STRING };
 
     try
     {

@@ -80,11 +80,6 @@ struct LANGUAGE_SHEET final {
 };
 
 struct CONFIG final {
-  static constexpr std::string_view FULL_NAME = "Tegra System";
-  static constexpr std::string_view FULL_VERSION = "0.5";
-  static constexpr std::string_view RELEASE_MODE = "alpha";
-  static constexpr std::string_view RELEASE_NUMBER = "2.0";
-  static constexpr std::string_view DEVELOPER = "Kambiz Asadzadeh";
   static constexpr std::string_view FRAMEWORK_CONFIG_FILE = "config.json";
   static constexpr std::string_view SYSTEM_CONFIG_FILE = "config/system-config.json";
   static constexpr std::string_view SYSTEM_CUSTOM_FILE = "config/custom-setting.json";

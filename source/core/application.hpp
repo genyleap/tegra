@@ -31,6 +31,15 @@
 # endif
 #endif
 
+//! Tegra's Pages.
+#ifdef __has_include
+# if __has_include(<page>)
+#   include <page>
+#else
+#   error "The page of Tegra was not found!"
+# endif
+#endif
+
 //! Tegra's Application.
 #ifdef __has_include
 # if __has_include(<application>)
@@ -137,20 +146,25 @@ public:
      */
     OptionalString templateViewId() __tegra_const_noexcept;
 
-    Scope<System::Engine>   engine      {};
-    Scope<Tegra::Version>   version     {};
-    Scope<SystemInfo>       systemInfo  {};
+    /*!
+     * \brief getSystemInfo will gets system information from core.
+     * \returns as SystemInfo object.
+     */
+    __tegra_no_discard SystemInfo getSystemInfo() __tegra_const_noexcept;
 
+    Scope<System::Engine>   engine      {};
     Translation::Translator* translator{__tegra_nullptr}; //alternative translator for engine.
     Multilangual::Language* language{__tegra_nullptr};
+    Scope<Tegra::Version>   version     {};
+    PageArchive* pageArchivePtr;
 
 private:
-
-    std::vector<Tegra::Abstracts::Module::ModuleInfo> m_moduleInfoList;
-    std::vector<Abstracts::Plugin::PluginInfo> m_pluginInfoList;
-
     static Application* appPtr;
     static ApplicationData* appDataPtr;
+    static ApplicationInfo* appInfoPtr;
+    std::vector<Tegra::Abstracts::Module::ModuleInfo> m_moduleInfoList;
+    std::vector<Abstracts::Plugin::PluginInfo> m_pluginInfoList;
+    SystemInfo systemInfo;
 };
 
 TEGRA_NAMESPACE_END

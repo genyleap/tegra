@@ -1,4 +1,4 @@
-#include "account/activities.hpp"
-#include "account/profiledata.hpp"
-#include "account/usermanager.hpp"
-#include "account/usermedia.hpp"
+#include "classes/account/activities.hpp"
+#include "classes/account/profiledata.hpp"
+#include "classes/account/usermanager.hpp"
+#include "classes/account/usermedia.hpp"

@@ -89,6 +89,17 @@ struct DeveloperMode {
 #endif
 };
 
+/*!
+ * @brief The AutoTreatment
+ */
+struct AutoTreatment {
+#ifdef AUTO_TREATMENT_MODE
+    inline static bool IsEnable = true;
+#else
+    inline static bool IsEnable = false;
+#endif
+};
+
 template <typename T>
 /*!
  * @brief isset — Determine if a variable is declared and is different than null
@@ -122,6 +133,23 @@ template <typename T>
 __tegra_no_discard constexpr bool isNullPtr(T const& t) __tegra_noexcept
 {
     return t == __tegra_nullptr ? true : false;
+}
+
+/*!
+ * @brief function for check bad optional for helper std::bad_optional_access.
+ * returns default value for preventing view output crash.
+ */
+template <typename T>
+__tegra_no_discard constexpr auto isBad(T const& t) __tegra_noexcept
+{
+    auto ret {t};
+    if constexpr(std::is_same_v<decltype(ret), bool>)
+        ret = false;
+    if constexpr(std::is_same_v<decltype(ret), int>)
+        ret = __tegra_zero;
+    if constexpr(std::is_same_v<decltype(ret), std::basic_string<char>>)
+        ret = __tegra_null_str;
+    return ret;
 }
 
 /*!
@@ -173,6 +201,45 @@ __tegra_no_discard std::string_view regenUrl(T1 const& url, T2 const len) __tegr
 {
     if(!url.empty)
         return url.substr(len);
+}
+
+/*!
+ * @brief IsNumerical check if it is as integer or float.
+ */
+template<typename T>
+concept IsNumerical = std::integral<T> || std::floating_point<T>;
+
+template<class T>
+concept IsBoolean = std::is_same_v<T, bool>;
+
+/*!
+ * @brief perfect check is a useful fixer function for uninitialized value for std::optional.
+ */
+template <typename T1, typename T2>
+__tegra_no_discard constexpr auto perfectCheck(T1 const& t1, T2 const& t2) __tegra_noexcept
+{
+    auto v = t1; //! Value of parameter.
+    auto t = t2; //! Type of optional type.
+    if constexpr(std::is_same_v<decltype(v), std::optional<decltype(t)>>)
+    {
+        if(v.has_value())
+            return v.value();
+        //! AutoTreatment mode.
+        if(isset(AutoTreatment::IsEnable)) return isBad(t);
+        try {
+            return v.value();
+        } catch (std::bad_optional_access const& exception) {
+            if constexpr(std::is_same_v<decltype(v), int()>) {
+                return __tegra_zero;
+            } else if constexpr(std::is_same_v<decltype(v), bool()>) {
+                return false;
+            } else if constexpr(std::is_same_v<decltype(v), std::string()>) {
+                return v.value_or(exception.what());
+            } else {
+                return t;
+            }
+        }
+    }
 }
 
 enum class DataGetway : u8
@@ -316,7 +383,7 @@ public:
         System,
         Other
     };
-
+    Exception();
     Exception(const Reason& reason, const std::string& message);
     virtual ~Exception();
     virtual const char* what() const throw();

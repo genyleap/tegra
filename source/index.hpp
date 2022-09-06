@@ -44,7 +44,6 @@ public:
     void index(const Framework::HttpRequestPtr& req, std::function<void(const Framework::HttpResponsePtr&)>&& callback) __tegra_const;
 };
 
-
 TEGRA_NAMESPACE_END
 
 #endif // TEGRA_INDEX_HPP

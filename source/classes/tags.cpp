@@ -16,8 +16,8 @@ TEGRA_NAMESPACE_BEGIN(Tegra)
  */
 Tags::Tags()
 {
-    __tegra_safe_instance(m_tagsData, TagsData);
-    __tegra_safe_instance(m_tagList, TagList);
+    mTagsData.id = 1;
+    mTagsData.title = "test";
 }
 
 /*!
@@ -25,48 +25,44 @@ Tags::Tags()
  */
 Tags::~Tags()
 {
-    __tegra_safe_delete(m_tagsData);
-    __tegra_safe_delete(m_tagList);
 }
 
-void Tags::registerTag(const TagsData& tag) __tegra_const_noexcept
+void Tags::registerTag(const TagsData& tag) __tegra_noexcept
 {
-    {
-        m_tagsData->id = tag.id;
-        m_tagsData->title = tag.title;
-    }
+    mTagsData.id = tag.id.value();
+    mTagsData.title = tag.title.value();
     //For tag list
-    if(insertIntoDb(tag))
-        m_tagList->push_back(tag);
+        if(insertIntoDb(tag))
+        mTagList.push_back(tag);
     ///ToDo...
 }
 
 TagsData Tags::getTags() __tegra_const_noexcept
 {
-    return *m_tagsData;
+    //    return *mTagsDataPtr;
 }
 
 TagList Tags::getList() __tegra_const_noexcept
 {
-    return *m_tagList;
+  //return *mTagListPtr;
 }
 
 bool Tags::removeTag(const u32 id) __tegra_const_noexcept
 {
-    ///ToDo...
-    return false;
+  ///ToDo...
+    //    return false;
 }
 
 bool Tags::updateTag(const u32 id, const TagsData &tag) __tegra_const_noexcept
 {
-    ///ToDo...
-    return false;
+  ///ToDo...
+    //    return false;
 }
 
 bool Tags::insertIntoDb(const TagsData& tag) __tegra_const_noexcept
 {
-    ///ToDo...
-    return true;
+  ///ToDo...
+    //    return true;
 }
 
 TEGRA_NAMESPACE_END

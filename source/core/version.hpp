@@ -34,11 +34,11 @@ public:
 
     __tegra_enum_class ReleaseType : u8
     {
-        PreAlpha,               ///< Pre-alpha refers to all activities performed during the software project before formal testing.
-        Alpha,                  ///< The alpha phase of the release life cycle is the first phase of software testing (alpha is the first letter of the Greek alphabet, used as the number 1).
-        Beta,                   ///< Beta, named after the second letter of the Greek alphabet, is the software development phase following alpha.
-        ReleaseCandidate,       ///< A release candidate (RC), also known as "going silver", is a beta version with potential to be a stable product, which is ready to release unless significant bugs emerge.
-        StableRelease           ///< Also called production release, the stable release is the last release candidate (RC) which has passed all verifications / tests. The remaining bugs are considered as acceptable.
+        PreAlpha            = 0x1,       ///< Pre-alpha refers to all activities performed during the software project before formal testing.
+        Alpha               = 0x2,       ///< The alpha phase of the release life cycle is the first phase of software testing (alpha is the first letter of the Greek alphabet, used as the number 1).
+        Beta                = 0x3,       ///< Beta, named after the second letter of the Greek alphabet, is the software development phase following alpha.
+        ReleaseCandidate    = 0x4,       ///< A release candidate (RC), also known as "going silver", is a beta version with potential to be a stable product, which is ready to release unless significant bugs emerge.
+        StableRelease       = 0x5        ///< Also called production release, the stable release is the last release candidate (RC) which has passed all verifications / tests. The remaining bugs are considered as acceptable.
     };
 
     /*!

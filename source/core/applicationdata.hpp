@@ -22,6 +22,15 @@
 # endif
 #endif
 
+//! Tegra's Page.
+#ifdef __has_include
+# if __has_include(<page>)
+#   include <page>
+#else
+#   error "Tegra's page was not found!"
+# endif
+#endif
+
 TEGRA_NAMESPACE_BEGIN(Tegra)
 
 /*!
@@ -36,10 +45,15 @@ struct ApplicationData final
     OptionalString  module               {__tegra_unknown};
 
     ///Classes & Structures
+    Multilangual::LanguageStruct languageStruct {};
+    Page page{};
+};
+
+struct ApplicationInfo final
+{
     SystemInfo systemInfo                       {};
     SemanticVersion semanticVersion             {};
     Version::ReleaseType releaseType            {};
-    Multilangual::LanguageStruct languageStruct {};
 };
 
 TEGRA_NAMESPACE_END
