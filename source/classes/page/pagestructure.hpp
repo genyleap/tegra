@@ -66,23 +66,44 @@ enum class PageStatus : u8
     Pending         =   0x6,    ///< Page is hidden and not open, it is waiting for creator action.
 };
 
+/*!
+ * \brief The CreatorType enum
+ */
 enum class CreatorType : u8
 {
     BySystem, ByUser, ByRobot, ByAdmin, ByApi, Unknown
 };
 
+/*!
+ * \brief The PageCreatorData class
+ */
 struct PageCreatorData final
 {
     OptionalNumeric     creatorId   {}; ///< Creator ID.
     CreatorType         creatorType {CreatorType::Unknown}; ///< Type of creator.
 };
 
+/*!
+ * \brief The PageThemeStyle enum
+ */
 enum class PageThemeStyle : u8
 {
     Default         =   0x0,
     AsPage          =   0x1,
     BySystemDesign  =   0x2,
     ByCustomDesign  =   0x3
+};
+
+/*!
+ * \brief The PageLinks class
+ */
+struct PageLinks final
+{
+    OptionalString self     {};
+    OptionalString parent   {};
+    OptionalString child    {};
+    OptionalString backward {};
+    OptionalString forward  {};
 };
 
 /*!
@@ -119,7 +140,7 @@ struct PageProperties __tegra_final
     Optional<PageType>          pageType    {};
     Optional<CreatorType>       creator     {};
     Optional<PageThemeStyle>    themeStyle  {};
-
+    Optional<PageLinks>         links       {};
 };
 
 TEGRA_NAMESPACE_END

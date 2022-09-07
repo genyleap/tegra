@@ -252,7 +252,7 @@ object = nullptr;                   \
 #define FROM_TEGRA_STRING(x) std::string(x)
 #define TO_TEGRA_STRING(x) std::to_string(x)
 
-#define TEGRA_TRANSLATOR(key, value) Application::get(*appDataPtr)->translator->translate(languagePtr->getLanguageCode(), key, value).defaultValue()
+#define TEGRA_TRANSLATOR(key, value) Application::get(*appDataPtr)->translatorPtr->translate(Application::languageSPtr->getLanguageCode(), key, value).defaultValue()
 
 #define TEGRA_RUNTIME_FORMAT(content, ...) fmt::format(fmt::runtime(content), __VA_ARGS__)
 

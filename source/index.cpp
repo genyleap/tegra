@@ -141,7 +141,7 @@ void DefIndex::index(const HttpRequestPtr& req, std::function<void(const HttpRes
     auto l = languagePtr->getLanguageCode();
     for(const auto& key : languagePtr.get()->sheets())
     {
-        for(const auto& s : Application::get(*appDataPtr)->translator->data(key))
+        for(const auto& s : Application::get(*appDataPtr)->translatorPtr->data(key))
         {
             if(s.first == l)
                 theme->viewData.insert(s.second.first, s.second.second);

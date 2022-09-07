@@ -28,8 +28,8 @@ TEGRA_NAMESPACE_BEGIN(Tegra)
 
 Application::Application(const ApplicationData& appData)
 {
-    __tegra_safe_instance_rhs(language, Multilangual::Language, appData.path.value_or(__tegra_unknown));
-    __tegra_safe_instance(translator, Translation::Translator);
+    __tegra_safe_instance(translatorPtr, Translation::Translator);
+    __tegra_safe_instance_rhs(languagePtr, Multilangual::Language, appData.path.value_or(__tegra_unknown));
     __tegra_safe_instance(appDataPtr, ApplicationData);
     __tegra_safe_instance(appInfoPtr, ApplicationInfo);
     __tegra_safe_instance(pageArchivePtr, PageArchive);
@@ -63,11 +63,20 @@ Application::Application(const ApplicationData& appData)
 
 Application::~Application()
 {
-    __tegra_safe_delete(translator);
-    __tegra_safe_delete(appDataPtr);
-    __tegra_safe_delete(appInfoPtr);
-    __tegra_safe_delete(pageArchivePtr);
-    __tegra_safe_delete(language);
+    //!Dynamics
+    {
+        __tegra_safe_delete(translatorPtr);
+        __tegra_safe_delete(languagePtr);
+    }
+    //!Statics
+    {
+        __tegra_safe_delete(appDataPtr);
+        __tegra_safe_delete(appInfoPtr);
+    }
+    //!Extra
+    {
+        __tegra_safe_delete(pageArchivePtr);
+    }
 }
 __tegra_no_discard SystemInfo Application::getSystemInfo() __tegra_const_noexcept
 {
@@ -90,16 +99,19 @@ __tegra_no_discard SystemInfo Application::getSystemInfo() __tegra_const_noexcep
     sysInfo.type = SystemType::General;
     return sysInfo;
 }
-Application* Application::appPtr;
 
-ApplicationData* Application::appDataPtr;
-
-ApplicationInfo* Application::appInfoPtr;
-
-//PageData* Application::pageDataPtr;
+//! Statics Impl
+Application*            Application::appPtr;
+ApplicationData*        Application::appDataPtr;
+ApplicationInfo*        Application::appInfoPtr;
+Multilangual::Language* Application::languageSPtr;
 
 Application* Application::get(const ApplicationData& appData)
 {
+    //!Statics
+    {
+        __tegra_safe_instance_rhs(languageSPtr, Multilangual::Language, appData.path.value_or(__tegra_unknown));
+    }
     if (!appPtr)
     {
         __tegra_safe_instance_rhs(appPtr, Application, appData);
@@ -120,7 +132,7 @@ void Application::start()
     auto con = Connection();                       ///< Connection
     auto config = Configuration(ConfigType::File); ///< Configuration
 
-         // Configuration before use
+    /* Configuration before use */
     config.init(SectionType::SystemCore);
     {   // Set from cmake config.hpp.in
         semanticVersion.Major = PROJECT_VERSION_MAJOR;
@@ -129,7 +141,7 @@ void Application::start()
         semanticVersion.PreRelease = PROJECT_VERSION_TYPE;
         version.setVersion(semanticVersion, Tegra::Version::ReleaseType::Alpha);
     }
-    // App Data
+    /* App Data */
     {
         appData.path = __tegra_null_str;
         appData.module = "core";

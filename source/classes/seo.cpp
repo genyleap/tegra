@@ -124,7 +124,7 @@ void StaticMeta::setDefault(const std::string& path)
             auto result = clientPtr->execSqlSync("SELECT * FROM " + app->engine->tablePrefix()
                                                  + "config AS c INNER JOIN " + app->engine->tablePrefix()
                                                  + "config_l AS cl ON cl.id = c.id WHERE language='"
-                                                 + app->language->getLanguage() + "'");
+                                                 + app->languagePtr->getLanguage() + "'");
             for (const auto &row : result)
             {
                 m_staticPrivateMembers->config.insert(PairString(row["name"].as<std::string>(), row["value"].as<std::string>()));
@@ -214,7 +214,7 @@ void StaticMeta::setData(const MetaType& type, const MapString& data)
                                                      + app->engine->tablePrefix() + m_staticStruct->module
                                                      + " AS c INNER JOIN "
                                                      + app->engine->tablePrefix() + m_staticStruct->module
-                                                     + "_l AS cl ON cl.id = c.id WHERE language='" + app->language->getLanguage() + "'");
+                                                     + "_l AS cl ON cl.id = c.id WHERE language='" + app->languagePtr->getLanguage() + "'");
                 for (const auto& row : result)
                 {
                     m_staticPrivateMembers->config.insert(PairString(row["name"].as<std::string>(), row["value"].as<std::string>()));

@@ -40,6 +40,15 @@
 # endif
 #endif
 
+//! Tegra's Linkparser.
+#ifdef __has_include
+# if __has_include(<linkparser>)
+#   include <linkparser>
+#else
+#   error "Tegra's linkparser was not found!"
+# endif
+#endif
+
 //! Tegra's Terminal.
 #ifdef __has_include
 # if __has_include(<terminal>)
@@ -769,6 +778,8 @@ public:
     mutable std::string currentPath{};
 
     View::ViewIndex* viewIndex;
+
+    LinkParser linkParser;
 
 protected:
     /*!

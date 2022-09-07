@@ -46,6 +46,20 @@ void LinkParser::parse(std::string& url)
     }
 }
 
+std::string LinkParser::linkReduced(const std::string& uri, const std::string& parent, const std::string& child) __tegra_noexcept
+{
+    std::string link{};
+    if(uri.ends_with("/"))
+    {
+        link = child;
+    } else {
+        link += parent;
+        link += "/";
+        link += child;
+    }
+    return link;
+}
+
 VectorString LinkParser::items()
 {
     return m_item;

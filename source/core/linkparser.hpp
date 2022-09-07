@@ -26,12 +26,12 @@
 #ifndef TEGRA_LINK_PARSER_HPP
 #define TEGRA_LINK_PARSER_HPP
 
-//! Tegra's Core (Basic Requirements).
+//! Tegra's Common.
 #ifdef __has_include
-# if __has_include(<requirements>)
-#   include <requirements>
+# if __has_include(<common>)
+#   include <common>
 #else
-#   error "Tegra's requirements was not found!"
+#   error "Tegra's common was not found!"
 # endif
 #endif
 
@@ -50,6 +50,13 @@ public:
      * \param url is the url string.
      */
     void parse(std::string& url);
+
+    /*!
+     * \brief linkReduced function will fixes extra link on child.
+     * \param parent & child as string (path).
+     * \return final reduced links.
+     */
+    __tegra_no_discard std::string linkReduced(const std::string& uri, const std::string& parent, const std::string& child) __tegra_noexcept;
 
     /*!
      * \brief items will returns elements of link.

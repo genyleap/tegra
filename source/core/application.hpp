@@ -152,19 +152,30 @@ public:
      */
     __tegra_no_discard SystemInfo getSystemInfo() __tegra_const_noexcept;
 
-    Scope<System::Engine>   engine      {};
-    Translation::Translator* translator{__tegra_nullptr}; //alternative translator for engine.
-    Multilangual::Language* language{__tegra_nullptr};
-    Scope<Tegra::Version>   version     {};
-    PageArchive* pageArchivePtr;
+    //!Non-Pointers
+    Scope<System::Engine>   engine      {}; ///< Engine.
+    Scope<Tegra::Version>   version     {}; ///< System version.
+
+    //!Pointers
+    Translation::Translator*    translatorPtr; ///< Pointer to translator (Alternative translator for engine).
+    Multilangual::Language*     languagePtr     {__tegra_nullptr}; ///< Pointer to language.
+    PageArchive*                pageArchivePtr  {__tegra_nullptr}; ///< Pointer to PageArchive.
+
+    //!Static Pointers
+    static Multilangual::Language* languageSPtr; ///< Static Pointer to language.
 
 private:
-    static Application* appPtr;
+    //!Static Private Pointers
+    static Application*     appPtr;
     static ApplicationData* appDataPtr;
     static ApplicationInfo* appInfoPtr;
-    std::vector<Tegra::Abstracts::Module::ModuleInfo> m_moduleInfoList;
-    std::vector<Abstracts::Plugin::PluginInfo> m_pluginInfoList;
+
+    //!Non-Pointers
     SystemInfo systemInfo;
+
+    //!Arrays
+    std::vector<Tegra::Abstracts::Module::ModuleInfo>   m_moduleInfoList;
+    std::vector<Abstracts::Plugin::PluginInfo>          m_pluginInfoList;
 };
 
 TEGRA_NAMESPACE_END

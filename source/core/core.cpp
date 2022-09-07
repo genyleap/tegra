@@ -335,10 +335,10 @@ bool Engine::initialize()
     auto lang = Multilangual::Language(appData.path.value());
     {
         Application::get(appData)->engine->setLanguage(lang.getLanguage());
-        Application::get(appData)->translator->setFile(lang.languageSupport());
+        Application::get(appData)->translatorPtr->setFile(lang.languageSupport());
     }
     ///< Parsing
-    if(Application::get(appData)->translator->parse()) {
+    if(Application::get(appData)->translatorPtr->parse()) {
         res = true;
         if(System::DeveloperMode::IsEnable)
             Log("Language data has been parsed!", LoggerType::Done); ///< Parsing Done!
