@@ -68,9 +68,6 @@ set(PROJECT_LANGUAGES CXX)
 #Use these keys [stl, qt, qtwidget, qtquick]
 set(PROJECT_MAIN_TYPE "web" CACHE STRING "Library System.")
 
-#Use these keys [macOS, Windows, Linux, iOS, Android]
-set(PLATFORM_OS "macOS" CACHE STRING "OS Type.")
-
 set(USE_FMT TRUE)
 
 set(USE_NONE_STL_JSON TRUE)
@@ -78,7 +75,7 @@ set(USE_NONE_STL_JSON TRUE)
 set(CMAKE_BUILD_TYPE "Debug")
 
 #You can replace your project description with this string.
-set(PROJECT_DESCRIPTION "Tegra System is free open source multi-language Content Management System." CACHE STRING "Project Description")
+set(PROJECT_DESCRIPTION "Tegra is an open source super high-end performance, user-friendly, multi-lingual and multi-purpose modern system based on modern C++ which enables you to build websites and powerful online applications." CACHE STRING "Project Description")
 
 #Your project website address.
 set(PROJECT_HOMEPAGE_URL "https://github.com/genyleap/tegra" CACHE STRING "Project URL.")
@@ -259,6 +256,11 @@ elseif(${PROJECT_MAIN_TYPE} STREQUAL "web")
       GLOB TEMPLATE_SOURCE templates/user/${SUFFIX_CSS}
       GLOB TEMPLATE_SOURCE templates/user/${SUFFIX_JS}
 
+      GLOB TEMPLATE_SOURCE templates/setup/${SUFFIX_CSP}
+      GLOB TEMPLATE_SOURCE templates/setup/${SUFFIX_HTML}
+      GLOB TEMPLATE_SOURCE templates/setup/${SUFFIX_CSS}
+      GLOB TEMPLATE_SOURCE templates/setup/${SUFFIX_JS}
+
       GLOB TEMPLATE_SOURCE templates/admin/${SUFFIX_CSP}
       GLOB TEMPLATE_SOURCE templates/admin/statics/${SUFFIX_CSP}
       GLOB TEMPLATE_SOURCE templates/admin/${SUFFIX_HTML}
@@ -315,22 +317,6 @@ SET(CMAKE_CACHEFILE_DIR ${dir})
 message("CMAKE_BUILD_FILES_DIRECTORY: " ${CMAKE_BUILD_FILES_DIRECTORY})
 
 # ------ OUTPUTS CONFIG ------
-
-if(PLATFORM_OS STREQUAL "macOS")
-    if(OS_ARCHITECTURES STREQUAL "")
-      set(OS_ARCHITECTURES ${CMAKE_OSX_ARCHITECTURES})
-      else()
-      set(OS_ARCHITECTURES "x86_64")
-    endif()
-else()
-    if(PROCESSOR_ARCHITECTURE STREQUAL "")
-      set(OS_ARCHITECTURES ${PROCESSOR_ARCHITECTURE})
-      else()
-      set(OS_ARCHITECTURES "x86_64")
-    endif()
-    set(OS_ARCHITECTURES ${PROCESSOR_ARCHITECTURE})
-endif()
-
 message(STATUS "${BoldRed}------ ${PROJECT_TARGET} Tools Configuration ------${ColourReset}")
 message(STATUS "${Bold}Language Standard${ColourReset}	    : C++[${CMAKE_CXX_STANDARD}]")
 message(STATUS "${Bold}Compiler${ColourReset}		    : ${CMAKE_CXX_COMPILER_ID}")
@@ -501,6 +487,7 @@ else ()
 endif ()
 
 file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/templates/user/*.csp)
+file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/templates/user/setup/*.csp)
 file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/templates/admin/*.csp)
 
 foreach(cspFile ${SCP_LIST})
