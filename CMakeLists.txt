@@ -23,10 +23,9 @@ set(PROJECT_TARGET ${PROJECT_NAME} CACHE STRING "Project Target Name.")
 set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 0)
 set(PROJECT_VERSION_PATCH 2)
-set(PROJECT_VERSION_TWEAK 0)
 
 # ---- Project settings ----
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL APPEND PROPERTY USE_FOLDERS ON)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -55,7 +54,7 @@ endif()
 set(PROJECT_VERSION_TAG_HEX 0x${PROJECT_VERSION_TAG})
 set(PROJECT_VERSION_TYPE "final" CACHE STRING "Version type.")
 set(PROJECT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
-set(PROJECT_VERSION_STRING ${PROJECT_VERSION})
+set(PROJECT_VERSION_STRING ${PROJECT_VERSION}-${PROJECT_VERSION_TYPE})
 
 # Supported languages include C, CXX (i.e. C++), CUDA, OBJC (i.e. Objective-C), OBJCXX, Fortran, HIP, ISPC, and ASM. By default C and CXX are enabled if no language options are given.
 # Specify language NONE, or use the LANGUAGES keyword and list no languages, to skip enabling any languages.
@@ -65,7 +64,7 @@ set(PROJECT_LANGUAGES CXX)
 set(PROJECT_USAGE_TYPE "application" CACHE STRING "Usage Type.")
 
 #Use these keys [stl, qt, qtwidget, qtquick]
-set(PROJECT_MAIN_TYPE "stl" CACHE STRING "Library System.")
+set(PROJECT_MAIN_TYPE "qtquick" CACHE STRING "Library System.")
 
 set(DEVELOPER_BUNDLE_IDENTIFIER com.kambizasadzadeh.app.${PROJECT_NAME} CACHE STRING "Developer Bundle Identifier.")
 
@@ -117,7 +116,14 @@ if(compiler-options)
 endif()
 set(compiler-options ON)
 
-if(USE_QT AND NOT PROJECT_MAIN_TYPE STREQUAL "stl")
+# ------ PACKAGES CONFIG ------
+include(packages)
+if(packages)
+  return()
+endif()
+set(packages ON)
+
+if(NOT PROJECT_MAIN_TYPE STREQUAL "stl")
     set(CMAKE_AUTOUIC ON)
     set(CMAKE_AUTOMOC ON)
     set(CMAKE_AUTORCC ON)
@@ -215,6 +221,7 @@ message(STATUS "${BoldBlue}------ ${PROJECT_TARGET} Framework Info ------${Colou
 message(STATUS "${Bold}Name${ColourReset}			    : ${CMAKE_PROJECT_NAME}")
 message(STATUS "${Bold}Description${ColourReset}		    : ${CMAKE_PROJECT_DESCRIPTION}")
 message(STATUS "${Bold}Version${ColourReset}		    : ${PROJECT_VERSION}")
+message(STATUS "${Bold}Full Version${ColourReset}	    : ${PROJECT_VERSION_STRING}")
 message(STATUS "${Bold}Creator${ColourReset}		    : ${PROJECT_CREATOR}")
 message(STATUS "${BoldBlue}------ ${PROJECT_TARGET} Project Configuration ------${ColourReset}")
 message(STATUS "${Bold}DEVELOPER${ColourReset}		    : ${PROJECT_CREATOR}")
@@ -230,8 +237,7 @@ message(STATUS "${Bold}LIBRARY_OUTPUT_PATH${ColourReset}		: ${LIBRARY_OUTPUT_PAT
 message(STATUS "${Bold}CMAKE_CURRENT_SOURCE_DIR${ColourReset}	: ${CMAKE_CURRENT_SOURCE_DIR}")
 message(STATUS "${BoldBlue}------ ${PROJECT_TARGET} End Configuration ------${ColourReset}")
 
-if(USE_QT)
-
+if(GUI_APPLICATION)
     if(USE_QT5_FEATURES)
         if(${PROJECT_MAIN_TYPE} STREQUAL "qt")
             list(APPEND QT_MODULES Core Core5Compat)
@@ -331,6 +337,20 @@ if(USE_QT)
     endif()
     target_link_libraries(${PROJECT_NAME} PRIVATE ${QT_MODULES_LINK})
 
+    #Extra Modules
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_MODULES})
+    target_include_directories(${PROJECT_NAME}
+        PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/source PRIVATE source
+        ${LIB_TARGET_INCLUDE_DIRECTORIES}
+        )
+
+    target_link_directories(${PROJECT_NAME}
+        PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/source
+        ${LIB_TARGET_LINK_DIRECTORIES}
+        )
+
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE_GUI_IDENTIFIER ${DEVELOPER_BUNDLE_IDENTIFIER}
         MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
@@ -352,37 +372,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${PROJECT_NAME})
 endif()
 else()
-
-if(PROJECT_USAGE_TYPE STREQUAL "library")
-    add_library(${PROJECT_NAME}
-      ${SOURCESFILE}
-    )
-else()
-    add_executable(${PROJECT_NAME}
-      ${SOURCESFILE}
-    )
-endif()
-
-# ------ PACKAGES CONFIG ------
-include(packages)
-if(packages)
-  return()
-endif()
-set(packages ON)
-
-#Extra Modules
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_MODULES})
-target_include_directories(${PROJECT_NAME}
-    PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/source PRIVATE source
-    ${LIB_TARGET_INCLUDE_DIRECTORIES}
-    )
-
-target_link_directories(${PROJECT_NAME}
-    PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/source
-    ${LIB_TARGET_LINK_DIRECTORIES}
-    )
 endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${LIB_TARGET_COMPILER_DEFINATION})
